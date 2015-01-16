@@ -1,0 +1,5 @@
+deep learning tutorial:
+http://ai.stanford.edu/~amaas/data/data.zip
+
+human activity data-set:
+http://pr.cs.cornell.edu/humanactivities/data.php
