@@ -1,50 +1,67 @@
-function [train, test] = ex1_load_mnist(binary_digits)
+function [train, test] = ex1_load_mnist(binary_digits, varargin)
 
-  % Load the training data
-  X=loadMNISTImages('train-images-idx3-ubyte');
-  y=loadMNISTLabels('train-labels-idx1-ubyte')';
+    % Load the training data
+    X=loadMNISTImages('train-images-idx3-ubyte');
+    y=loadMNISTLabels('train-labels-idx1-ubyte')';
 
-  if (binary_digits)
-    % Take only the 0 and 1 digits
-    X = [ X(:,y==0), X(:,y==1) ];
-    y = [ y(y==0), y(y==1) ];
-  end
+    if(nargin>1)
+        if(varargin{1})
+            % Take only the 0 and 1 digits
+            X = [ X(:,y==0), X(:,y==1), X(:, y==2), X(:, y==3)];
+            y = [ y(y==0), y(y==1), y(y==2), y(y==3) ];
+        end
+    end
 
-  % Randomly shuffle the data
-  I = randperm(length(y));
-  y=y(I); % labels in range 1 to 10
-  X=X(:,I);
 
-  % We standardize the data so that each pixel will have roughly zero mean and unit variance.
-  s=std(X,[],2);
-  m=mean(X,2);
-  X=bsxfun(@minus, X, m);
-  X=bsxfun(@rdivide, X, s+.1);
+    if (binary_digits)
+        % Take only the 0 and 1 digits
+        X = [ X(:,y==0), X(:,y==1) ];
+        y = [ y(y==0), y(y==1) ];
+    end
 
-  % Place these in the training set
-  train.X = X;
-  train.y = y;
+    % Randomly shuffle the data
+    I = randperm(length(y));
+    y=y(I); % labels in range 1 to 10
+    X=X(:,I);
 
-  % Load the testing data
-  X=loadMNISTImages('t10k-images-idx3-ubyte');
-  y=loadMNISTLabels('t10k-labels-idx1-ubyte')';
+    % We standardize the data so that each pixel will have roughly zero mean and unit variance.
+    s=std(X,[],2);
+    m=mean(X,2);
+    X=bsxfun(@minus, X, m);
+    X=bsxfun(@rdivide, X, s+.1);
 
-  if (binary_digits)
-    % Take only the 0 and 1 digits
-    X = [ X(:,y==0), X(:,y==1) ];
-    y = [ y(y==0), y(y==1) ];
-  end
+    % Place these in the training set
+    train.X = X;
+    train.y = y;
 
-  % Randomly shuffle the data
-  I = randperm(length(y));
-  y=y(I); % labels in range 1 to 10
-  X=X(:,I);
+    % Load the testing data
+    X=loadMNISTImages('t10k-images-idx3-ubyte');
+    y=loadMNISTLabels('t10k-labels-idx1-ubyte')';
 
-  % Standardize using the same mean and scale as the training data.
-  X=bsxfun(@minus, X, m);
-  X=bsxfun(@rdivide, X, s+.1);
+    if(nargin>1)
+        if(varargin{1})
+            % Take only the 0 and 1 digits
+            X = [ X(:,y==0), X(:,y==1), X(:, y==2), X(:, y==3)];
+            y = [ y(y==0), y(y==1), y(y==2), y(y==3) ];
+        end
+    end
+    
+    if (binary_digits)        
+        % Take only the 0 and 1 digits
+        X = [ X(:,y==0), X(:,y==1) ];
+        y = [ y(y==0), y(y==1) ];
+    end
 
-  % Place these in the testing set
-  test.X=X;
-  test.y=y;
+    % Randomly shuffle the data
+    I = randperm(length(y));
+    y=y(I); % labels in range 1 to 10
+    X=X(:,I);
+
+    % Standardize using the same mean and scale as the training data.
+    X=bsxfun(@minus, X, m);
+    X=bsxfun(@rdivide, X, s+.1);
+
+    % Place these in the testing set
+    test.X=X;
+    test.y=y;
 
