@@ -31,14 +31,14 @@ options = struct('MaxIter', 10);
 % Inside minFunc, theta will be stretched out into a long vector (theta(:)).
 % We only use num_classes-1 columns, since the last column is always assumed 0.
 theta = rand(n,num_classes-1)*0.001;
-grad_check(@softmax_regression_vec, theta, 1, train.X, train.y);
+%grad_check(@softmax_regression_vec, theta, 10, train.X, train.y);
 % Call minFunc with the softmax_regression_vec.m file as objective.
 %
 % TODO:  Implement batch softmax regression in the softmax_regression_vec.m
 % file using a vectorized implementation.
 %
 tic;
-%theta(:)=minFunc(@softmax_regression_vec, theta(:), options, train.X, train.y);
+theta(:)=minFunc(@softmax_regression_vec, theta(:), options, train.X, train.y);
 fprintf('Optimization took %f seconds.\n', toc);
 theta=[theta, zeros(n,1)]; % expand theta to include the last class.
 
