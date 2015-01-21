@@ -1,0 +1,3 @@
+[submodule "program/tutorial/stanford_dl_ex"]
+	path = program/tutorial/stanford_dl_ex
+	url = https://github.com/boddmg/stanford_dl_ex.git
