@@ -20,38 +20,43 @@ from blocks.extensions import FinishAfter, Printing, Timing
 
 def main():
     BATCH_SIZE = 256
+    FRAME_NUM = 50
+    IMAGE_SIZE = [FRAME_NUM, 170]
     print("Build the network")
     x = tensor.tensor3('features')
 
-    x = x.reshape((x.shape[0], 1, 170, 10))
+    x = x.reshape((x.shape[0], 1, IMAGE_SIZE[0], IMAGE_SIZE[1]))
 
     y = tensor.lmatrix('targets')
 
     # Convolutional layers
-    filter_sizes = [(7, 8)]
-    num_filters = [100]
-    pooling_sizes = [(4, 3)]
-    activation = Rectifier().apply
-    conv_layers = [
-        ConvolutionalLayer(activation, filter_size, num_filters_, pooling_size)
-        for filter_size, num_filters_, pooling_size
-        in zip(filter_sizes, num_filters, pooling_sizes)
-    ]
+    filter_sizes = [(5, 8)] * 2
+    num_filters = [32, 32]
+    pooling_sizes = [(2, 3)]*2
+    activation = Sigmoid().apply
+    conv_layers = []
+
+    input_dims = list(IMAGE_SIZE)
+    for filter_size, num_filters_, pooling_size in zip(filter_sizes, num_filters, pooling_sizes):
+        conv_layers.append(ConvolutionalLayer(activation, filter_size, num_filters_, pooling_size))
 
     convnet = ConvolutionalSequence(conv_layers, num_channels=1,
-                                    image_size=(170, 10),
+                                    image_size=tuple(IMAGE_SIZE),
                                     weights_init=Uniform(0, 0.2),
                                     biases_init=Constant(0.))
     convnet.initialize()
+
+
 
     # Fully connected layers
 
     features = Flattener().apply(convnet.apply(x))
     mlp = MLP(activations=[Softmax()],
-              dims=[4100, 14], weights_init=Uniform(0, 0.2),
+              dims=[5120, 14], weights_init=Uniform(0, 1),
               biases_init=Constant(0.))
     mlp.initialize()
     probs = mlp.apply(features)
+
 
     cost = CategoricalCrossEntropy().apply(y.flatten(), probs)
     correct_rate =  1 - MisclassificationRate().apply(y.flatten(), probs)
@@ -62,8 +67,8 @@ def main():
 
     # Train
     print("Prepare the data.")
-    cad60_train = CAD60Skeleton("train")
-    cad60_test = CAD60Skeleton("test")
+    cad60_train = CAD60Skeleton("train", FRAME_NUM)
+    cad60_test = CAD60Skeleton("test", FRAME_NUM)
 
     ## Carve the data into lots of batches.
 
@@ -72,7 +77,7 @@ def main():
 
     ## Set the algorithm for the training.
     algorithm = GradientDescent(cost = cost, params = cg.parameters,
-                                step_rule = Scale(0.9) )
+                                step_rule = Scale(0.1) )
 
     ## Add a monitor extension for the training.
     data_stream_test = DataStream(cad60_test, iteration_scheme = SequentialScheme(
@@ -94,10 +99,10 @@ def main():
     print("Start training")
     main_loop = MainLoop(algorithm=algorithm, data_stream=data_stream_train,
                          extensions=[Timing(),
-                                     plot,
+                                     # plot,
                                      test_monitor,
                                      train_monitor,
-                                     FinishAfter(after_n_epochs = 1),
+                                     FinishAfter(after_n_epochs = 2),
                                      Printing()
                                      ])
     main_loop.run()

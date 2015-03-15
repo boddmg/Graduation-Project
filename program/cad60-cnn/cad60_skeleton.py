@@ -103,34 +103,35 @@ class CAD60Skeleton(IndexableDataset):
     src_data = None
     src_labels = None
 
-    def __init__(self, set_type = "train", flatten=False, **kwargs):
+    def __init__(self, set_type = "train", batch_size = 10, flatten=False, **kwargs):
         self.flatten = flatten
         self.set_type = set_type
+        self.batch_size = batch_size
 
-        new_data = OrderedDict(zip(self.provides_sources, self._load_skeleton()))
+        new_data = OrderedDict(zip(self.provides_sources, self._load_skeleton(self.batch_size)))
         print new_data[self.provides_sources[0]].shape
 
         super(CAD60Skeleton, self).__init__(new_data, **kwargs)
 
     def load(self):
         self.indexables = [data[self.start:self.stop] for source, data
-                           in zip(self.provides_sources, self._load_skeleton())
+                           in zip(self.provides_sources, self._load_skeleton(self.batch_size))
                            if source in self.sources]
 
-    def _load_skeleton(self):
+    def _load_skeleton(self, batch_size):
         if type(CAD60Skeleton.src_data) != numpy.ndarray:
-            CAD60Skeleton.src_data, CAD60Skeleton.src_labels = CAD60(path.join(config.data_path, "cad60")).get_data()
+            CAD60Skeleton.src_data, CAD60Skeleton.src_labels = CAD60(path.join(config.data_path, "cad60"), batch_size).get_data()
             print "shape:", CAD60Skeleton.src_data.shape, CAD60Skeleton.src_labels.shape
         if self.set_type == "train":
-            return CAD60Skeleton.src_data[:60000], CAD60Skeleton.src_labels[:60000][:,None]
+            return CAD60Skeleton.src_data[10000:], CAD60Skeleton.src_labels[10000:][:,None]
         else:
-            return CAD60Skeleton.src_data[60001:], CAD60Skeleton.src_labels[60001:][:,None]
+            return CAD60Skeleton.src_data[:10000], CAD60Skeleton.src_labels[:10000][:,None]
 
 
 def main():
     print("start.")
-    cad60_train = CAD60Skeleton("train")
-    cad60_test = CAD60Skeleton("test")
+    cad60_train = CAD60Skeleton("train", batch_size=15)
+    cad60_test = CAD60Skeleton("test", batch_size=15)
     # next_batch = cad60.get_data_batch(10)
     # for i in next_batch:
     #     print(len(i[0][0]),i[1])
