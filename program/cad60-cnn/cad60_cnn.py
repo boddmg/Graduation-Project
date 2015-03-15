@@ -21,15 +21,16 @@ from blocks.extensions import FinishAfter, Printing, Timing
 def main():
     BATCH_SIZE = 256
     print("Build the network")
-    x = tensor.matrix('features')
-    x = x.reshape((x.shape[0], 1, 28, 28))
+    x = tensor.tensor3('features')
+
+    x = x.reshape((x.shape[0], 1, 170, 10))
 
     y = tensor.lmatrix('targets')
 
     # Convolutional layers
-    filter_sizes = [(8, 8)]
+    filter_sizes = [(7, 8)]
     num_filters = [100]
-    pooling_sizes = [(3, 3)]
+    pooling_sizes = [(4, 3)]
     activation = Rectifier().apply
     conv_layers = [
         ConvolutionalLayer(activation, filter_size, num_filters_, pooling_size)
@@ -47,7 +48,7 @@ def main():
 
     features = Flattener().apply(convnet.apply(x))
     mlp = MLP(activations=[Softmax()],
-              dims=[4900, 10], weights_init=Uniform(0, 0.2),
+              dims=[4100, 14], weights_init=Uniform(0, 0.2),
               biases_init=Constant(0.))
     mlp.initialize()
     probs = mlp.apply(features)
@@ -96,7 +97,7 @@ def main():
                                      plot,
                                      test_monitor,
                                      train_monitor,
-                                     FinishAfter(after_n_epochs = 20),
+                                     FinishAfter(after_n_epochs = 1),
                                      Printing()
                                      ])
     main_loop.run()

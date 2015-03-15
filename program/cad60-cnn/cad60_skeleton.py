@@ -48,20 +48,25 @@ class CAD60(object):
             new_file = open(i[0]).readlines()[:-1]
             col = len(new_file[0].split(","))-2 if col == 0 else col # Remove the header and tail
             batch += len(new_file) - self.batch_size + 1
-        return batch, row, col
+        self.shape[0] = batch
+        self.shape[1] = row
+        self.shape[2] = col
+        return self.shape
 
     def join(self, src_path):
         return path.join(self.root_path,src_path)
 
     def get_data(self):
         if path.exists(self.data_path) and path.exists(self.labels_path):
-            self.data = numpy.fromfile(self.data_path)
-            self.labels = numpy.fromfile(self.labels_path)
-            self.shape[0] = self.shape[0]/170/self.batch_size
+            self.data = numpy.fromfile(self.data_path, dtype=numpy.float32)
+            self.labels = numpy.fromfile(self.labels_path, dtype = numpy.uint8)
+            self.shape[0] = self.data.shape[0]/170/self.batch_size
+            self.data = self.data.reshape(self.shape)
             return self.data, self.labels
 
         shape = self._get_data_shape()
-        data = numpy.zeros(shape)
+        print "shape:",shape
+        data = numpy.zeros(shape, dtype=numpy.float32)
         labels = numpy.zeros(shape[0], dtype=numpy.uint8)
         new_data_batch = []
         index = 0
@@ -82,11 +87,12 @@ class CAD60(object):
                        print("error len:",len(err))
                    print("index:",index)
                    raise
-                   # print(len(new_data_batch))
                finally:
                    index = index + 1
                    if index % 1000 == 0:
                        print(index)
+        data.tofile(self.data_path)
+        labels.tofile(self.labels_path)
         return data, labels
 
 
@@ -101,8 +107,10 @@ class CAD60Skeleton(IndexableDataset):
         self.flatten = flatten
         self.set_type = set_type
 
-        super(CAD60Skeleton, self).__init__(OrderedDict(zip(self.provides_sources,
-                                                    self._load_skeleton())),**kwargs)
+        new_data = OrderedDict(zip(self.provides_sources, self._load_skeleton()))
+        print new_data[self.provides_sources[0]].shape
+
+        super(CAD60Skeleton, self).__init__(new_data, **kwargs)
 
     def load(self):
         self.indexables = [data[self.start:self.stop] for source, data
@@ -110,12 +118,13 @@ class CAD60Skeleton(IndexableDataset):
                            if source in self.sources]
 
     def _load_skeleton(self):
-        if not CAD60Skeleton.src_data:
+        if type(CAD60Skeleton.src_data) != numpy.ndarray:
             CAD60Skeleton.src_data, CAD60Skeleton.src_labels = CAD60(path.join(config.data_path, "cad60")).get_data()
+            print "shape:", CAD60Skeleton.src_data.shape, CAD60Skeleton.src_labels.shape
         if self.set_type == "train":
-            return CAD60Skeleton.src_data[:50000], CAD60Skeleton.src_labels[:50000]
+            return CAD60Skeleton.src_data[:60000], CAD60Skeleton.src_labels[:60000][:,None]
         else:
-            return CAD60Skeleton.src_data[50001:], CAD60Skeleton.src_labels[50001:]
+            return CAD60Skeleton.src_data[60001:], CAD60Skeleton.src_labels[60001:][:,None]
 
 
 def main():
