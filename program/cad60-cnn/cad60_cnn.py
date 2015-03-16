@@ -30,9 +30,9 @@ def main():
     y = tensor.lmatrix('targets')
 
     # Convolutional layers
-    filter_sizes = [(3, 16)] * 2
+    filter_sizes = [(10, 8)] * 2
     num_filters = [32, 64]
-    pooling_sizes = [(2, 4)]*2
+    pooling_sizes = [(3, 3)]*2
     activation = Sigmoid().apply
     conv_layers = []
 
@@ -52,7 +52,7 @@ def main():
 
     features = Flattener().apply(convnet.apply(x))
     mlp = MLP(activations=[Sigmoid(),Softmax()],
-              dims=[2304, 256, 14], weights_init=IsotropicGaussian(),
+              dims=[2048, 256, 14], weights_init=IsotropicGaussian(),
               biases_init=Constant(0.))
     mlp.initialize()
     probs = mlp.apply(features)
@@ -102,7 +102,7 @@ def main():
                                      # plot,
                                      test_monitor,
                                      train_monitor,
-                                     FinishAfter(after_n_epochs = 2),
+                                     FinishAfter(after_n_epochs = 20),
                                      Printing()
                                      ])
     main_loop.run()
