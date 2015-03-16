@@ -9,7 +9,7 @@ from blocks.graph import ComputationGraph
 from blocks.initialization import IsotropicGaussian, Constant, Uniform
 from cad60_skeleton import CAD60Skeleton
 from fuel.streams import DataStream
-from fuel.schemes import SequentialScheme
+from fuel.schemes import SequentialScheme, ShuffledScheme
 from blocks.algorithms import GradientDescent, Scale
 from blocks.extensions.monitoring import DataStreamMonitoring
 from blocks.extensions.monitoring import TrainingDataMonitoring
@@ -30,9 +30,9 @@ def main():
     y = tensor.lmatrix('targets')
 
     # Convolutional layers
-    filter_sizes = [(5, 8)] * 2
-    num_filters = [32, 32]
-    pooling_sizes = [(2, 3)]*2
+    filter_sizes = [(3, 16)] * 2
+    num_filters = [32, 64]
+    pooling_sizes = [(2, 4)]*2
     activation = Sigmoid().apply
     conv_layers = []
 
@@ -42,7 +42,7 @@ def main():
 
     convnet = ConvolutionalSequence(conv_layers, num_channels=1,
                                     image_size=tuple(IMAGE_SIZE),
-                                    weights_init=Uniform(0, 0.2),
+                                    weights_init=IsotropicGaussian(),
                                     biases_init=Constant(0.))
     convnet.initialize()
 
@@ -51,8 +51,8 @@ def main():
     # Fully connected layers
 
     features = Flattener().apply(convnet.apply(x))
-    mlp = MLP(activations=[Softmax()],
-              dims=[5120, 14], weights_init=Uniform(0, 1),
+    mlp = MLP(activations=[Sigmoid(),Softmax()],
+              dims=[2304, 256, 14], weights_init=IsotropicGaussian(),
               biases_init=Constant(0.))
     mlp.initialize()
     probs = mlp.apply(features)
@@ -72,7 +72,7 @@ def main():
 
     ## Carve the data into lots of batches.
 
-    data_stream_train = DataStream(cad60_train, iteration_scheme=SequentialScheme(
+    data_stream_train = DataStream(cad60_train, iteration_scheme = ShuffledScheme(
         cad60_train.num_examples, batch_size = BATCH_SIZE))
 
     ## Set the algorithm for the training.
@@ -80,7 +80,7 @@ def main():
                                 step_rule = Scale(0.1) )
 
     ## Add a monitor extension for the training.
-    data_stream_test = DataStream(cad60_test, iteration_scheme = SequentialScheme(
+    data_stream_test = DataStream(cad60_test, iteration_scheme = ShuffledScheme(
         cad60_test.num_examples, batch_size = BATCH_SIZE))
 
     test_monitor = DataStreamMonitoring(variables = [cost, correct_rate], data_stream = data_stream_test,
@@ -91,10 +91,10 @@ def main():
                                            after_every_batch = True)
 
     ## Add a plot monitor.
-    plot = Plot(document = 'new',
-                channels=[['train_correct_rate','test_correct_rate']],
-                start_server = True,
-                after_every_batch = True)
+    # plot = Plot(document = 'new',
+    #             channels=[['train_correct_rate','test_correct_rate']],
+    #             start_server = True,
+    #             after_every_batch = True)
 
     print("Start training")
     main_loop = MainLoop(algorithm=algorithm, data_stream=data_stream_train,

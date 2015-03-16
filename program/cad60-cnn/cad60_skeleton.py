@@ -12,40 +12,62 @@ from fuel.utils import do_not_pickle_attributes
 
 
 class CAD60(object):
-    def __init__(self, root_path = None, batch_size = 10):
+    data_info = {
+        "index_range":{
+            "train":[0,2],
+            "test":[3,3]
+        },
+        "path":{
+            "train":{
+                "data":"train_data.dat",
+                "labels":"train_labels.dat"
+            },
+            "test":{
+                "data":"test_data.dat",
+                "labels":"test_labels.dat"
+        }}}
+
+    def __init__(self, root_path = None, batch_size = 10, data_type = "train"):
+        print(data_type)
         if not root_path:
             root_path = path.split(sys.argv[0])[0]
             root_path = path.abspath(root_path)
             self.root_path = root_path
         else:
             self.root_path = path.abspath(root_path)
-        self.data_path = self.join("data.dat")
-        self.labels_path = self.join("labels.dat")
+        self.data_type = data_type
         self.batch_size = batch_size
         self.shape = [0, batch_size, 170]
+        self.data_path = self.join(self.data_info["path"][data_type]["data"])
+        self.labels_path = self.join(self.data_info["path"][data_type]["labels"])
         pass
 
     def get_a_movement(self):
         root_path = self.root_path
         dirs = filter(lambda x:path.isdir(path.join(root_path,x)),listdir(root_path))
+        person_index = 0
 
         for dir in dirs:
-            current_dir = path.join(root_path, dir)
-            current_file = path.join(current_dir, "activityLabel.txt")
-            if not path.exists(current_file):
-                continue
-            index = map(lambda x:x.split(",")[:2],open(current_file, "r").readlines() )[:-1]
-            for i in index:
-                movement = path.join(current_dir, i[0]+".txt")
-                yield movement, i
+            if  person_index >= self.data_info["index_range"][self.data_type][0] and \
+                person_index <= self.data_info["index_range"][self.data_type][1]:
+
+                current_dir = path.join(root_path, dir)
+                current_file = path.join(current_dir, "activityLabel.txt")
+                if not path.exists(current_file):
+                    continue
+                index = map(lambda x:x.split(",")[:2],open(current_file, "r").readlines() )[:-1]
+                for i in index:
+                    movement = path.join(current_dir, i[0]+".txt")
+                    yield movement, i, person_index
+            person_index += 1
 
     def _get_data_shape(self):
         if self.shape[0] != 0:
             return self.shape
         col = row = batch = 0
         row = self.batch_size
-        for i in self.get_a_movement():
-            new_file = open(i[0]).readlines()[:-1]
+        for file_path, i, person_index  in self.get_a_movement():
+            new_file = open(file_path).readlines()[:-1]
             col = len(new_file[0].split(","))-2 if col == 0 else col # Remove the header and tail
             batch += len(new_file) - self.batch_size + 1
         self.shape[0] = batch
@@ -53,11 +75,12 @@ class CAD60(object):
         self.shape[2] = col
         return self.shape
 
+
     def join(self, src_path):
         return path.join(self.root_path,src_path)
 
     def get_data(self):
-        if path.exists(self.data_path) and path.exists(self.labels_path):
+        if path.exists(self.data_path):
             self.data = numpy.fromfile(self.data_path, dtype=numpy.float32)
             self.labels = numpy.fromfile(self.labels_path, dtype = numpy.uint8)
             self.shape[0] = self.data.shape[0]/170/self.batch_size
@@ -95,8 +118,6 @@ class CAD60(object):
         labels.tofile(self.labels_path)
         return data, labels
 
-
-
 @do_not_pickle_attributes('indexables')
 class CAD60Skeleton(IndexableDataset):
     provides_sources = ('features', 'targets')
@@ -109,7 +130,6 @@ class CAD60Skeleton(IndexableDataset):
         self.batch_size = batch_size
 
         new_data = OrderedDict(zip(self.provides_sources, self._load_skeleton(self.batch_size)))
-        print new_data[self.provides_sources[0]].shape
 
         super(CAD60Skeleton, self).__init__(new_data, **kwargs)
 
@@ -119,13 +139,17 @@ class CAD60Skeleton(IndexableDataset):
                            if source in self.sources]
 
     def _load_skeleton(self, batch_size):
-        if type(CAD60Skeleton.src_data) != numpy.ndarray:
-            CAD60Skeleton.src_data, CAD60Skeleton.src_labels = CAD60(path.join(config.data_path, "cad60"), batch_size).get_data()
-            print "shape:", CAD60Skeleton.src_data.shape, CAD60Skeleton.src_labels.shape
-        if self.set_type == "train":
-            return CAD60Skeleton.src_data[10000:], CAD60Skeleton.src_labels[10000:][:,None]
-        else:
-            return CAD60Skeleton.src_data[:10000], CAD60Skeleton.src_labels[:10000][:,None]
+        src_data, src_labels = \
+            CAD60(path.join(config.data_path, "cad60"),
+                  batch_size,
+                  self.set_type).get_data()
+
+        indices = numpy.random.permutation(src_data.shape[0])
+        src_data = src_data[indices]
+        src_labels = src_labels[indices]
+        print "shape:", src_data.shape, src_labels.shape
+
+        return src_data, src_labels[:,None]
 
 
 def main():
