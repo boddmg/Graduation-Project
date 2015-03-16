@@ -1,0 +1,423 @@
+# Convolutional layers
+filter_sizes = [(10, 8)] * 2
+num_filters = [32, 64]
+pooling_sizes = [(3, 3)]*2
+activation = Sigmoid().apply
+
+mlp = MLP(activations=[Sigmoid(),Softmax()],
+          dims=[2048, 256, 14], weights_init=IsotropicGaussian(),
+          biases_init=Constant(0.))
+
+
+-------------------------------------------------------------------------------
+BEFORE FIRST EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 0
+     iterations_done: 0
+Log records from the iteration 0:
+     initialization_took: 1.49582982063
+     test_correct_rate: 0.0694909471841
+     test_cost: 18.056388855
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 1
+     iterations_done: 217
+Log records from the iteration 217:
+     epoch_took: 193.204277039
+     iteration_took: 0.606231927872
+     test_correct_rate: 0.320489211451
+     test_cost: 2.07142400742
+     total_took: 194.6995399
+     train_correct_rate: 0.647959172726
+     train_cost: 1.13973140717
+     train_total_step_norm: 0.561545729637
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 2
+     iterations_done: 434
+Log records from the iteration 434:
+     epoch_took: 172.006824017
+     iteration_took: 0.607023954391
+     test_correct_rate: 0.303952752834
+     test_cost: 2.04844689369
+     total_took: 387.683105946
+     train_correct_rate: 0.744897961617
+     train_cost: 0.876456022263
+     train_total_step_norm: 0.363105744123
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 3
+     iterations_done: 651
+Log records from the iteration 651:
+     epoch_took: 172.087037086
+     iteration_took: 0.604062080383
+     test_correct_rate: 0.441942584657
+     test_cost: 1.43410933018
+     total_took: 580.750021935
+     train_correct_rate: 0.897959180176
+     train_cost: 0.36673605442
+     train_total_step_norm: 0.16934543848
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 4
+     iterations_done: 868
+Log records from the iteration 868:
+     epoch_took: 171.998927832
+     iteration_took: 0.603662967682
+     test_correct_rate: 0.471986607427
+     test_cost: 1.48634922504
+     total_took: 773.714639902
+     train_correct_rate: 0.959183674306
+     train_cost: 0.206023395061
+     train_total_step_norm: 0.108477890491
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 5
+     iterations_done: 1085
+Log records from the iteration 1085:
+     epoch_took: 171.958234072
+     iteration_took: 0.605109930038
+     test_correct_rate: 0.464812747779
+     test_cost: 1.50496828556
+     total_took: 966.679719925
+     train_correct_rate: 0.959183674306
+     train_cost: 0.166667431593
+     train_total_step_norm: 0.116294063628
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 6
+     iterations_done: 1302
+Log records from the iteration 1302:
+     epoch_took: 172.016082048
+     iteration_took: 0.607816934586
+     test_correct_rate: 0.479157366213
+     test_cost: 1.5354039669
+     total_took: 1159.72381377
+     train_correct_rate: 0.974489795044
+     train_cost: 0.115512743592
+     train_total_step_norm: 0.059060588479
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 7
+     iterations_done: 1519
+Log records from the iteration 1519:
+     epoch_took: 172.004482985
+     iteration_took: 0.609425783157
+     test_correct_rate: 0.477514260582
+     test_cost: 1.5796020031
+     total_took: 1352.70056581
+     train_correct_rate: 0.994897959288
+     train_cost: 0.0797496885061
+     train_total_step_norm: 0.0603795349598
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 8
+     iterations_done: 1736
+Log records from the iteration 1736:
+     epoch_took: 172.004627943
+     iteration_took: 0.604719161987
+     test_correct_rate: 0.491933283707
+     test_cost: 1.51203250885
+     total_took: 1545.67853498
+     train_correct_rate: 0.984693877399
+     train_cost: 0.0785257816315
+     train_total_step_norm: 0.0464417375624
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 9
+     iterations_done: 1953
+Log records from the iteration 1953:
+     epoch_took: 171.929210186
+     iteration_took: 0.608072042465
+     test_correct_rate: 0.488622271944
+     test_cost: 1.46646213531
+     total_took: 1738.60641599
+     train_correct_rate: 0.994897959288
+     train_cost: 0.0613249577582
+     train_total_step_norm: 0.0512051098049
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 10
+     iterations_done: 2170
+Log records from the iteration 2170:
+     epoch_took: 172.933818817
+     iteration_took: 0.607625007629
+     test_correct_rate: 0.463684275746
+     test_cost: 1.49979627132
+     total_took: 1932.52533579
+     train_correct_rate: 0.989795918576
+     train_cost: 0.0645833909512
+     train_total_step_norm: 0.0826406851411
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 11
+     iterations_done: 2387
+Log records from the iteration 2387:
+     epoch_took: 172.099243879
+     iteration_took: 0.609894990921
+     test_correct_rate: 0.485856894936
+     test_cost: 1.40130269527
+     total_took: 2125.63206387
+     train_correct_rate: 1.0
+     train_cost: 0.0405166111887
+     train_total_step_norm: 0.0391720570624
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 12
+     iterations_done: 2604
+Log records from the iteration 2604:
+     epoch_took: 172.156260014
+     iteration_took: 0.604099035263
+     test_correct_rate: 0.505071924556
+     test_cost: 1.45248615742
+     total_took: 2318.78600597
+     train_correct_rate: 1.0
+     train_cost: 0.0477650500834
+     train_total_step_norm: 0.0370382219553
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 13
+     iterations_done: 2821
+Log records from the iteration 2821:
+     epoch_took: 172.120061159
+     iteration_took: 0.606812000275
+     test_correct_rate: 0.463337053855
+     test_cost: 1.6997795105
+     total_took: 2511.90025878
+     train_correct_rate: 0.984693877399
+     train_cost: 0.0646310821176
+     train_total_step_norm: 0.0771957859397
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 14
+     iterations_done: 3038
+Log records from the iteration 3038:
+     epoch_took: 172.110289097
+     iteration_took: 0.611275911331
+     test_correct_rate: 0.485081845096
+     test_cost: 1.46878671646
+     total_took: 2705.01423478
+     train_correct_rate: 0.979591837153
+     train_cost: 0.0717694684863
+     train_total_step_norm: 0.0444496944547
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 15
+     iterations_done: 3255
+Log records from the iteration 3255:
+     epoch_took: 172.229354143
+     iteration_took: 0.609241008759
+     test_correct_rate: 0.477263144794
+     test_cost: 1.4993417263
+     total_took: 2898.25019884
+     train_correct_rate: 0.994897959288
+     train_cost: 0.0406639501452
+     train_total_step_norm: 0.0357289724052
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 16
+     iterations_done: 3472
+Log records from the iteration 3472:
+     epoch_took: 171.954080105
+     iteration_took: 0.604135990143
+     test_correct_rate: 0.48250868065
+     test_cost: 1.56565713882
+     total_took: 3091.19653296
+     train_correct_rate: 1.0
+     train_cost: 0.0266791023314
+     train_total_step_norm: 0.0238280016929
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 17
+     iterations_done: 3689
+Log records from the iteration 3689:
+     epoch_took: 172.101109982
+     iteration_took: 0.609277009964
+     test_correct_rate: 0.499565972459
+     test_cost: 1.48361682892
+     total_took: 3284.32128787
+     train_correct_rate: 1.0
+     train_cost: 0.0294519755989
+     train_total_step_norm: 0.023228129372
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 18
+     iterations_done: 3906
+Log records from the iteration 3906:
+     epoch_took: 172.037534952
+     iteration_took: 0.610965013504
+     test_correct_rate: 0.508131820531
+     test_cost: 1.45939493179
+     total_took: 3477.32404399
+     train_correct_rate: 1.0
+     train_cost: 0.032294396311
+     train_total_step_norm: 0.0286633390933
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 19
+     iterations_done: 4123
+Log records from the iteration 4123:
+     epoch_took: 172.179621935
+     iteration_took: 0.605761051178
+     test_correct_rate: 0.509415302603
+     test_cost: 1.39663612843
+     total_took: 3670.46655393
+     train_correct_rate: 0.989795918576
+     train_cost: 0.0346507206559
+     train_total_step_norm: 0.0371121279895
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 20
+     iterations_done: 4340
+Log records from the iteration 4340:
+     epoch_took: 172.176582098
+     iteration_took: 0.607214927673
+     test_correct_rate: 0.499910094199
+     test_cost: 1.50670599937
+     total_took: 3863.6676228
+     train_correct_rate: 0.994897959288
+     train_cost: 0.0360704958439
+     train_total_step_norm: 0.135004222393
+     training_finish_requested: True
+
+
+-------------------------------------------------------------------------------
+TRAINING HAS BEEN FINISHED:
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 20
+     iterations_done: 4340
+Log records from the iteration 4340:
+     epoch_took: 172.176582098
+     final_total_took: 3884.64608479
+     iteration_took: 0.607214927673
+     test_correct_rate: 0.499910094199
+     test_cost: 1.50670599937
+     total_took: 3863.6676228
+     train_correct_rate: 0.994897959288
+     train_cost: 0.0360704958439
+     train_total_step_norm: 0.135004222393
+     training_finish_requested: True
+     training_finished: True
+
