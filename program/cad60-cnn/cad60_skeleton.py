@@ -6,9 +6,6 @@ import fuel
 from collections import OrderedDict
 import numpy
 
-from fuel import config
-from fuel.datasets import IndexableDataset
-from fuel.utils import do_not_pickle_attributes
 
 
 class CAD60(object):
@@ -57,8 +54,10 @@ class CAD60(object):
                     continue
                 index = map(lambda x:x.split(",")[:2],open(current_file, "r").readlines() )[:-1]
                 for i in index:
-                    movement = path.join(current_dir, i[0]+".txt")
-                    yield movement, i, person_index
+                    file_path = path.join(current_dir, i[0]+".txt")
+                    if i[1]=="random":
+                        continue
+                    yield file_path, i, person_index
             person_index += 1
 
     def _get_data_shape(self):
@@ -99,6 +98,7 @@ class CAD60(object):
         for i in self.get_a_movement():
            if not label_table.has_key(i[1][1]):
                label_table[i[1][1]] = len(label_table)
+
            new_data_file = open(i[0]).readlines()[:-1]
            for j in range(len(new_data_file) - self.batch_size + 1):
                try:
@@ -117,52 +117,5 @@ class CAD60(object):
         data.tofile(self.data_path)
         labels.tofile(self.labels_path)
         return data, labels
-
-@do_not_pickle_attributes('indexables')
-class CAD60Skeleton(IndexableDataset):
-    provides_sources = ('features', 'targets')
-    src_data = None
-    src_labels = None
-
-    def __init__(self, set_type = "train", batch_size = 10, flatten=False, **kwargs):
-        self.flatten = flatten
-        self.set_type = set_type
-        self.batch_size = batch_size
-
-        new_data = OrderedDict(zip(self.provides_sources, self._load_skeleton(self.batch_size)))
-
-        super(CAD60Skeleton, self).__init__(new_data, **kwargs)
-
-    def load(self):
-        self.indexables = [data[self.start:self.stop] for source, data
-                           in zip(self.provides_sources, self._load_skeleton(self.batch_size))
-                           if source in self.sources]
-
-    def _load_skeleton(self, batch_size):
-        src_data, src_labels = \
-            CAD60(path.join(config.data_path, "cad60"),
-                  batch_size,
-                  self.set_type).get_data()
-
-        indices = numpy.random.permutation(src_data.shape[0])
-        src_data = src_data[indices]
-        src_labels = src_labels[indices]
-        print "shape:", src_data.shape, src_labels.shape
-
-        return src_data, src_labels[:,None]
-
-
-def main():
-    print("start.")
-    cad60_train = CAD60Skeleton("train", batch_size=15)
-    cad60_test = CAD60Skeleton("test", batch_size=15)
-    # next_batch = cad60.get_data_batch(10)
-    # for i in next_batch:
-    #     print(len(i[0][0]),i[1])
-
-
-
-if __name__ == "__main__":
-    main()
 
 
