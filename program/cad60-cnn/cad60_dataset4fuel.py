@@ -7,6 +7,7 @@ from collections import OrderedDict
 import numpy
 from cad60_skeleton import CAD60
 from os import path
+import sys
 
 
 @do_not_pickle_attributes('indexables')
@@ -45,8 +46,11 @@ class CAD60Skeleton(IndexableDataset):
 
 def main():
     print("start.")
-    cad60_train = CAD60Skeleton("train", batch_size=1)
-    cad60_test = CAD60Skeleton("test", batch_size=1)
+    batch_size = 15
+    if len(sys.argv)>1:
+        batch_size = int(sys.argv[1])
+    cad60_train = CAD60Skeleton("train", batch_size=batch_size)
+    cad60_test = CAD60Skeleton("test", batch_size=batch_size)
     # next_batch = cad60.get_data_batch(10)
     # for i in next_batch:
     #     print(len(i[0][0]),i[1])

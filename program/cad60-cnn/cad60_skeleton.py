@@ -16,12 +16,12 @@ class CAD60(object):
         },
         "path":{
             "train":{
-                "data":"train_data.dat",
-                "labels":"train_labels.dat"
+                "data":"batch_%s_train_data.dat",
+                "labels":"batch_%s_train_labels.dat"
             },
             "test":{
-                "data":"test_data.dat",
-                "labels":"test_labels.dat"
+                "data":"batch_%s_test_data.dat",
+                "labels":"batch_%s_test_labels.dat"
         }}}
 
     def __init__(self, root_path = None, batch_size = 10, data_type = "train"):
@@ -35,8 +35,8 @@ class CAD60(object):
         self.data_type = data_type
         self.batch_size = batch_size
         self.shape = [0, batch_size, 170]
-        self.data_path = self.join(self.data_info["path"][data_type]["data"])
-        self.labels_path = self.join(self.data_info["path"][data_type]["labels"])
+        self.data_path = self.join(self.data_info["path"][data_type]["data"] % (str(batch_size)))
+        self.labels_path = self.join(self.data_info["path"][data_type]["labels"] % (str(batch_size)))
         pass
 
     def get_a_movement(self):
