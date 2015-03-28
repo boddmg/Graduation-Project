@@ -84,7 +84,13 @@ class CAD60(object):
             self.labels = numpy.fromfile(self.labels_path, dtype = numpy.uint8)
             self.shape[0] = self.data.shape[0]/170/self.batch_size
             self.data = self.data.reshape(self.shape)
-            return self.data, self.labels
+            label_table = OrderedDict()
+
+            for i in self.get_a_movement():
+                if not label_table.has_key(i[1][1]):
+                    label_table[i[1][1]] = len(label_table)
+
+            return self.data, self.labels, label_table
 
         shape = self._get_data_shape()
         print "shape:",shape
@@ -116,6 +122,6 @@ class CAD60(object):
                        print(index)
         data.tofile(self.data_path)
         labels.tofile(self.labels_path)
-        return data, labels
+        return data, labels, label_table
 
 

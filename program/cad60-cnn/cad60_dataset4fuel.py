@@ -25,12 +25,12 @@ class CAD60Skeleton(IndexableDataset):
         super(CAD60Skeleton, self).__init__(new_data, **kwargs)
 
     def load(self):
-        self.indexables = [data[self.start:self.stop] for source, data
+        self.indexables = [data for source, data
                            in zip(self.provides_sources, self._load_skeleton(self.batch_size))
                            if source in self.sources]
 
     def _load_skeleton(self, batch_size):
-        src_data, src_labels = \
+        src_data, src_labels, temp = \
             CAD60(path.join(config.data_path, "cad60"),
                   batch_size,
                   self.set_type).get_data()
@@ -45,8 +45,8 @@ class CAD60Skeleton(IndexableDataset):
 
 def main():
     print("start.")
-    cad60_train = CAD60Skeleton("train", batch_size=50)
-    cad60_test = CAD60Skeleton("test", batch_size=50)
+    cad60_train = CAD60Skeleton("train", batch_size=1)
+    cad60_test = CAD60Skeleton("test", batch_size=1)
     # next_batch = cad60.get_data_batch(10)
     # for i in next_batch:
     #     print(len(i[0][0]),i[1])

@@ -1,46 +1,50 @@
 #!/usr/bin/env python
 from fuel import config
-from fuel.datasets import IndexableDataset
-from fuel.utils import do_not_pickle_attributes
-
-from collections import OrderedDict
+from pylearn2.datasets import dense_design_matrix
 import numpy
 from cad60_skeleton import CAD60
 from os import path
 
+from utils import print_mem
 
-@do_not_pickle_attributes('indexables')
-class CAD60Skeleton(IndexableDataset):
-    provides_sources = ('features', 'targets')
+
+class CAD60Skeleton(dense_design_matrix.DenseDesignMatrix):
     src_data = None
     src_labels = None
 
-    def __init__(self, set_type = "train", batch_size = 10, flatten=False, **kwargs):
-        self.flatten = flatten
+    def __init__(self, set_type = "train", batch_size = 10, shuffle = True, **kwargs):
+        self.shuffle = shuffle
         self.set_type = set_type
         self.batch_size = batch_size
 
-        new_data = OrderedDict(zip(self.provides_sources, self._load_skeleton(self.batch_size)))
+        x ,y ,y_labels= self._load_skeleton()
+        self.y_labels = len(y_labels)
 
-        super(CAD60Skeleton, self).__init__(new_data, **kwargs)
+        super(CAD60Skeleton, self).__init__(topo_view=x,
+                                            y=y,
+                                            y_labels=self.y_labels)
+        print_mem()
 
-    def load(self):
-        self.indexables = [data[self.start:self.stop] for source, data
-                           in zip(self.provides_sources, self._load_skeleton(self.batch_size))
-                           if source in self.sources]
+    def _load_skeleton(self):
 
-    def _load_skeleton(self, batch_size):
-        src_data, src_labels = \
+        src_data, src_labels, labels_table= \
             CAD60(path.join(config.data_path, "cad60"),
-                  batch_size,
+                  self.batch_size,
                   self.set_type).get_data()
 
-        indices = numpy.random.permutation(src_data.shape[0])
-        src_data = src_data[indices]
-        src_labels = src_labels[indices]
-        print "shape:", src_data.shape, src_labels.shape
+        if self.shuffle:
+            indices = numpy.random.permutation(src_data.shape[0])
+            dst_data = src_data[indices]
+            del(src_data)
+            dst_labels = src_labels[indices]
+            del(src_labels)
 
-        return src_data, src_labels[:,None]
+        print "shape:", dst_data.shape, dst_labels.shape
+
+        return dst_data.reshape(dst_data.shape[0],
+                                dst_data.shape[1],
+                                dst_data.shape[2],
+                                1), dst_labels[:,None], labels_table
 
 
 def main():
