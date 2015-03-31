@@ -6,3 +6,9 @@
 /program/tutorial/stanford_dl_ex/common/train-images-idx3-ubyte
 /program/tutorial/stanford_dl_ex/common/train-labels-idx1-ubyte
 /program/tutorial/stanford_dl_ex/ex1/*.asv
+*.pyc
+*.pkl
+*.hkl
+stdout
+*.dat
+/program/program/cad60-cnn/.idea/*
