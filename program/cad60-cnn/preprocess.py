@@ -5,6 +5,9 @@ __author__ = 'boddmg'
 from cad60_skeleton import CAD60
 from fuel import config
 import numpy
+import time
+import hickle
+
 
 class Preprocessor(object):
     def __init__(self):
@@ -18,11 +21,31 @@ class PreprocessorList(Preprocessor):
         self.list = list
         pass
 
-    def run(self, src_data, src_labels):
+    def run(self, src_data = None, src_labels = None):
         for i in self.list:
             src_data, src_labels = i.run(src_data, src_labels)
         return src_data, src_labels
 
+class DataLoader(Preprocessor):
+    def __init__(self, path):
+        self.path = path
+
+    def run(self, src_data = None, src_labels = None):
+        data = hickle.load(self.path)
+        return data["data"], data["labels"]
+
+class DataDump(Preprocessor):
+    def __init__(self, path = time.strftime('%y-%m-%d-%H-%M-%S.hkl')):
+
+        self.path = path
+
+    def run(self, src_data, src_labels):
+        print(src_data, src_labels)
+        hickle.dump({
+            "data":src_data,
+            "labels":src_labels
+        },self.path,"w")
+        return src_data,src_labels
 
 class Shuffle(Preprocessor):
     def __init__(self):
@@ -67,13 +90,14 @@ class SplitIntoBatches(Preprocessor):
             dst_data[index] = src_data[i[0]:i[1]].reshape(self.batch_size, data_point_size)
             dst_labels[index] = src_labels[i[0]]
             index += 1
-        return src_data, src_labels
+        return dst_data, dst_labels
 
 
 def main():
+
     src_data, src_labels, temp = CAD60(batch_size=1, data_type="train").get_data()
-    src_data, src_labels = PreprocessorList([SplitIntoBatches(10, 5),Shuffle()]).run(src_data,src_labels)
-    print src_data, src_labels
+    src_data, src_labels = PreprocessorList([DataLoader("default.hkl"),DataDump("default1.hkl")]).run(src_data,src_labels)
+    print src_data.shape, src_labels.shape
 
 if __name__ == '__main__':
     main()
