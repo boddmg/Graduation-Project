@@ -110,9 +110,9 @@ def get_layer_trainer_sgd_rbm(layer, trainset):
 
 def main():
     src_data, src_labels = PreprocessorList([
-        CAD60Loader(),
+        DataLoad("cad60_train.hkl"),
         Encoder(get_layer_trainer_sgd_rbm,get_grbm([170,30])),
-        DataDump("default2.hkl")]).run()
+        DataDump("cad60_train_feature.hkl")]).run()
     print src_data.shape, src_labels.shape
 
 if __name__ == '__main__':
