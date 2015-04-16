@@ -35,7 +35,6 @@ class DataLoad(Preprocessor):
 
 class DataDump(Preprocessor):
     def __init__(self, path = time.strftime('%y-%m-%d-%H-%M-%S.hkl')):
-
         self.path = path
 
     def run(self, src_data, src_labels):
@@ -91,19 +90,20 @@ class SplitIntoBatches(Preprocessor):
         return dst_data, dst_labels
 
 class Encoder(Preprocessor):
-    def __init__(self, trainer_generator, layer):
+    def __init__(self, trainer_generator, layer, max_epoches = 1):
         self.trainer_generator = trainer_generator
         self.layer = layer
+        self.max_epoches = max_epoches
 
     def run(self,src_data, src_labels):
         src_data = src_data.reshape(src_data.shape[0],
                          src_data.shape[1],
                          src_data.shape[2],1)
-        src_labels = src_labels[:,None]
-        dataset = Dataset(src_data, src_labels)
-        self.trainer_generator(self.layer, dataset).main_loop()
+
+        dataset = Dataset(src_data, src_labels[:, None])
+        self.trainer_generator(self.layer, dataset, self.max_epoches).main_loop()
         output = self.layer.perform(dataset.get_design_matrix())
-        print output[0], output.shape
+        output = output.reshape(output.shape[0], 1, output.shape[1])
         return output, src_labels
 
 
