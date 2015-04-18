@@ -30,17 +30,19 @@ class Monitor(Preprocessor):
 
 
 def main():
-    src_data, src_labels = PreprocessorList([
-        DataLoad("cad60_train.hkl"),
-        Monitor(),
-        Encoder(get_layer_trainer_sgd_rbm,get_grbm([170,30]), 2),
-        Monitor(),
-        DataDump("cad60_train_feature.hkl")]).run()
-    src_data, src_labels = PreprocessorList([
-        DataLoad("cad60_train_feature.hkl"),
-        Monitor(),
-        Encoder(get_layer_trainer_sgd_rbm,get_grbm([30,10]), 3),
-        DataDump("cad60_train_feature_feature.hkl")]).run()
+    for i in ["train", "test"]:
+        src_data, src_labels = PreprocessorList([
+            DataLoad("cad60_%s.hkl" % i),
+            Monitor(),
+            Encoder(get_layer_trainer_sgd_rbm,get_grbm([170,30]), 2),
+            Monitor(),
+            DataDump("cad60_%s_feature.hkl" % i)]).run()
+
+    # src_data, src_labels = PreprocessorList([
+    #     DataLoad("cad60_train_feature.hkl"),
+    #     Monitor(),
+    #     Encoder(get_layer_trainer_sgd_rbm,get_grbm([30,10]), 3),
+    #     DataDump("cad60_train_feature_feature.hkl")]).run()
 
     print src_data.shape, src_labels.shape
 
