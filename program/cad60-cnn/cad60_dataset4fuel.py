@@ -9,7 +9,6 @@ from cad60_skeleton import CAD60
 from os import path
 import sys
 
-
 @do_not_pickle_attributes('indexables')
 class CAD60Skeleton(IndexableDataset):
     provides_sources = ('features', 'targets')

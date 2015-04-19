@@ -4,10 +4,12 @@ from blocks.bricks import Linear, Rectifier, Softmax, Sigmoid, Tanh, MLP
 from blocks.bricks.conv import ConvolutionalLayer, ConvolutionalSequence, Flattener
 
 from theano import tensor
+import theano
 from blocks.bricks.cost import CategoricalCrossEntropy, MisclassificationRate
 from blocks.graph import ComputationGraph
 from blocks.initialization import IsotropicGaussian, Constant, Uniform
-from cad60_skeleton import CAD60Skeleton
+from utilities.DataPacker import PackerForFuel
+from Preprocessor.Base_utils import *
 from fuel.streams import DataStream
 from fuel.schemes import SequentialScheme, ShuffledScheme
 from blocks.algorithms import GradientDescent, Scale
@@ -18,7 +20,10 @@ from blocks.main_loop import MainLoop
 from blocks.extensions import FinishAfter, Printing, Timing
 
 
+
+
 def main():
+    ## Init the params.
     BATCH_SIZE = 256
     FRAME_NUM = 50
     IMAGE_SIZE = [FRAME_NUM, 170]
@@ -67,8 +72,22 @@ def main():
 
     # Train
     print("Prepare the data.")
-    cad60_train = CAD60Skeleton("train", FRAME_NUM)
-    cad60_test = CAD60Skeleton("test", FRAME_NUM)
+    data, label = PreprocessorList([
+            DataLoad("cad60_test.hkl"),
+            SplitIntoBatches(FRAME_NUM, 5),
+            Shuffle()]).run()
+    print(data.shape)
+    print(label.shape)
+    cad60_test = PackerForFuel(data, label)
+
+    data, label = PreprocessorList([
+            DataLoad("cad60_train.hkl"),
+            SplitIntoBatches(FRAME_NUM, 5),
+            Shuffle()]).run()
+    cad60_train = PackerForFuel(data, label)
+    print(data.shape)
+    print(label.shape)
+
 
     ## Carve the data into lots of batches.
 
@@ -84,11 +103,11 @@ def main():
         cad60_test.num_examples, batch_size = BATCH_SIZE))
 
     test_monitor = DataStreamMonitoring(variables = [cost, correct_rate], data_stream = data_stream_test,
-                                   prefix = "test" , after_every_epoch = True)
+                                   prefix = "test" )
 
     train_monitor = TrainingDataMonitoring(variables = [cost, correct_rate, algorithm.total_step_norm],
-                                           prefix = 'train',
-                                           after_every_batch = True)
+                                           prefix = 'train' )
+
 
     ## Add a plot monitor.
     # plot = Plot(document = 'new',
