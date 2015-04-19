@@ -1,0 +1,412 @@
+BATCH_SIZE = 256
+FRAME_NUM = 50
+IMAGE_SIZE = [FRAME_NUM, 170]
+print("Build the network")
+x = tensor.tensor3('features')
+
+x = x.reshape((x.shape[0], 1, IMAGE_SIZE[0], IMAGE_SIZE[1]))
+
+y = tensor.lmatrix('targets')
+
+# Convolutional layers
+filter_sizes = [(10, 8)] * 2
+num_filters = [32, 64]
+pooling_sizes = [(3, 3)]*2
+activation = Sigmoid().apply
+conv_layers = []
+
+input_dims = list(IMAGE_SIZE)
+for filter_size, num_filters_, pooling_size in zip(filter_sizes, num_filters, pooling_sizes):
+    conv_layers.append(ConvolutionalLayer(activation, filter_size, num_filters_, pooling_size))
+
+convnet = ConvolutionalSequence(conv_layers, num_channels=1,
+                                image_size=tuple(IMAGE_SIZE),
+                                weights_init=IsotropicGaussian(),
+                                biases_init=Constant(0.))
+convnet.initialize()
+
+
+
+# Fully connected layers
+
+features = Flattener().apply(convnet.apply(x))
+mlp = MLP(activations=[Sigmoid(),Softmax()],
+          dims=[2048, 256, 14], weights_init=IsotropicGaussian(),
+          biases_init=Constant(0.))
+mlp.initialize()
+probs = mlp.apply(features)
+
+
+Using gpu device 0: GeForce GTX 650
+Build the network
+Prepare the data.
+(3628, 50, 170)
+(3628,)
+(9797, 50, 170)
+(9797,)
+INFO:blocks.algorithms:Taking the cost gradient
+INFO:blocks.algorithms:The cost gradient computation graph is built
+INFO:blocks.extensions.plot:Starting plotting server on localhost:5006
+INFO:blocks.extensions.plot:Plotting server PID: 15162
+Using saved session configuration for http://localhost:5006/
+To override, pass 'load_from_config=False' to Session
+INFO:urllib3.connectionpool:Starting new HTTP connection (1): localhost
+INFO:bokeh.session:got read write apikey
+Start training
+INFO:blocks.main_loop:Entered the main loop
+INFO:blocks.algorithms:Initializing the training algorithm
+INFO:blocks.algorithms:The training algorithm is initialized
+INFO:root:Monitoring on auxiliary data started
+/usr/local/lib/python2.7/dist-packages/blocks-0.1a1-py2.7.egg/blocks/log.py:147: FutureWarning: comparison to `None` will result in an elementwise object comparison in the future.
+  if value != default_value:
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+BEFORE FIRST EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 0
+     iterations_done: 0
+Log records from the iteration 0:
+     initialization_took: 1.27341413498
+     test_correct_rate: 0.0767755667369
+     test_cost: 15.9896097183
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 1
+     iterations_done: 39
+Log records from the iteration 39:
+     epoch_took: 37.278195858
+     iteration_took: 0.219105958939
+     test_correct_rate: 0.200757575035
+     test_cost: 2.47589802742
+     total_took: 38.4834730625
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 2
+     iterations_done: 78
+Log records from the iteration 78:
+     epoch_took: 33.0343141556
+     iteration_took: 0.21869301796
+     test_correct_rate: 0.272750945886
+     test_cost: 2.1312892437
+     total_took: 75.2326390743
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 3
+     iterations_done: 117
+Log records from the iteration 117:
+     epoch_took: 32.8959798813
+     iteration_took: 0.218451976776
+     test_correct_rate: 0.236647729079
+     test_cost: 2.05977249146
+     total_took: 111.764777184
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 4
+     iterations_done: 156
+Log records from the iteration 156:
+     epoch_took: 33.1696200371
+     iteration_took: 0.241647958755
+     test_correct_rate: 0.283948862553
+     test_cost: 2.71034240723
+     total_took: 148.568210125
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 5
+     iterations_done: 195
+Log records from the iteration 195:
+     epoch_took: 33.4576718807
+     iteration_took: 0.221702814102
+     test_correct_rate: 0.237878787518
+     test_cost: 2.56558275223
+     total_took: 185.793982983
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 6
+     iterations_done: 234
+Log records from the iteration 234:
+     epoch_took: 33.6844110489
+     iteration_took: 0.223370075226
+     test_correct_rate: 0.225710229079
+     test_cost: 2.00154066086
+     total_took: 223.159393072
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 7
+     iterations_done: 273
+Log records from the iteration 273:
+     epoch_took: 33.6695070267
+     iteration_took: 0.225843191147
+     test_correct_rate: 0.408096591632
+     test_cost: 1.67517638206
+     total_took: 260.557370186
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 8
+     iterations_done: 312
+Log records from the iteration 312:
+     epoch_took: 33.3107590675
+     iteration_took: 0.220449924469
+     test_correct_rate: 0.349715908368
+     test_cost: 1.75473964214
+     total_took: 297.502011061
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 9
+     iterations_done: 351
+Log records from the iteration 351:
+     epoch_took: 33.0440909863
+     iteration_took: 0.218387126923
+     test_correct_rate: 0.268442233404
+     test_cost: 1.93647170067
+     total_took: 334.309664965
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 10
+     iterations_done: 390
+Log records from the iteration 390:
+     epoch_took: 32.8829319477
+     iteration_took: 0.218888998032
+     test_correct_rate: 0.479119318724
+     test_cost: 1.69276404381
+     total_took: 370.835633993
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 11
+     iterations_done: 429
+Log records from the iteration 429:
+     epoch_took: 33.1270720959
+     iteration_took: 0.220091104507
+     test_correct_rate: 0.420454545816
+     test_cost: 1.66080546379
+     total_took: 407.627841949
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 12
+     iterations_done: 468
+Log records from the iteration 468:
+     epoch_took: 33.4805870056
+     iteration_took: 0.220698833466
+     test_correct_rate: 0.393394887447
+     test_cost: 1.63393938541
+     total_took: 444.739505053
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 13
+     iterations_done: 507
+Log records from the iteration 507:
+     epoch_took: 32.9055979252
+     iteration_took: 0.218102931976
+     test_correct_rate: 0.481226325035
+     test_cost: 1.5786241293
+     total_took: 481.317208052
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 14
+     iterations_done: 546
+Log records from the iteration 546:
+     epoch_took: 32.9940290451
+     iteration_took: 0.218549966812
+     test_correct_rate: 0.52426609993
+     test_cost: 1.39275765419
+     total_took: 517.95887208
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 15
+     iterations_done: 585
+Log records from the iteration 585:
+     epoch_took: 33.0578820705
+     iteration_took: 0.218605995178
+     test_correct_rate: 0.519105112553
+     test_cost: 1.50249910355
+     total_took: 554.66306901
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 16
+     iterations_done: 624
+Log records from the iteration 624:
+     epoch_took: 32.9896650314
+     iteration_took: 0.218116998672
+     test_correct_rate: 0.577627841632
+     test_cost: 1.22080123425
+     total_took: 591.301167011
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 17
+     iterations_done: 663
+Log records from the iteration 663:
+     epoch_took: 32.8849339485
+     iteration_took: 0.218585968018
+     test_correct_rate: 0.5828125
+     test_cost: 1.2935962677
+     total_took: 627.831608057
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 18
+     iterations_done: 702
+Log records from the iteration 702:
+     epoch_took: 32.935904026
+     iteration_took: 0.218497991562
+     test_correct_rate: 0.539370266596
+     test_cost: 1.28465735912
+     total_took: 664.421300173
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 19
+     iterations_done: 741
+Log records from the iteration 741:
+     epoch_took: 32.9609189034
+     iteration_took: 0.221338033676
+     test_correct_rate: 0.574360795816
+     test_cost: 1.34882283211
+     total_took: 701.028455019
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 20
+     iterations_done: 780
+Log records from the iteration 780:
+     epoch_took: 32.9512782097
+     iteration_took: 0.218189001083
+     test_correct_rate: 0.515388258298
+     test_cost: 1.47308969498
+     total_took: 737.65934515
+     training_finish_requested: True
+
+
+-------------------------------------------------------------------------------
+TRAINING HAS BEEN FINISHED:
+-------------------------------------------------------------------------------
+Training status:
+     epochs_done: 20
+     iterations_done: 780
+Log records from the iteration 780:
+     epoch_took: 32.9512782097
+     final_total_took: 741.377266169
+     iteration_took: 0.218189001083
+     test_correct_rate: 0.515388258298
+     test_cost: 1.47308969498
+     total_took: 737.65934515
+     training_finish_requested: True
+     training_finished: True
+     

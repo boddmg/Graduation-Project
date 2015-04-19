@@ -8,8 +8,8 @@ import theano
 from blocks.bricks.cost import CategoricalCrossEntropy, MisclassificationRate
 from blocks.graph import ComputationGraph
 from blocks.initialization import IsotropicGaussian, Constant, Uniform
-from utilities.DataPacker import PackerForFuel
 from Preprocessor.Base_utils import *
+from Preprocessor.dataset_utils import PackerForFuel
 from fuel.streams import DataStream
 from fuel.schemes import SequentialScheme, ShuffledScheme
 from blocks.algorithms import GradientDescent, Scale
@@ -109,20 +109,20 @@ def main():
                                            prefix = 'train' )
 
 
-    ## Add a plot monitor.
-    # plot = Plot(document = 'new',
-    #             channels=[['train_correct_rate','test_correct_rate']],
-    #             start_server = True,
-    #             after_every_batch = True)
+    # Add a plot monitor.
+    plot = Plot(document = 'new',
+                channels=[['test_correct_rate'], ['train_correct_rate']],
+                start_server = True,
+                after_every_batch = True)
 
     print("Start training")
     main_loop = MainLoop(algorithm=algorithm, data_stream=data_stream_train,
                          extensions=[Timing(),
-                                     # plot,
                                      test_monitor,
                                      train_monitor,
                                      FinishAfter(after_n_epochs = 20),
-                                     Printing()
+                                     Printing(),
+                                     plot
                                      ])
     main_loop.run()
 
