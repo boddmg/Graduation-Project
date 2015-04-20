@@ -79,7 +79,7 @@ def get_layer_trainer_sgd_autoencoder(layer, trainset, max_epoches):
             extensions = extensions,
             dataset = trainset)
 
-def get_layer_trainer_sgd_rbm(layer, trainset, max_epoches):
+def get_layer_trainer_sgd_rbm(layer, trainset, max_epoches, save_path):
     train_algorithm = SGD(
         learning_rate = 1e-1,
         batch_size =  5,
@@ -92,6 +92,6 @@ def get_layer_trainer_sgd_rbm(layer, trainset, max_epoches):
     model = layer
     extensions = [MonitorBasedLRAdjuster()]
     return Train(model = model, algorithm = train_algorithm,
-                 save_path='grbm.pkl',save_freq=1,
+                 save_path= save_path, save_freq=1,
                  extensions = extensions, dataset = trainset)
 

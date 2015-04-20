@@ -25,8 +25,8 @@ from blocks.extensions import FinishAfter, Printing, Timing
 def main():
     ## Init the params.
     BATCH_SIZE = 256
-    FRAME_NUM = 50
-    IMAGE_SIZE = [FRAME_NUM, 170]
+    FRAME_NUM = 30
+    IMAGE_SIZE = [FRAME_NUM, 30]
     print("Build the network")
     x = tensor.tensor3('features')
 
@@ -35,9 +35,9 @@ def main():
     y = tensor.lmatrix('targets')
 
     # Convolutional layers
-    filter_sizes = [(10, 8)] * 2
+    filter_sizes = [(8, 1)] * 2
     num_filters = [32, 64]
-    pooling_sizes = [(3, 3)]*2
+    pooling_sizes = [(3, 1)]*2
     activation = Sigmoid().apply
     conv_layers = []
 
@@ -57,7 +57,7 @@ def main():
 
     features = Flattener().apply(convnet.apply(x))
     mlp = MLP(activations=[Sigmoid(),Softmax()],
-              dims=[2048, 256, 14], weights_init=IsotropicGaussian(),
+              dims=[1920, BATCH_SIZE, 14], weights_init=IsotropicGaussian(),
               biases_init=Constant(0.))
     mlp.initialize()
     probs = mlp.apply(features)
@@ -73,20 +73,14 @@ def main():
     # Train
     print("Prepare the data.")
     data, label = PreprocessorList([
-            DataLoad("cad60_test.hkl"),
-            SplitIntoBatches(FRAME_NUM, 5),
-            Shuffle()]).run()
-    print(data.shape)
-    print(label.shape)
+            DataLoad("cad60_test_feature.hkl"),
+            Monitor()]).run()
     cad60_test = PackerForFuel(data, label)
 
     data, label = PreprocessorList([
-            DataLoad("cad60_train.hkl"),
-            SplitIntoBatches(FRAME_NUM, 5),
-            Shuffle()]).run()
+            DataLoad("cad60_train_feature.hkl"),
+            Monitor()]).run()
     cad60_train = PackerForFuel(data, label)
-    print(data.shape)
-    print(label.shape)
 
 
     ## Carve the data into lots of batches.
@@ -112,8 +106,7 @@ def main():
     # Add a plot monitor.
     plot = Plot(document = 'new',
                 channels=[['test_correct_rate'], ['train_correct_rate']],
-                start_server = True,
-                after_every_batch = True)
+                start_server = True)
 
     print("Start training")
     main_loop = MainLoop(algorithm=algorithm, data_stream=data_stream_train,

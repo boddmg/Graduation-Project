@@ -20,21 +20,16 @@ class CAD60Loader(Preprocessor):
         return src_data, src_labels
 
 
-class Monitor(Preprocessor):
-    def __init__(self):
-        pass
-
-    def run(self,src_data, src_labels):
-        print(src_data.shape, src_labels.shape)
-        return src_data, src_labels
-
-
 def main():
     for i in ["train", "test"]:
         src_data, src_labels = PreprocessorList([
             DataLoad("cad60_%s.hkl" % i),
-            Monitor(),
-            Encoder(get_layer_trainer_sgd_rbm,get_grbm([170,30]), 2),
+            Encoder(get_layer_trainer_sgd_rbm,
+                    get_grbm([170,30]), 2,
+                    "grbm.pkl",
+                    "grbm.pkl" if i == "test" else None),
+            SplitIntoBatches(30, 5),
+            Shuffle(),
             Monitor(),
             DataDump("cad60_%s_feature.hkl" % i)]).run()
 
@@ -48,3 +43,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

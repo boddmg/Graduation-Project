@@ -6,6 +6,7 @@ import numpy
 import time
 import hickle
 from dataset_utils import Dataset
+from pylearn2.utils import serial
 
 
 class Preprocessor(object):
@@ -90,10 +91,12 @@ class SplitIntoBatches(Preprocessor):
         return dst_data, dst_labels
 
 class Encoder(Preprocessor):
-    def __init__(self, trainer_generator, layer, max_epoches = 1):
+    def __init__(self, trainer_generator, layer, max_epoches = 1, save_path = None, load_path = None):
         self.trainer_generator = trainer_generator
         self.layer = layer
         self.max_epoches = max_epoches
+        self.save_path = save_path
+        self.load_path = load_path
 
     def run(self,src_data, src_labels):
         src_data = src_data.reshape(src_data.shape[0],
@@ -101,11 +104,21 @@ class Encoder(Preprocessor):
                          src_data.shape[2],1)
 
         dataset = Dataset(src_data, src_labels[:, None])
-        self.trainer_generator(self.layer, dataset, self.max_epoches).main_loop()
+        if self.load_path == None:
+            self.trainer_generator(self.layer, dataset, self.max_epoches, self.save_path).main_loop()
+        else:
+            self.layer = serial.load(self.load_path)
         output = self.layer.perform(dataset.get_design_matrix())
         output = output.reshape(output.shape[0], 1, output.shape[1])
         return output, src_labels
 
+class Monitor(Preprocessor):
+    def __init__(self):
+        pass
+
+    def run(self,src_data, src_labels):
+        print(src_data.shape, src_labels.shape)
+        return src_data, src_labels
 
 
 def main():
