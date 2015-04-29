@@ -60,7 +60,7 @@ def get_grbm(structure):
 
     return GaussianBinaryRBM(**config)
 
-def get_layer_trainer_sgd_autoencoder(layer, trainset, max_epoches):
+def get_layer_trainer_sgd_autoencoder(layer, trainset, max_epoches, save_path):
     # configs on sgd
     train_algorithm = SGD(
             learning_rate = 0.1,
@@ -75,9 +75,11 @@ def get_layer_trainer_sgd_autoencoder(layer, trainset, max_epoches):
     model = layer
     extensions = None
     return Train(model = model,
-            algorithm = train_algorithm,
-            extensions = extensions,
-            dataset = trainset)
+                 allow_overwrite = True,
+                 save_path = save_path,
+                 algorithm = train_algorithm,
+                 extensions = extensions,
+                 dataset = trainset)
 
 def get_layer_trainer_sgd_rbm(layer, trainset, max_epoches, save_path):
     train_algorithm = SGD(
@@ -91,7 +93,11 @@ def get_layer_trainer_sgd_rbm(layer, trainset, max_epoches, save_path):
         )
     model = layer
     extensions = [MonitorBasedLRAdjuster()]
-    return Train(model = model, algorithm = train_algorithm,
-                 save_path= save_path, save_freq=1,
-                 extensions = extensions, dataset = trainset)
+    return Train(model = model,
+                 algorithm = train_algorithm,
+                 save_path= save_path,
+                 save_freq=1,
+                 extensions = extensions,
+                 dataset = trainset,
+                 allow_overwrite = True)
 

@@ -55,6 +55,14 @@ class Shuffle(Preprocessor):
         src_labels = src_labels[indices]
         return src_data, src_labels
 
+class Flatter(Preprocessor):
+    def __init__(self):
+        pass
+
+    def run(self, src_data, src_labels):
+        src_data = src_data.reshape(src_data.shape[0], 1, src_data.shape[1] * src_data.shape[2])
+        return src_data, src_labels
+
 class SplitIntoBatches(Preprocessor):
     def __init__(self, batch_size = 1, stride = 1):
         self.batch_size = batch_size
@@ -105,7 +113,8 @@ class Encoder(Preprocessor):
 
         dataset = Dataset(src_data, src_labels[:, None])
         if self.load_path == None:
-            self.trainer_generator(self.layer, dataset, self.max_epoches, self.save_path).main_loop()
+            self.trainer_generator(self.layer, dataset, self.max_epoches, None).main_loop() # self.save_path
+            serial.save(self.save_path, self.layer)
         else:
             self.layer = serial.load(self.load_path)
         output = self.layer.perform(dataset.get_design_matrix())
@@ -117,7 +126,8 @@ class Monitor(Preprocessor):
         pass
 
     def run(self,src_data, src_labels):
-        print(src_data.shape, src_labels.shape)
+
+        print("Monitor:",src_data.shape, src_labels.shape)
         return src_data, src_labels
 
 
