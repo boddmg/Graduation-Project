@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/'+'..'+'/'+".."))
@@ -7,8 +6,8 @@ sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/'+'..'+'/'+".."))
 from blocks.bricks import Linear, Rectifier, Softmax, Sigmoid, Tanh, MLP
 from blocks.bricks.conv import ConvolutionalLayer, ConvolutionalSequence, Flattener
 
-import theano
 from theano import tensor
+import theano
 from blocks.bricks.cost import CategoricalCrossEntropy, MisclassificationRate
 from blocks.graph import ComputationGraph
 from blocks.initialization import IsotropicGaussian, Constant, Uniform
@@ -34,7 +33,8 @@ def main():
     print("Build the network")
     x = tensor.tensor3('features')
 
-    x = x.reshape((x.shape[0], 1, IMAGE_SIZE[0], IMAGE_SIZE[1]))
+    # x = x.reshape((x.shape[0], 1, IMAGE_SIZE[0], IMAGE_SIZE[1]))
+    # x = x.reshape((x.shape[0], 1, 1, x.shape[2]))
 
     y = tensor.lmatrix('targets')
 
@@ -59,11 +59,13 @@ def main():
 
     # Fully connected layers
 
-    features = Flattener().apply(convnet.apply(x))
+    features = Flattener().apply(x)
+    # features = x.flatten()
     mlp = MLP(activations=[Sigmoid(),Softmax()],
-              dims=[1920, BATCH_SIZE, 14], weights_init=IsotropicGaussian(),
+              dims=[80, 100, 14], weights_init=IsotropicGaussian(),
               biases_init=Constant(0.))
     mlp.initialize()
+
     probs = mlp.apply(features)
 
 
@@ -104,7 +106,7 @@ def main():
                                    prefix = "test" )
 
     train_monitor = TrainingDataMonitoring(variables = [cost, correct_rate, algorithm.total_step_norm],
-                                           prefix = 'train' )
+                                           prefix = 'train', after_batch=True)
 
 
     # Add a plot monitor.

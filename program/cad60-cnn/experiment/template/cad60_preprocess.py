@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 __author__ = 'boddmg'
-
 import sys
 import os
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/'+'..'+'/'+".."))
 
+
+
+from cad60_skeleton import CAD60
 from Preprocessor.Base_utils import *
 from utilities.encoder import *
 
@@ -27,11 +29,15 @@ def main():
     for i in ["train", "test"]:
         src_data, src_labels = PreprocessorList([
             DataLoad("../../cad60_%s.hkl" % i),
-            Encoder(get_layer_trainer_sgd_rbm,
-                    get_grbm([170,30]), 2,
-                    "grbm.pkl",
-                    "grbm.pkl" if i == "test" else None),
-            SplitIntoBatches(30, 5),
+            SplitIntoBatches(60, 5),
+            Monitor(),
+            Flatter(),
+            Monitor(),
+            Encoder(get_layer_trainer_sgd_autoencoder,
+                    get_denoising_autoencoder([60 * 170,80]), 3,
+                    "autoencoder1.pkl",
+                    "autoencoder1.pkl" if i == "test" else None),
+            Monitor(),
             Shuffle(),
             Monitor(),
             DataDump("cad60_%s_feature.hkl" % i)]).run()
