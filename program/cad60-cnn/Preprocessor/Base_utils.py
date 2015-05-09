@@ -8,6 +8,7 @@ import hickle
 from dataset_utils import Dataset
 from pylearn2.utils import serial
 
+# src_data format is [batch number, batch size, sample size]
 
 class Preprocessor(object):
     def __init__(self):
@@ -54,6 +55,20 @@ class Shuffle(Preprocessor):
         src_data = src_data[indices]
         src_labels = src_labels[indices]
         return src_data, src_labels
+
+class Index(Preprocessor):
+    def __init__(self, index = None):
+        self.index = index
+
+    def run(self, src_data, src_labels):
+        if self.index:
+            dst_data = numpy.zeros([src_data.shape[0], src_data.shape[1], len(self.index)],  dtype=numpy.float32)
+            for i in range(len(src_data)):
+                for j in range(len(src_data[i])):
+                    dst_data[i][j] = src_data[i][j][self.index]
+            return dst_data, src_labels
+        return src_data, src_labels
+
 
 class PreFlattener(Preprocessor):
     def __init__(self):
