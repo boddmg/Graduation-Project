@@ -24,6 +24,7 @@ class CAD60Loader(Preprocessor):
         src_data, src_labels, temp = CAD60(batch_size=1, data_type=self.data_type).get_data()
         return src_data, src_labels
 
+
 def main():
     for i in ["train", "test"]:
         src_data, src_labels = PreprocessorList([
@@ -32,10 +33,10 @@ def main():
             Monitor(),
             Flatter(),
             Monitor(),
-            Encoder(get_layer_trainer_sgd_autoencoder,
-                    get_denoising_autoencoder([60 * 170,80]), 3,
-                    "autoencoder1.pkl",
-                    "autoencoder1.pkl" if i == "test" else None),
+            Encoder(get_layer_trainer_sgd_rbm,
+                    get_grbm([60 * 170,80]), 3,
+                    "grbm.pkl",
+                    "grbm.pkl" if i == "test" else None),
             Monitor(),
             Shuffle(),
             Monitor(),

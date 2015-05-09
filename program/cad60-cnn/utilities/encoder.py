@@ -96,7 +96,7 @@ def get_layer_trainer_sgd_rbm(layer, trainset, max_epoches, save_path):
     return Train(model = model,
                  algorithm = train_algorithm,
                  save_path= save_path,
-                 save_freq=1,
+                 #save_freq=1,
                  extensions = extensions,
                  dataset = trainset,
                  allow_overwrite = True)
