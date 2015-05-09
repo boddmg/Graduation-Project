@@ -55,7 +55,7 @@ class Shuffle(Preprocessor):
         src_labels = src_labels[indices]
         return src_data, src_labels
 
-class Flattener(Preprocessor):
+class PreFlattener(Preprocessor):
     def __init__(self):
         pass
 

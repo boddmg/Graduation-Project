@@ -29,9 +29,11 @@ def main():
     for i in ["train", "test"]:
         src_data, src_labels = PreprocessorList([
             DataLoad("../../cad60_%s.hkl" % i),
+            SplitIntoBatches(72,5),
+            PreFlattener(),
             Monitor(),
             Encoder(get_layer_trainer_sgd_autoencoder,
-                    get_denoising_autoencoder([170,50]), 100,
+                    get_denoising_autoencoder([170*72,50]), 3,
                     "autoencoder1.pkl",
                     "autoencoder1.pkl" if i == "test" else None),
             Monitor(),
