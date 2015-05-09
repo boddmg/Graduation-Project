@@ -29,7 +29,7 @@ def main():
     ## Init the params.
     BATCH_SIZE = 256
     FRAME_NUM = 48
-    FRAME_SIZE = 144
+    FRAME_SIZE = 140
     IMAGE_SIZE = [FRAME_NUM, FRAME_SIZE]
 
     # Prepare the data.
@@ -57,9 +57,9 @@ def main():
     y = tensor.lmatrix('targets')
 
     # Convolutional layers
-    filter_sizes = [(3, 3)] * 2
-    num_filters = [32, 64]
-    pooling_sizes = [(3, 2)] * 2
+    filter_sizes = [(3, 3)] * 3
+    num_filters = [16, 32, 64]
+    pooling_sizes = [(3, 3)] * 3
     activation = Sigmoid().apply
     conv_layers = []
 
@@ -78,7 +78,7 @@ def main():
     features = Flattener().apply(convnet.apply(x))
     # features = x.flatten()
     mlp = MLP(activations=[Sigmoid(),Softmax()],
-              dims=[11200, 100, 14], weights_init=IsotropicGaussian(),
+              dims=[320, 100, 14], weights_init=IsotropicGaussian(),
               biases_init=Constant(0.))
     mlp.initialize()
 

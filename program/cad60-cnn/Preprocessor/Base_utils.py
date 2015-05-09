@@ -5,8 +5,6 @@ __author__ = 'boddmg'
 import numpy
 import time
 import hickle
-from dataset_utils import Dataset
-from pylearn2.utils import serial
 
 # src_data format is [batch number, batch size, sample size]
 
@@ -69,7 +67,6 @@ class Index(Preprocessor):
             return dst_data, src_labels
         return src_data, src_labels
 
-
 class PreFlattener(Preprocessor):
     def __init__(self):
         pass
@@ -113,28 +110,6 @@ class SplitIntoBatches(Preprocessor):
             index += 1
         return dst_data, dst_labels
 
-class Encoder(Preprocessor):
-    def __init__(self, trainer_generator, layer, max_epoches = 1, save_path = None, load_path = None):
-        self.trainer_generator = trainer_generator
-        self.layer = layer
-        self.max_epoches = max_epoches
-        self.save_path = save_path
-        self.load_path = load_path
-
-    def run(self,src_data, src_labels):
-        src_data = src_data.reshape(src_data.shape[0],
-                         src_data.shape[1],
-                         src_data.shape[2],1)
-
-        dataset = Dataset(src_data, src_labels[:, None])
-        if self.load_path == None:
-            self.trainer_generator(self.layer, dataset, self.max_epoches, None).main_loop() # self.save_path
-            serial.save(self.save_path, self.layer)
-        else:
-            self.layer = serial.load(self.load_path)
-        output = self.layer.perform(dataset.get_design_matrix())
-        output = output.reshape(output.shape[0], 1, output.shape[1])
-        return output, src_labels
 
 class Monitor(Preprocessor):
     def __init__(self):

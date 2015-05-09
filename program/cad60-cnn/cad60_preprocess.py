@@ -4,7 +4,7 @@ __author__ = 'boddmg'
 
 from cad60_skeleton import CAD60
 from Preprocessor.Base_utils import *
-from utilities.encoder import *
+from Preprocessor.encoder import *
 
 
 MAX_EPOCHS_UNSUPERVISED = 1

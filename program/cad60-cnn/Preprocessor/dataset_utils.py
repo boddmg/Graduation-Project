@@ -1,5 +1,13 @@
 from pylearn2.datasets import dense_design_matrix
 
+def src_2_datasetformat(src_data):
+    return src_data.reshape(src_data.shape[0],
+                         src_data.shape[1],
+                         src_data.shape[2],1)
+
+def datasetformat_2_src(datasetformat):
+    return datasetformat.reshape(datasetformat.shape[0], 1, datasetformat.shape[1])
+
 class Dataset(dense_design_matrix.DenseDesignMatrix):
     src_data = None
     src_labels = None
