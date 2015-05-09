@@ -61,10 +61,10 @@ def main():
     # Fully connected layers
 
     #features = Flattener().apply(convnet.apply(x))
-    features = Flattener().apply(x)
-    # features = x.flatten()
+    #features = Flattener().apply(x)
+    features = x.flatten()
     mlp = MLP(activations=[Sigmoid(),Softmax()],
-              dims=[256, 80, 14], weights_init=IsotropicGaussian(),
+              dims=[30, 100, 14], weights_init=IsotropicGaussian(),
               biases_init=Constant(0.))
     mlp.initialize()
 
