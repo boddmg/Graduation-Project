@@ -128,28 +128,18 @@ class Encoder(Preprocessor):
         return output, src_labels
 
 class pca_encoder(Preprocessor):
-    def __init__(self, in_out_structure, save_file=None, load_file=None):
+    def __init__(self, in_out_structure, pca = None, train = True):
         self.structure = in_out_structure
-        self.save_file = save_file
-        self.load_file = load_file
-        pass
+        self.pca = pca
+        self.train = train
 
     def run(self, src_data, src_labels):
-        from pylearn2.models import pca
         dst_data = src_2_datasetformat(src_data)
         dataset = Dataset(dst_data, src_labels[:, None])
-        if self.load_file:
-            from pylearn2.blocks import Block
-            pca = serial.load(self.load_file)
-            print pca
-        else:
-            pca = pca.CovEigPCA(num_components=self.structure[1], whiten=True)
-            pca.train(dataset.get_design_matrix())
-            if self.save_file:
-                serial.save(self.save_file, pca)
-                print pca
+        if self.train:
+            self.pca.train(dataset.get_design_matrix())
         inputs = tensor.matrix()
-        pca_transform = theano.function([inputs], pca(inputs))
+        pca_transform = theano.function([inputs], self.pca(inputs))
         dst_data = pca_transform(dataset.get_design_matrix())
         return datasetformat_2_src(dst_data), src_labels
 

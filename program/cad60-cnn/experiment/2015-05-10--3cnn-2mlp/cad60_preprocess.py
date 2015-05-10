@@ -26,13 +26,11 @@ POSE_INDEX.sort()
 
 
 def main():
-    from pylearn2.models import pca
-    new_pca = pca.CovEigPCA(num_components=144, whiten=True)
     for i in ["train", "test"]:
         src_data, src_labels = PreprocessorList([
             DataLoad("../../cad60_%s.hkl" % i),
             Index(POSE_INDEX),
-            pca_encoder([144, 144], pca=new_pca, train=True if i == 'train' else False),
+            #pca_encoder([144, 144], "PCA.pkl", "PCA.pkl" if i == "test" else None),
             Monitor(),
             DataDump("cad60_%s_feature.hkl" % i)]).run()
 
