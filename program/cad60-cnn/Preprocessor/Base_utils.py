@@ -111,6 +111,21 @@ class SplitIntoBatches(Preprocessor):
         return dst_data, dst_labels
 
 
+class Normalization(Preprocessor):
+    def __init__(self, norm_param, exist_param = False):
+        self.norm_param = norm_param
+        self.exist_param = exist_param
+
+    def run(self, src_data, src_labels):
+        if not self.exist_param:
+            self.norm_param['max'] = numpy.max(src_data)
+            self.norm_param['min'] = numpy.min(src_data)
+        dst_data = (src_data - self.norm_param['min']) / (self.norm_param['max'] - self.norm_param['min'])
+        dst_labels = src_labels
+
+        return dst_data, dst_labels
+
+
 class Monitor(Preprocessor):
     def __init__(self):
         pass

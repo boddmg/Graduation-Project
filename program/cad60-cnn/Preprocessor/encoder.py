@@ -127,6 +127,16 @@ class Encoder(Preprocessor):
         output = datasetformat_2_src(output)
         return output, src_labels
 
+class mock_encoder(Preprocessor):
+    def __init__(self):
+        pass
+    def run(self, src_data, src_labels):
+        src_data = src_2_datasetformat(src_data)
+        dataset = Dataset(src_data, src_labels[:, None])
+        output = dataset.get_design_matrix()
+        output = datasetformat_2_src(output)
+        return output, src_labels
+
 class pca_encoder(Preprocessor):
     def __init__(self, in_out_structure, pca = None, train = True):
         self.structure = in_out_structure

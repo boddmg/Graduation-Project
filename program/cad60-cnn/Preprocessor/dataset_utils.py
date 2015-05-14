@@ -1,5 +1,10 @@
 from pylearn2.datasets import dense_design_matrix
 
+CAD_60_CONFIDENCE_INDEX = [9, 13, 23, 27, 37, 41, 51, 55, 65, 69, 79, 83, 93, 97, 107, 111, 121, 125, 135, 139,
+                  149, 153, 157, 161, 165, 169]
+CAD_60_POSE_INDEX = list(set(range(170)) - set(CAD_60_CONFIDENCE_INDEX))
+CAD_60_POSE_INDEX.sort()
+
 def src_2_datasetformat(src_data):
     return src_data.reshape(src_data.shape[0],
                          src_data.shape[1],
