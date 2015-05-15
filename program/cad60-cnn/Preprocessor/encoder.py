@@ -17,6 +17,7 @@ from pylearn2.utils import serial
 from dataset_utils import Dataset
 from theano import tensor
 import theano
+from rbm import *
 
 
 def get_autoencoder(structure):
@@ -87,7 +88,7 @@ def get_layer_trainer_sgd_autoencoder(layer, trainset, max_epoches, save_path):
 def get_layer_trainer_sgd_rbm(layer, trainset, max_epoches, save_path):
     train_algorithm = SGD(
         learning_rate = 1e-1,
-        batch_size =  5,
+        batch_size =  20,
         #"batches_per_iter" : 2000,
         monitoring_batches =  20,
         monitoring_dataset =  trainset,
@@ -99,7 +100,6 @@ def get_layer_trainer_sgd_rbm(layer, trainset, max_epoches, save_path):
     return Train(model = model,
                  algorithm = train_algorithm,
                  save_path= save_path,
-                 #save_freq=1,
                  extensions = extensions,
                  dataset = trainset,
                  allow_overwrite = True)
@@ -167,4 +167,17 @@ def rbm_encoder(in_out_structure, max_epoches = 1, save_path = None, load_path =
     return Encoder(
         get_layer_trainer_sgd_rbm,
         get_grbm(in_out_structure), max_epoches, save_path, load_path)
+
+class another_rbm_encoder(Preprocessor):
+    def __init__(self, rbm, max_epoches = 5, is_test = True) :
+        self.rbm = rbm
+        self.max_epoches = max_epoches
+        self.is_test = is_test
+
+    def run(self, src_data, src_labels):
+        if self.is_test:
+            rbm_perfrom(self.rbm, src_data)
+        else:
+            rbm_train(self.rbm, src_data)
+            rbm_perfrom(self.rbm, src_data)
 

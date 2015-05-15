@@ -25,7 +25,9 @@ class CAD60Loader(Preprocessor):
 
 
 def main():
+    rbm = RBM(n_visible=48*144, n_hidden=48*72)
     norm_param = {}
+
     for i in ["train", "test"]:
         src_data, src_labels = PreprocessorList([
             DataLoad("../../cad60_%s.hkl" % i),
@@ -33,15 +35,8 @@ def main():
             Normalization(norm_param, i == "test"),
             SplitIntoBatches(48,5),
             PreFlattener(),
-            Encoder(get_layer_trainer_sgd_rbm,
-                    get_grbm([48 * 144 ,48 * 72]), 3,
-                    "grbm1.pkl",
-                    "grbm1.pkl" if i == "test" else None),
             Monitor(),
-            # Encoder(get_layer_trainer_sgd_rbm,
-            #         get_grbm([90,45]), 3,
-            #         "grbm2.pkl",
-            #         "grbm2.pkl" if i == "test" else None),
+            another_rbm_encoder(rbm, max_epoches=5, is_test= i == "test"),
             Monitor(),
             Shuffle(),
             Monitor(),
