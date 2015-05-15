@@ -59,8 +59,8 @@ def main():
 
     features = Flattener().apply(x)
     # features = x.flatten()
-    mlp = MLP(activations=[Sigmoid(),Softmax()],
-              dims=[72 * 72, 1000, 14], weights_init=IsotropicGaussian(),
+    mlp = MLP(activations=[Sigmoid(), Sigmoid(), Softmax()],
+              dims=[48 * 72, 3000, 1000, 14], weights_init=IsotropicGaussian(),
               biases_init=Constant(0.))
     mlp.initialize()
 
@@ -117,7 +117,7 @@ def main():
                          extensions=[Timing(),
                                      test_monitor,
                                      train_monitor,
-                                     FinishAfter(after_n_epochs = 20),
+                                     FinishAfter(after_n_epochs = 100),
                                      Printing(),
                                      plot
                                      ])

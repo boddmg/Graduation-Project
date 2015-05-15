@@ -25,7 +25,7 @@ class CAD60Loader(Preprocessor):
 
 
 def main():
-    rbm = RBM(n_visible=48*144, n_hidden=48*72)
+    rbm = RBM(n_visible=144 * 48, n_hidden= 72 * 48)
     norm_param = {}
 
     for i in ["train", "test"]:
@@ -36,7 +36,7 @@ def main():
             SplitIntoBatches(48,5),
             PreFlattener(),
             Monitor(),
-            another_rbm_encoder(rbm, max_epoches=5, is_test= i == "test"),
+            another_rbm_encoder(rbm, max_epoches=2, is_test= i == "test"),
             Monitor(),
             Shuffle(),
             Monitor(),

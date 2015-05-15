@@ -169,15 +169,17 @@ def rbm_encoder(in_out_structure, max_epoches = 1, save_path = None, load_path =
         get_grbm(in_out_structure), max_epoches, save_path, load_path)
 
 class another_rbm_encoder(Preprocessor):
-    def __init__(self, rbm, max_epoches = 5, is_test = True) :
+    def __init__(self, rbm, max_epoches = 2, is_test = True) :
         self.rbm = rbm
         self.max_epoches = max_epoches
         self.is_test = is_test
 
     def run(self, src_data, src_labels):
         if self.is_test:
-            rbm_perfrom(self.rbm, src_data)
+            src_data = rbm_perfrom(self.rbm, src_data)
         else:
-            rbm_train(self.rbm, src_data)
-            rbm_perfrom(self.rbm, src_data)
+            rbm_train(self.rbm, src_data, training_epochs=self.max_epoches)
+            src_data = rbm_perfrom(self.rbm, src_data)
+        return src_data, src_labels
+
 

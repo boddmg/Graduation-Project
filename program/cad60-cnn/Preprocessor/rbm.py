@@ -353,7 +353,7 @@ class RBM(object):
 
         return cross_entropy
 
-def rbm_train(rbm, src_data = None, learning_rate=0.1, training_epochs=5, batch_size=20):
+def rbm_train(rbm, src_data = None, learning_rate=0.1, training_epochs=5, batch_size=100):
     """
     Demonstrate how to train and afterwards sample from it using Theano.
 
@@ -407,6 +407,7 @@ def rbm_train(rbm, src_data = None, learning_rate=0.1, training_epochs=5, batch_
         name='train_rbm'
     )
 
+    print 'Start to train.'
     start_time = time.clock()
     # go through training epochs
     for epoch in xrange(training_epochs):
@@ -416,6 +417,7 @@ def rbm_train(rbm, src_data = None, learning_rate=0.1, training_epochs=5, batch_
         mean_cost = []
         for batch_index in xrange(n_train_batches):
             mean_cost += [train_rbm(batch_index)]
+            print batch_index, mean_cost[-1], n_train_batches
         epoch_stop = time.clock()
         epoch_time = epoch_stop - epoch_start
 
@@ -429,9 +431,11 @@ def rbm_train(rbm, src_data = None, learning_rate=0.1, training_epochs=5, batch_
 
 def rbm_perfrom(rbm, src_data):
     dst_data = src_data.reshape(src_data.shape[0],src_data.shape[2])
-    test_set_x = theano.shared(value=src_data, name='train_set_x', borrow=True)
+    print dst_data.shape
+    test_set_x = theano.shared(value=dst_data, name='train_set_x', borrow=True)
     [pre_sigmoid_activation, sigmoid_activation] = rbm.propup(test_set_x)
-    dst_data = sigmoid_activation.reshape(src_data.shape[0], 1, src_data.shape[2])
-    return sigmoid_activation
+    dst_data = sigmoid_activation.eval()
+    dst_data = dst_data.reshape(dst_data.shape[0], 1, dst_data.shape[1])
+    return dst_data
 
 
