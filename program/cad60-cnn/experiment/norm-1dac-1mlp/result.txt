@@ -1,0 +1,1392 @@
+-------------------------------------------------------------------------------
+BEFORE FIRST EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: True
+	 epochs_done: 0
+	 iterations_done: 0
+	 received_first_batch: False
+	 training_started: True
+Log records from the iteration 0:
+	 test_correct_rate: 0.0607657353083
+	 test_cost: 27.6251983643
+	 time_initialization: 0.670549154282
+
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 1
+	 iterations_done: 39
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 39:
+	 test_correct_rate: 0.213951683044
+	 test_cost: 4.02342653275
+	 time_read_data_this_epoch: 0.438756227493
+	 time_read_data_total: 0.438756227493
+	 time_train_this_epoch: 2.78078651428
+	 time_train_total: 2.78078651428
+	 train_correct_rate: 0.731707304716
+	 train_cost: 1.41496682167
+	 train_total_step_norm: 0.547831296921
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 2
+	 iterations_done: 78
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 78:
+	 test_correct_rate: 0.29983377854
+	 test_cost: 4.59260368347
+	 time_read_data_this_epoch: 0.402056694031
+	 time_read_data_total: 0.840812921524
+	 time_train_this_epoch: 2.77267479897
+	 time_train_total: 5.55346131325
+	 train_correct_rate: 0.853658542037
+	 train_cost: 0.478426337242
+	 train_total_step_norm: 0.354082167149
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 3
+	 iterations_done: 117
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 117:
+	 test_correct_rate: 0.343617022038
+	 test_cost: 6.72341918945
+	 time_read_data_this_epoch: 0.411636352539
+	 time_read_data_total: 1.25244927406
+	 time_train_this_epoch: 2.78886175156
+	 time_train_total: 8.3423230648
+	 train_correct_rate: 0.743902444839
+	 train_cost: 0.569569528103
+	 train_total_step_norm: 0.525052428246
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 4
+	 iterations_done: 156
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 156:
+	 test_correct_rate: 0.275354611874
+	 test_cost: 4.23332643509
+	 time_read_data_this_epoch: 0.492626190186
+	 time_read_data_total: 1.74507546425
+	 time_train_this_epoch: 2.83186244965
+	 time_train_total: 11.1741855145
+	 train_correct_rate: 0.829268291593
+	 train_cost: 0.614222824574
+	 train_total_step_norm: 0.4217210114
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 5
+	 iterations_done: 195
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 195:
+	 test_correct_rate: 0.299922430515
+	 test_cost: 3.74649238586
+	 time_read_data_this_epoch: 0.424538612366
+	 time_read_data_total: 2.16961407661
+	 time_train_this_epoch: 2.81924891472
+	 time_train_total: 13.9934344292
+	 train_correct_rate: 0.93902438879
+	 train_cost: 0.148591518402
+	 train_total_step_norm: 0.117354974151
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 6
+	 iterations_done: 234
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 234:
+	 test_correct_rate: 0.29025930961
+	 test_cost: 4.06174755096
+	 time_read_data_this_epoch: 0.436531305313
+	 time_read_data_total: 2.60614538193
+	 time_train_this_epoch: 2.81960511208
+	 time_train_total: 16.8130395412
+	 train_correct_rate: 0.914634145796
+	 train_cost: 0.16516636312
+	 train_total_step_norm: 0.163701996207
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 7
+	 iterations_done: 273
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 273:
+	 test_correct_rate: 0.256981384754
+	 test_cost: 3.93044352531
+	 time_read_data_this_epoch: 0.423869132996
+	 time_read_data_total: 3.03001451492
+	 time_train_this_epoch: 2.86157202721
+	 time_train_total: 19.6746115685
+	 train_correct_rate: 0.792682930827
+	 train_cost: 0.668310105801
+	 train_total_step_norm: 0.514268577099
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 8
+	 iterations_done: 312
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 312:
+	 test_correct_rate: 0.244392728806
+	 test_cost: 4.19603776932
+	 time_read_data_this_epoch: 0.405866622925
+	 time_read_data_total: 3.43588113785
+	 time_train_this_epoch: 2.81014943123
+	 time_train_total: 22.4847609997
+	 train_correct_rate: 0.902439028025
+	 train_cost: 0.292542099953
+	 train_total_step_norm: 0.251735448837
+
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 9
+	 iterations_done: 351
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 351:
+	 test_correct_rate: 0.312250665824
+	 test_cost: 3.90772104263
+	 time_read_data_this_epoch: 0.424427270889
+	 time_read_data_total: 3.86030840874
+	 time_train_this_epoch: 2.81303524971
+	 time_train_total: 25.2977962494
+	 train_correct_rate: 0.926829271019
+	 train_cost: 0.215566575527
+	 train_total_step_norm: 0.201776355505
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 10
+	 iterations_done: 390
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 390:
+	 test_correct_rate: 0.269741801421
+	 test_cost: 4.38272619247
+	 time_read_data_this_epoch: 0.403073310852
+	 time_read_data_total: 4.26338171959
+	 time_train_this_epoch: 2.79749798775
+	 time_train_total: 28.0952942371
+	 train_correct_rate: 0.987804878503
+	 train_cost: 0.0885464325547
+	 train_total_step_norm: 0.0959166660905
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 11
+	 iterations_done: 429
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 429:
+	 test_correct_rate: 0.304753990968
+	 test_cost: 4.30737018585
+	 time_read_data_this_epoch: 0.439002513885
+	 time_read_data_total: 4.70238423347
+	 time_train_this_epoch: 2.80938339233
+	 time_train_total: 30.9046776295
+	 train_correct_rate: 0.987804878503
+	 train_cost: 0.0689720883965
+	 train_total_step_norm: 0.0725003033876
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 12
+	 iterations_done: 468
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 468:
+	 test_correct_rate: 0.258571585019
+	 test_cost: 4.41348409653
+	 time_read_data_this_epoch: 0.428706169128
+	 time_read_data_total: 5.1310904026
+	 time_train_this_epoch: 2.81978726387
+	 time_train_total: 33.7244648933
+	 train_correct_rate: 0.87804877758
+	 train_cost: 0.371026098728
+	 train_total_step_norm: 0.321284770966
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 13
+	 iterations_done: 507
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 507:
+	 test_correct_rate: 0.306056074301
+	 test_cost: 4.29933309555
+	 time_read_data_this_epoch: 0.429439783096
+	 time_read_data_total: 5.5605301857
+	 time_train_this_epoch: 2.79588627815
+	 time_train_total: 36.5203511715
+	 train_correct_rate: 0.963414635509
+	 train_cost: 0.115419767797
+	 train_total_step_norm: 0.117844693363
+
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 14
+	 iterations_done: 546
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 546:
+	 test_correct_rate: 0.287882312139
+	 test_cost: 4.45890665054
+	 time_read_data_this_epoch: 0.413702011108
+	 time_read_data_total: 5.97423219681
+	 time_train_this_epoch: 2.80189442635
+	 time_train_total: 39.3222455978
+	 train_correct_rate: 0.975609757006
+	 train_cost: 0.0887297540903
+	 train_total_step_norm: 0.0952405557036
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 15
+	 iterations_done: 585
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 585:
+	 test_correct_rate: 0.322578680515
+	 test_cost: 4.55845069885
+	 time_read_data_this_epoch: 0.421265125275
+	 time_read_data_total: 6.39549732208
+	 time_train_this_epoch: 2.83135771751
+	 time_train_total: 42.1536033154
+	 train_correct_rate: 0.963414635509
+	 train_cost: 0.106013655663
+	 train_total_step_norm: 0.146230205894
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 16
+	 iterations_done: 624
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 624:
+	 test_correct_rate: 0.298736703396
+	 test_cost: 4.5612282753
+	 time_read_data_this_epoch: 0.404448986053
+	 time_read_data_total: 6.79994630814
+	 time_train_this_epoch: 2.77080202103
+	 time_train_total: 44.9244053364
+	 train_correct_rate: 0.975609757006
+	 train_cost: 0.103727757931
+	 train_total_step_norm: 0.0890779346228
+
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 17
+	 iterations_done: 663
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 663:
+	 test_correct_rate: 0.299168884754
+	 test_cost: 4.5482878685
+	 time_read_data_this_epoch: 0.408882379532
+	 time_read_data_total: 7.20882868767
+	 time_train_this_epoch: 2.76922941208
+	 time_train_total: 47.6936347485
+	 train_correct_rate: 0.963414635509
+	 train_cost: 0.11092043668
+	 train_total_step_norm: 0.147632911801
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 18
+	 iterations_done: 702
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 702:
+	 test_correct_rate: 0.295262634754
+	 test_cost: 4.42176961899
+	 time_read_data_this_epoch: 0.414018154144
+	 time_read_data_total: 7.62284684181
+	 time_train_this_epoch: 2.76722168922
+	 time_train_total: 50.4608564377
+	 train_correct_rate: 0.987804878503
+	 train_cost: 0.079024977982
+	 train_total_step_norm: 0.10462795943
+
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 19
+	 iterations_done: 741
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 741:
+	 test_correct_rate: 0.30041555961
+	 test_cost: 4.59979438782
+	 time_read_data_this_epoch: 0.410875082016
+	 time_read_data_total: 8.03372192383
+	 time_train_this_epoch: 2.76972985268
+	 time_train_total: 53.2305862904
+	 train_correct_rate: 0.987804878503
+	 train_cost: 0.0605925917625
+	 train_total_step_norm: 0.06450073421
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 20
+	 iterations_done: 780
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 780:
+	 test_correct_rate: 0.306693263849
+	 test_cost: 4.53199768066
+	 time_read_data_this_epoch: 0.409928798676
+	 time_read_data_total: 8.4436507225
+	 time_train_this_epoch: 2.77187752724
+	 time_train_total: 56.0024638176
+	 train_correct_rate: 1.0
+	 train_cost: 0.0482884645462
+	 train_total_step_norm: 0.0629866197705
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 21
+	 iterations_done: 819
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 819:
+	 test_correct_rate: 0.274024824301
+	 test_cost: 4.78594303131
+	 time_read_data_this_epoch: 0.402357339859
+	 time_read_data_total: 8.84600806236
+	 time_train_this_epoch: 2.76968574524
+	 time_train_total: 58.7721495628
+	 train_correct_rate: 0.963414635509
+	 train_cost: 0.101950503886
+	 train_total_step_norm: 0.13522040844
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 22
+	 iterations_done: 858
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 858:
+	 test_correct_rate: 0.295406695207
+	 test_cost: 4.89300060272
+	 time_read_data_this_epoch: 0.401079654694
+	 time_read_data_total: 9.24708771706
+	 time_train_this_epoch: 2.77144098282
+	 time_train_total: 61.5435905457
+	 train_correct_rate: 0.951219514012
+	 train_cost: 0.139496564865
+	 train_total_step_norm: 0.19207328558
+
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 23
+	 iterations_done: 897
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 897:
+	 test_correct_rate: 0.298332226276
+	 test_cost: 4.79326534271
+	 time_read_data_this_epoch: 0.413860797882
+	 time_read_data_total: 9.66094851494
+	 time_train_this_epoch: 2.7698905468
+	 time_train_total: 64.3134810925
+	 train_correct_rate: 0.987804878503
+	 train_cost: 0.0770849734545
+	 train_total_step_norm: 0.0779486745596
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 24
+	 iterations_done: 936
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 936:
+	 test_correct_rate: 0.286812945207
+	 test_cost: 4.78052091599
+	 time_read_data_this_epoch: 0.413592338562
+	 time_read_data_total: 10.0745408535
+	 time_train_this_epoch: 2.77252221107
+	 time_train_total: 67.0860033035
+	 train_correct_rate: 0.963414635509
+	 train_cost: 0.101706430316
+	 train_total_step_norm: 0.119633644819
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 25
+	 iterations_done: 975
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 975:
+	 test_correct_rate: 0.290431074301
+	 test_cost: 4.77405595779
+	 time_read_data_this_epoch: 0.402099132538
+	 time_read_data_total: 10.476639986
+	 time_train_this_epoch: 2.77060890198
+	 time_train_total: 69.8566122055
+	 train_correct_rate: 1.0
+	 train_cost: 0.0386103205383
+	 train_total_step_norm: 0.0345224924386
+
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 26
+	 iterations_done: 1014
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1014:
+	 test_correct_rate: 0.260483157635
+	 test_cost: 5.35521411896
+	 time_read_data_this_epoch: 0.405064344406
+	 time_read_data_total: 10.8817043304
+	 time_train_this_epoch: 2.77025032043
+	 time_train_total: 72.6268625259
+	 train_correct_rate: 0.865853652358
+	 train_cost: 0.539719521999
+	 train_total_step_norm: 0.393088072538
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+
+INFO:root:Monitoring on auxiliary data finished
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 27
+	 iterations_done: 1053
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1053:
+	 test_correct_rate: 0.293323361874
+	 test_cost: 4.90589666367
+	 time_read_data_this_epoch: 0.40608215332
+	 time_read_data_total: 11.2877864838
+	 time_train_this_epoch: 2.77148151398
+	 time_train_total: 75.3983440399
+	 train_correct_rate: 1.0
+	 train_cost: 0.027416408062
+	 train_total_step_norm: 0.0460215993226
+
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 28
+	 iterations_done: 1092
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1092:
+	 test_correct_rate: 0.313868574301
+	 test_cost: 4.83291244507
+	 time_read_data_this_epoch: 0.467311143875
+	 time_read_data_total: 11.7550976276
+	 time_train_this_epoch: 2.77282476425
+	 time_train_total: 78.1711688042
+	 train_correct_rate: 0.987804878503
+	 train_cost: 0.0525494776666
+	 train_total_step_norm: 0.0554642081261
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 29
+	 iterations_done: 1131
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1131:
+	 test_correct_rate: 0.295611703396
+	 test_cost: 4.70108509064
+	 time_read_data_this_epoch: 0.409040689468
+	 time_read_data_total: 12.1641383171
+	 time_train_this_epoch: 2.77207684517
+	 time_train_total: 80.9432456493
+	 train_correct_rate: 0.975609757006
+	 train_cost: 0.0636274293065
+	 train_total_step_norm: 0.105694584548
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 30
+	 iterations_done: 1170
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1170:
+	 test_correct_rate: 0.316068263849
+	 test_cost: 4.91047859192
+	 time_read_data_this_epoch: 0.404028892517
+	 time_read_data_total: 12.5681672096
+	 time_train_this_epoch: 2.77172160149
+	 time_train_total: 83.7149672508
+	 train_correct_rate: 0.963414635509
+	 train_cost: 0.0975570753217
+	 train_total_step_norm: 0.123242504895
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 31
+	 iterations_done: 1209
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1209:
+	 test_correct_rate: 0.285832226276
+	 test_cost: 4.78336906433
+	 time_read_data_this_epoch: 0.4210293293
+	 time_read_data_total: 12.9891965389
+	 time_train_this_epoch: 2.77020812035
+	 time_train_total: 86.4851753712
+	 train_correct_rate: 0.975609757006
+	 train_cost: 0.0544196665287
+	 train_total_step_norm: 0.100674211979
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 32
+	 iterations_done: 1248
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1248:
+	 test_correct_rate: 0.28030252854
+	 test_cost: 4.81040000916
+	 time_read_data_this_epoch: 0.40261220932
+	 time_read_data_total: 13.3918087482
+	 time_train_this_epoch: 2.77357649803
+	 time_train_total: 89.2587518692
+	 train_correct_rate: 0.987804878503
+	 train_cost: 0.0446051321924
+	 train_total_step_norm: 0.0763730108738
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 33
+	 iterations_done: 1287
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1287:
+	 test_correct_rate: 0.290198361874
+	 test_cost: 4.88301229477
+	 time_read_data_this_epoch: 0.420297384262
+	 time_read_data_total: 13.8121061325
+	 time_train_this_epoch: 2.82786464691
+	 time_train_total: 92.0866165161
+	 train_correct_rate: 1.0
+	 train_cost: 0.0206643864512
+	 train_total_step_norm: 0.040341231972
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 34
+	 iterations_done: 1326
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1326:
+	 test_correct_rate: 0.296332001686
+	 test_cost: 4.99372911453
+	 time_read_data_this_epoch: 0.41196513176
+	 time_read_data_total: 14.2240712643
+	 time_train_this_epoch: 2.76826691628
+	 time_train_total: 94.8548834324
+	 train_correct_rate: 0.975609757006
+	 train_cost: 0.0750141441822
+	 train_total_step_norm: 0.117834761739
+
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 35
+	 iterations_done: 1365
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1365:
+	 test_correct_rate: 0.295495347182
+	 test_cost: 4.87199831009
+	 time_read_data_this_epoch: 0.409971952438
+	 time_read_data_total: 14.6340432167
+	 time_train_this_epoch: 2.77186536789
+	 time_train_total: 97.6267488003
+	 train_correct_rate: 0.987804878503
+	 train_cost: 0.0288879107684
+	 train_total_step_norm: 0.0543044507504
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 36
+	 iterations_done: 1404
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1404:
+	 test_correct_rate: 0.297318263849
+	 test_cost: 5.07525777817
+	 time_read_data_this_epoch: 0.404497623444
+	 time_read_data_total: 15.0385408401
+	 time_train_this_epoch: 2.77278995514
+	 time_train_total: 100.399538755
+	 train_correct_rate: 0.963414635509
+	 train_cost: 0.0766141563654
+	 train_total_step_norm: 0.110854238272
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 37
+	 iterations_done: 1443
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1443:
+	 test_correct_rate: 0.295090870063
+	 test_cost: 4.98079919815
+	 time_read_data_this_epoch: 0.404567480087
+	 time_read_data_total: 15.4431083202
+	 time_train_this_epoch: 2.77277874947
+	 time_train_total: 103.172317505
+	 train_correct_rate: 0.975609757006
+	 train_cost: 0.0516748651862
+	 train_total_step_norm: 0.0793273597956
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 38
+	 iterations_done: 1482
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1482:
+	 test_correct_rate: 0.295899824301
+	 test_cost: 4.76356649399
+	 time_read_data_this_epoch: 0.404334783554
+	 time_read_data_total: 15.8474431038
+	 time_train_this_epoch: 2.77267122269
+	 time_train_total: 105.944988728
+	 train_correct_rate: 1.0
+	 train_cost: 0.0152192274109
+	 train_total_step_norm: 0.0171218123287
+
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 39
+	 iterations_done: 1521
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1521:
+	 test_correct_rate: 0.293035240968
+	 test_cost: 4.92787075043
+	 time_read_data_this_epoch: 0.401172399521
+	 time_read_data_total: 16.2486155033
+	 time_train_this_epoch: 2.77107048035
+	 time_train_total: 108.716059208
+	 train_correct_rate: 1.0
+	 train_cost: 0.024651683867
+	 train_total_step_norm: 0.0265054702759
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 40
+	 iterations_done: 1560
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1560:
+	 test_correct_rate: 0.290575134754
+	 test_cost: 4.85675525665
+	 time_read_data_this_epoch: 0.404489994049
+	 time_read_data_total: 16.6531054974
+	 time_train_this_epoch: 2.77164578438
+	 time_train_total: 111.487704992
+	 train_correct_rate: 1.0
+	 train_cost: 0.0466141849756
+	 train_total_step_norm: 0.0688438117504
+
+INFO:root:Monitoring on auxiliary data started
+
+INFO:root:Monitoring on auxiliary data finished
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 41
+	 iterations_done: 1599
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1599:
+	 test_correct_rate: 0.291500445207
+	 test_cost: 4.95224523544
+	 time_read_data_this_epoch: 0.402680635452
+	 time_read_data_total: 17.0557861328
+	 time_train_this_epoch: 2.77099466324
+	 time_train_total: 114.258699656
+	 train_correct_rate: 0.975609757006
+	 train_cost: 0.0465656705201
+	 train_total_step_norm: 0.048252992332
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 42
+	 iterations_done: 1638
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1638:
+	 test_correct_rate: 0.260305849711
+	 test_cost: 5.09083175659
+	 time_read_data_this_epoch: 0.404615879059
+	 time_read_data_total: 17.4604020119
+	 time_train_this_epoch: 2.77317214012
+	 time_train_total: 117.031871796
+	 train_correct_rate: 0.975609757006
+	 train_cost: 0.0704952403903
+	 train_total_step_norm: 0.139325916767
+
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 43
+	 iterations_done: 1677
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1677:
+	 test_correct_rate: 0.294337324301
+	 test_cost: 4.93536806107
+	 time_read_data_this_epoch: 0.428837537766
+	 time_read_data_total: 17.8892395496
+	 time_train_this_epoch: 2.77202010155
+	 time_train_total: 119.803891897
+	 train_correct_rate: 1.0
+	 train_cost: 0.0185803472996
+	 train_total_step_norm: 0.0246362090111
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 44
+	 iterations_done: 1716
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1716:
+	 test_correct_rate: 0.294974513849
+	 test_cost: 5.16505241394
+	 time_read_data_this_epoch: 0.403625488281
+	 time_read_data_total: 18.2928650379
+	 time_train_this_epoch: 2.77087235451
+	 time_train_total: 122.574764252
+	 train_correct_rate: 0.987804878503
+	 train_cost: 0.0661826953292
+	 train_total_step_norm: 0.134556025267
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 45
+	 iterations_done: 1755
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1755:
+	 test_correct_rate: 0.270899824301
+	 test_cost: 5.50858211517
+	 time_read_data_this_epoch: 0.43882727623
+	 time_read_data_total: 18.7316923141
+	 time_train_this_epoch: 2.7715280056
+	 time_train_total: 125.346292257
+	 train_correct_rate: 0.914634145796
+	 train_cost: 0.127129822969
+	 train_total_step_norm: 0.280926346779
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 46
+	 iterations_done: 1794
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1794:
+	 test_correct_rate: 0.29376108249
+	 test_cost: 4.52884912491
+	 time_read_data_this_epoch: 0.401198387146
+	 time_read_data_total: 19.1328907013
+	 time_train_this_epoch: 2.77260351181
+	 time_train_total: 128.118895769
+	 train_correct_rate: 0.975609757006
+	 train_cost: 0.0680783763528
+	 train_total_step_norm: 0.161721691489
+
+INFO:root:Monitoring on auxiliary data started
+
+INFO:root:Monitoring on auxiliary data finished
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 47
+	 iterations_done: 1833
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1833:
+	 test_correct_rate: 0.294775044918
+	 test_cost: 4.96189928055
+	 time_read_data_this_epoch: 0.403361082077
+	 time_read_data_total: 19.5362517834
+	 time_train_this_epoch: 2.7715742588
+	 time_train_total: 130.890470028
+	 train_correct_rate: 0.987804878503
+	 train_cost: 0.0389314070344
+	 train_total_step_norm: 0.049697894603
+
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 48
+	 iterations_done: 1872
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1872:
+	 test_correct_rate: 0.288807622592
+	 test_cost: 5.18340396881
+	 time_read_data_this_epoch: 0.422497749329
+	 time_read_data_total: 19.9587495327
+	 time_train_this_epoch: 2.77086901665
+	 time_train_total: 133.661339045
+	 train_correct_rate: 0.987804878503
+	 train_cost: 0.048503100872
+	 train_total_step_norm: 0.0815551057458
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 49
+	 iterations_done: 1911
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1911:
+	 test_correct_rate: 0.297406915824
+	 test_cost: 4.99139690399
+	 time_read_data_this_epoch: 0.408657550812
+	 time_read_data_total: 20.3674070835
+	 time_train_this_epoch: 2.7701215744
+	 time_train_total: 136.431460619
+	 train_correct_rate: 1.0
+	 train_cost: 0.0152745340019
+	 train_total_step_norm: 0.0165353436023
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 50
+	 iterations_done: 1950
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1950:
+	 test_correct_rate: 0.288286789258
+	 test_cost: 4.95503664017
+	 time_read_data_this_epoch: 0.40798163414
+	 time_read_data_total: 20.7753887177
+	 time_train_this_epoch: 2.77111029625
+	 time_train_total: 139.202570915
+	 train_correct_rate: 1.0
+	 train_cost: 0.0270814355463
+	 train_total_step_norm: 0.0431570969522
+
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 51
+	 iterations_done: 1989
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1989:
+	 test_correct_rate: 0.273963872592
+	 test_cost: 5.01400327682
+	 time_read_data_this_epoch: 0.414024114609
+	 time_read_data_total: 21.1894128323
+	 time_train_this_epoch: 2.79225230217
+	 time_train_total: 141.994823217
+	 train_correct_rate: 1.0
+	 train_cost: 0.030720308423
+	 train_total_step_norm: 0.0230564773083
+
+INFO:root:Monitoring on auxiliary data finished
+INFO:root:Monitoring on auxiliary data started
+
+INFO:root:Monitoring on auxiliary data finished
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 52
+	 iterations_done: 2028
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2028:
+	 test_correct_rate: 0.289937945207
+	 test_cost: 5.15514659882
+	 time_read_data_this_epoch: 0.426650524139
+	 time_read_data_total: 21.6160633564
+	 time_train_this_epoch: 2.8406920433
+	 time_train_total: 144.835515261
+	 train_correct_rate: 0.975609757006
+	 train_cost: 0.0784565135837
+	 train_total_step_norm: 0.131763637066
+
+INFO:root:Monitoring on auxiliary data started
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 53
+	 iterations_done: 2067
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2067:
+	 test_correct_rate: 0.286031695207
+	 test_cost: 4.87793588638
+	 time_read_data_this_epoch: 0.407159090042
+	 time_read_data_total: 22.0232224464
+	 time_train_this_epoch: 2.84129834175
+	 time_train_total: 147.676813602
+	 train_correct_rate: 0.963414635509
+	 train_cost: 0.0475122667849
+	 train_total_step_norm: 0.143292799592
+
+WARNING:blocks.main_loop:Received epoch interrupt signal.
+
+Blocks will complete this epoch iteration of training and run extensions before exiting. If you do not want to complete this epoch, press CTRL + C again to stop training after the current batch.
+INFO:root:Monitoring on auxiliary data started
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: True
+	 epoch_started: False
+	 epochs_done: 54
+	 iterations_done: 2106
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2106:
+	 test_correct_rate: 0.290492022038
+	 test_cost: 5.11582708359
+	 time_read_data_this_epoch: 0.407032966614
+	 time_read_data_total: 22.4302554131
+	 time_train_this_epoch: 2.82174682617
+	 time_train_total: 150.498560429
+	 train_correct_rate: 1.0
+	 train_cost: 0.0189188458025
+	 train_total_step_norm: 0.0320551134646
+
+INFO:root:Monitoring on auxiliary data finished
+
+-------------------------------------------------------------------------------
+TRAINING HAS BEEN FINISHED:
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: True
+	 epoch_started: False
+	 epochs_done: 54
+	 iterations_done: 2106
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2106:
+	 test_correct_rate: 0.290492022038
+	 test_cost: 5.11582708359
+	 time_read_data_this_epoch: 0.407032966614
+	 time_read_data_total: 22.4302554131
+	 time_train_this_epoch: 2.82174682617
+	 time_train_total: 150.498560429
+	 train_correct_rate: 1.0
+	 train_cost: 0.0189188458025
+	 train_total_step_norm: 0.0320551134646
+	 training_finished: True

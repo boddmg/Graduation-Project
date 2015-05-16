@@ -135,6 +135,9 @@ class Monitor(Preprocessor):
         print("Monitor:",src_data.shape, src_labels.shape)
         return src_data, src_labels
 
+class LambdaPreprocessor(Preprocessor):
+    def __init__(self, run_function):
+        self.run = run_function
 
 def main():
     src_data, src_labels = PreprocessorList([DataLoad("default.hkl"),DataDump("default1.hkl")]).run()
