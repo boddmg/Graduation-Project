@@ -16,7 +16,7 @@ from Preprocessor.Base_utils import *
 from Preprocessor.dataset_utils import PackerForFuel
 from fuel.streams import DataStream
 from fuel.schemes import SequentialScheme, ShuffledScheme
-from blocks.algorithms import GradientDescent, Scale, CompositeRule, VariableClipping
+from blocks.algorithms import GradientDescent, Scale, CompositeRule, VariableClipping, Momentum
 from blocks.extensions.monitoring import DataStreamMonitoring
 from blocks.extensions.monitoring import TrainingDataMonitoring
 from blocks.extensions.plot import Plot
@@ -39,13 +39,13 @@ def main():
     print("Prepare the data.")
     data, label = PreprocessorList([
             DataLoad("cad60_test_feature.hkl"),
-            SplitIntoBatches(FRAME_NUM,5),
+            SplitIntoBatches(FRAME_NUM,1),
             Monitor()]).run()
     cad60_test = PackerForFuel(data, label)
 
     data, label = PreprocessorList([
             DataLoad("cad60_train_feature.hkl"),
-            SplitIntoBatches(FRAME_NUM,5),
+            SplitIntoBatches(FRAME_NUM, 5),
             Monitor()]).run()
     cad60_train = PackerForFuel(data, label)
 
@@ -104,7 +104,7 @@ def main():
 
     ## Set the algorithm for the training.
     algorithm = GradientDescent(cost = cost, params = cg.parameters,
-                                step_rule =  CompositeRule([VariableClipping(50), Scale(0.1)]) )
+                                step_rule =  CompositeRule([VariableClipping(50), Momentum(0.1, 0.5)]))
 
     ## Add a monitor extension for the training.
     data_stream_test = DataStream(cad60_test, iteration_scheme = ShuffledScheme(

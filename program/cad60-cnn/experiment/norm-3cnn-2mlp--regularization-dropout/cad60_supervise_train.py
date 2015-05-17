@@ -85,6 +85,7 @@ def main():
               biases_init=Constant(0.))
     mlp.initialize()
 
+
     probs = mlp.apply(features)
 
 
@@ -95,6 +96,7 @@ def main():
 
     cg = ComputationGraph(cost)
 
+    print VariableFilter(roles=[INPUT])(cg.variables)
     # cg_dropout = apply_dropout(cg, VariableFilter(roles=[INPUT])(cg.variables), 0.5)
 
     ## Carve the data into lots of batches.

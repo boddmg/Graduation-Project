@@ -10,7 +10,7 @@ from theano import tensor
 import theano
 from blocks.bricks.cost import CategoricalCrossEntropy, MisclassificationRate
 from blocks.graph import ComputationGraph
-from blocks.graph import apply_dropout
+from blocks.graph import apply_dropout, apply_noise
 from blocks.initialization import IsotropicGaussian, Constant, Uniform
 from Preprocessor.Base_utils import *
 from Preprocessor.dataset_utils import PackerForFuel
@@ -81,7 +81,7 @@ def main():
     features = Flattener().apply(convnet.apply(x))
     # features = x.flatten()
     mlp = MLP(activations=[Sigmoid(), Sigmoid(), Softmax()],
-              dims=[320, 256, 100, 14], weights_init=IsotropicGaussian(),
+              dims=[640, 300, 150, 14], weights_init=IsotropicGaussian(),
               biases_init=Constant(0.))
     mlp.initialize()
 
@@ -94,6 +94,7 @@ def main():
     cost.name = 'cost'
 
     cg = ComputationGraph(cost)
+    cg = apply_noise(cg, [x], 0.3, 1)
 
     # cg_dropout = apply_dropout(cg, VariableFilter(roles=[INPUT])(cg.variables), 0.5)
 

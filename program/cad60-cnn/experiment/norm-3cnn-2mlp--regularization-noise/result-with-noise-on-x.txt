@@ -1,0 +1,4 @@
+Prepare the data.
+('Monitor:', (3631, 48, 144), (3631,))
+('Monitor:', (9810, 48, 144), (9810,))
+Build the network
