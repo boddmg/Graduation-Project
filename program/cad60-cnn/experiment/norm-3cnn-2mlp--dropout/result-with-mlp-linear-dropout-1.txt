@@ -1,0 +1,2325 @@
+Prepare the data.
+('Monitor:', (3631, 48, 144), (3631,))
+('Monitor:', (9810, 48, 144), (9810,))
+Build the network
+[linear_0_apply_output, linear_1_apply_output, linear_2_apply_output]
+Using saved session configuration for http://localhost:5006/
+To override, pass 'load_from_config=False' to Session
+Start training
+
+-------------------------------------------------------------------------------
+BEFORE FIRST EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: True
+	 epochs_done: 0
+	 iterations_done: 0
+	 received_first_batch: False
+	 training_started: True
+Log records from the iteration 0:
+	 test_correct_rate: 0.0811059549451
+	 test_cost: 8.15385437012
+	 time_initialization: 1.95604395866
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 1
+	 iterations_done: 39
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 39:
+	 test_correct_rate: 0.100581794977
+	 test_cost: 2.5269742012
+	 time_read_data_this_epoch: 0.871102333069
+	 time_read_data_total: 0.871102333069
+	 time_train_this_epoch: 12.6000478268
+	 time_train_total: 12.6000478268
+	 train_correct_rate: 0.0853658914566
+	 train_cost: 2.52280306816
+	 train_total_step_norm: 0.0932425111532
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 2
+	 iterations_done: 78
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 78:
+	 test_correct_rate: 0.0190104208887
+	 test_cost: 2.50646710396
+	 time_read_data_this_epoch: 0.79399228096
+	 time_read_data_total: 1.66509461403
+	 time_train_this_epoch: 12.3502681255
+	 time_train_total: 24.9503159523
+	 train_correct_rate: 0.0487805008888
+	 train_cost: 2.51920509338
+	 train_total_step_norm: 0.117617323995
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 3
+	 iterations_done: 117
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 117:
+	 test_correct_rate: 0.241644516587
+	 test_cost: 2.41390562057
+	 time_read_data_this_epoch: 0.78689956665
+	 time_read_data_total: 2.45199418068
+	 time_train_this_epoch: 12.2840256691
+	 time_train_total: 37.2343416214
+	 train_correct_rate: 0.158536612988
+	 train_cost: 2.44984436035
+	 train_total_step_norm: 0.116027459502
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 4
+	 iterations_done: 156
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 156:
+	 test_correct_rate: 0.270318031311
+	 test_cost: 2.34151625633
+	 time_read_data_this_epoch: 0.813168525696
+	 time_read_data_total: 3.26516270638
+	 time_train_this_epoch: 12.3925917149
+	 time_train_total: 49.6269333363
+	 train_correct_rate: 0.304878056049
+	 train_cost: 2.30609202385
+	 train_total_step_norm: 0.106524653733
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 5
+	 iterations_done: 195
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 195:
+	 test_correct_rate: 0.146503776312
+	 test_cost: 2.57608103752
+	 time_read_data_this_epoch: 0.826196432114
+	 time_read_data_total: 4.09135913849
+	 time_train_this_epoch: 12.8069424629
+	 time_train_total: 62.4338757992
+	 train_correct_rate: 0.0731707811356
+	 train_cost: 2.55559277534
+	 train_total_step_norm: 0.271774739027
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 6
+	 iterations_done: 234
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 234:
+	 test_correct_rate: 0.0982657447457
+	 test_cost: 2.63107442856
+	 time_read_data_this_epoch: 0.845090866089
+	 time_read_data_total: 4.93645000458
+	 time_train_this_epoch: 13.0555315018
+	 time_train_total: 75.4894073009
+	 train_correct_rate: 0.365853667259
+	 train_cost: 2.21848535538
+	 train_total_step_norm: 0.226804226637
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 7
+	 iterations_done: 273
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 273:
+	 test_correct_rate: 0.0943594947457
+	 test_cost: 2.54704403877
+	 time_read_data_this_epoch: 0.796526432037
+	 time_read_data_total: 5.73297643661
+	 time_train_this_epoch: 12.8675844669
+	 time_train_total: 88.3569917679
+	 train_correct_rate: 0.365853667259
+	 train_cost: 1.98667895794
+	 train_total_step_norm: 0.29342186451
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 8
+	 iterations_done: 312
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 312:
+	 test_correct_rate: 0.196127012372
+	 test_cost: 2.5302131176
+	 time_read_data_this_epoch: 0.805727243423
+	 time_read_data_total: 6.53870368004
+	 time_train_this_epoch: 12.8633117676
+	 time_train_total: 101.220303535
+	 train_correct_rate: 0.158536612988
+	 train_cost: 2.3821849823
+	 train_total_step_norm: 0.373064815998
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 9
+	 iterations_done: 351
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 351:
+	 test_correct_rate: 0.151856169105
+	 test_cost: 2.25580644608
+	 time_read_data_this_epoch: 0.814867019653
+	 time_read_data_total: 7.35357069969
+	 time_train_this_epoch: 12.861027956
+	 time_train_total: 114.081331491
+	 train_correct_rate: 0.353658556938
+	 train_cost: 1.9934835434
+	 train_total_step_norm: 0.329835683107
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 10
+	 iterations_done: 390
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 390:
+	 test_correct_rate: 0.166007325053
+	 test_cost: 2.1832408905
+	 time_read_data_this_epoch: 0.863806247711
+	 time_read_data_total: 8.2173769474
+	 time_train_this_epoch: 12.8822033405
+	 time_train_total: 126.963534832
+	 train_correct_rate: 0.18292683363
+	 train_cost: 2.59265494347
+	 train_total_step_norm: 0.528986692429
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 11
+	 iterations_done: 429
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 429:
+	 test_correct_rate: 0.194420441985
+	 test_cost: 2.54598641396
+	 time_read_data_this_epoch: 0.807244539261
+	 time_read_data_total: 9.02462148666
+	 time_train_this_epoch: 12.8789799213
+	 time_train_total: 139.842514753
+	 train_correct_rate: 0.292682945728
+	 train_cost: 1.93623793125
+	 train_total_step_norm: 0.315211713314
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 12
+	 iterations_done: 468
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 468:
+	 test_correct_rate: 0.155502006412
+	 test_cost: 2.67567324638
+	 time_read_data_this_epoch: 0.797166824341
+	 time_read_data_total: 9.821788311
+	 time_train_this_epoch: 12.8636767864
+	 time_train_total: 152.70619154
+	 train_correct_rate: 0.195122003555
+	 train_cost: 2.06454157829
+	 train_total_step_norm: 0.478640198708
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 13
+	 iterations_done: 507
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 507:
+	 test_correct_rate: 0.311873883009
+	 test_cost: 1.83736515045
+	 time_read_data_this_epoch: 0.806217432022
+	 time_read_data_total: 10.628005743
+	 time_train_this_epoch: 12.872833252
+	 time_train_total: 165.579024792
+	 train_correct_rate: 0.37804877758
+	 train_cost: 1.84434127808
+	 train_total_step_norm: 0.221446111798
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 14
+	 iterations_done: 546
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 546:
+	 test_correct_rate: 0.288203686476
+	 test_cost: 1.78992581367
+	 time_read_data_this_epoch: 0.818455457687
+	 time_read_data_total: 11.4464612007
+	 time_train_this_epoch: 12.8654098511
+	 time_train_total: 178.444434643
+	 train_correct_rate: 0.280487835407
+	 train_cost: 1.93024349213
+	 train_total_step_norm: 0.35550647974
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 15
+	 iterations_done: 585
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 585:
+	 test_correct_rate: 0.164444819093
+	 test_cost: 2.18560695648
+	 time_read_data_this_epoch: 0.81277680397
+	 time_read_data_total: 12.2592380047
+	 time_train_this_epoch: 13.1990869045
+	 time_train_total: 191.643521547
+	 train_correct_rate: 0.329268336296
+	 train_cost: 2.0337498188
+	 train_total_step_norm: 0.488436788321
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 16
+	 iterations_done: 624
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 624:
+	 test_correct_rate: 0.102897837758
+	 test_cost: 2.87574410439
+	 time_read_data_this_epoch: 0.819301366806
+	 time_read_data_total: 13.0785393715
+	 time_train_this_epoch: 13.0654816628
+	 time_train_total: 204.70900321
+	 train_correct_rate: 0.329268336296
+	 train_cost: 1.6781693697
+	 train_total_step_norm: 0.450567066669
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 17
+	 iterations_done: 663
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 663:
+	 test_correct_rate: 0.330418884754
+	 test_cost: 1.61465322971
+	 time_read_data_this_epoch: 0.854369878769
+	 time_read_data_total: 13.9329092503
+	 time_train_this_epoch: 13.0549809933
+	 time_train_total: 217.763984203
+	 train_correct_rate: 0.585365891457
+	 train_cost: 1.33568477631
+	 train_total_step_norm: 0.282398372889
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 18
+	 iterations_done: 702
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 702:
+	 test_correct_rate: 0.0964428335428
+	 test_cost: 2.32701563835
+	 time_read_data_this_epoch: 0.808080673218
+	 time_read_data_total: 14.7409899235
+	 time_train_this_epoch: 13.0729260445
+	 time_train_total: 230.836910248
+	 train_correct_rate: 0.390243947506
+	 train_cost: 1.95496308804
+	 train_total_step_norm: 0.53666216135
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 19
+	 iterations_done: 741
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 741:
+	 test_correct_rate: 0.236840650439
+	 test_cost: 1.96940350533
+	 time_read_data_this_epoch: 0.855242967606
+	 time_read_data_total: 15.5962328911
+	 time_train_this_epoch: 13.040252924
+	 time_train_total: 243.877163172
+	 train_correct_rate: 0.548780500889
+	 train_cost: 1.42494833469
+	 train_total_step_norm: 0.422303497791
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 20
+	 iterations_done: 780
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 780:
+	 test_correct_rate: 0.514162242413
+	 test_cost: 1.52386569977
+	 time_read_data_this_epoch: 0.81748509407
+	 time_read_data_total: 16.4137179852
+	 time_train_this_epoch: 13.0548484325
+	 time_train_total: 256.932011604
+	 train_correct_rate: 0.670731723309
+	 train_cost: 1.30461502075
+	 train_total_step_norm: 0.392589598894
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 21
+	 iterations_done: 819
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 819:
+	 test_correct_rate: 0.543677985668
+	 test_cost: 1.28739213943
+	 time_read_data_this_epoch: 0.817596435547
+	 time_read_data_total: 17.2313144207
+	 time_train_this_epoch: 13.5078759193
+	 time_train_total: 270.439887524
+	 train_correct_rate: 0.585365891457
+	 train_cost: 1.18546164036
+	 train_total_step_norm: 0.194400861859
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 22
+	 iterations_done: 858
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 858:
+	 test_correct_rate: 0.472783714533
+	 test_cost: 1.427038908
+	 time_read_data_this_epoch: 0.801423311234
+	 time_read_data_total: 18.0327377319
+	 time_train_this_epoch: 13.0366256237
+	 time_train_total: 283.476513147
+	 train_correct_rate: 0.585365891457
+	 train_cost: 1.2287299633
+	 train_total_step_norm: 0.315353393555
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 23
+	 iterations_done: 897
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 897:
+	 test_correct_rate: 0.524146735668
+	 test_cost: 1.17018091679
+	 time_read_data_this_epoch: 0.854894399643
+	 time_read_data_total: 18.8876321316
+	 time_train_this_epoch: 13.0360512733
+	 time_train_total: 296.512564421
+	 train_correct_rate: 0.536585390568
+	 train_cost: 1.0614541769
+	 train_total_step_norm: 0.241927981377
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 24
+	 iterations_done: 936
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 936:
+	 test_correct_rate: 0.489511311054
+	 test_cost: 1.40025269985
+	 time_read_data_this_epoch: 0.834707736969
+	 time_read_data_total: 19.7223398685
+	 time_train_this_epoch: 13.0068318844
+	 time_train_total: 309.519396305
+	 train_correct_rate: 0.536585390568
+	 train_cost: 1.19701004028
+	 train_total_step_norm: 0.38119122386
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 25
+	 iterations_done: 975
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 975:
+	 test_correct_rate: 0.365663796663
+	 test_cost: 1.78994011879
+	 time_read_data_this_epoch: 0.833220005035
+	 time_read_data_total: 20.5555598736
+	 time_train_this_epoch: 13.0664253235
+	 time_train_total: 322.585821629
+	 train_correct_rate: 0.81707316637
+	 train_cost: 0.83935713768
+	 train_total_step_norm: 0.246499359608
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 26
+	 iterations_done: 1014
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1014:
+	 test_correct_rate: 0.583205938339
+	 test_cost: 1.05785775185
+	 time_read_data_this_epoch: 0.817107200623
+	 time_read_data_total: 21.3726670742
+	 time_train_this_epoch: 13.0559694767
+	 time_train_total: 335.641791105
+	 train_correct_rate: 0.62195122242
+	 train_cost: 0.940370321274
+	 train_total_step_norm: 0.319037586451
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 27
+	 iterations_done: 1053
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1053:
+	 test_correct_rate: 0.658377707005
+	 test_cost: 1.00505542755
+	 time_read_data_this_epoch: 0.799032211304
+	 time_read_data_total: 22.1716992855
+	 time_train_this_epoch: 13.1017906666
+	 time_train_total: 348.743581772
+	 train_correct_rate: 0.719512224197
+	 train_cost: 0.976219117641
+	 train_total_step_norm: 0.290492504835
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 28
+	 iterations_done: 1092
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1092:
+	 test_correct_rate: 0.479698628187
+	 test_cost: 1.13351523876
+	 time_read_data_this_epoch: 0.803608179092
+	 time_read_data_total: 22.9753074646
+	 time_train_this_epoch: 13.0491039753
+	 time_train_total: 361.792685747
+	 train_correct_rate: 0.841463446617
+	 train_cost: 0.743848145008
+	 train_total_step_norm: 0.141674265265
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 29
+	 iterations_done: 1131
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1131:
+	 test_correct_rate: 0.42796432972
+	 test_cost: 1.3274641037
+	 time_read_data_this_epoch: 0.810985088348
+	 time_read_data_total: 23.7862925529
+	 time_train_this_epoch: 13.0155484676
+	 time_train_total: 374.808234215
+	 train_correct_rate: 0.37804877758
+	 train_cost: 1.79951584339
+	 train_total_step_norm: 0.458487570286
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 30
+	 iterations_done: 1170
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1170:
+	 test_correct_rate: 0.613962769508
+	 test_cost: 1.32056891918
+	 time_read_data_this_epoch: 0.827853679657
+	 time_read_data_total: 24.6141462326
+	 time_train_this_epoch: 12.9962685108
+	 time_train_total: 387.804502726
+	 train_correct_rate: 0.597561001778
+	 train_cost: 1.20160317421
+	 train_total_step_norm: 0.346301406622
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 31
+	 iterations_done: 1209
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1209:
+	 test_correct_rate: 0.465320289135
+	 test_cost: 1.41193664074
+	 time_read_data_this_epoch: 0.796817064285
+	 time_read_data_total: 25.4109632969
+	 time_train_this_epoch: 12.8624646664
+	 time_train_total: 400.666967392
+	 train_correct_rate: 0.463414669037
+	 train_cost: 1.45855653286
+	 train_total_step_norm: 0.421979576349
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 32
+	 iterations_done: 1248
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1248:
+	 test_correct_rate: 0.48586550355
+	 test_cost: 1.33200502396
+	 time_read_data_this_epoch: 0.843031644821
+	 time_read_data_total: 26.2539949417
+	 time_train_this_epoch: 12.8913064003
+	 time_train_total: 413.558273792
+	 train_correct_rate: 0.670731723309
+	 train_cost: 0.876889526844
+	 train_total_step_norm: 0.248555377126
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 33
+	 iterations_done: 1287
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1287:
+	 test_correct_rate: 0.627593159676
+	 test_cost: 1.35198259354
+	 time_read_data_this_epoch: 0.81206202507
+	 time_read_data_total: 27.0660569668
+	 time_train_this_epoch: 12.9061508179
+	 time_train_total: 426.46442461
+	 train_correct_rate: 0.43902438879
+	 train_cost: 1.48532915115
+	 train_total_step_norm: 0.404934883118
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 34
+	 iterations_done: 1326
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1326:
+	 test_correct_rate: 0.383111715317
+	 test_cost: 1.55961990356
+	 time_read_data_this_epoch: 0.806777000427
+	 time_read_data_total: 27.8728339672
+	 time_train_this_epoch: 12.9191584587
+	 time_train_total: 439.383583069
+	 train_correct_rate: 0.5
+	 train_cost: 1.49194216728
+	 train_total_step_norm: 0.723526299
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 35
+	 iterations_done: 1365
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1365:
+	 test_correct_rate: 0.658122777939
+	 test_cost: 0.930482923985
+	 time_read_data_this_epoch: 0.79147195816
+	 time_read_data_total: 28.6643059254
+	 time_train_this_epoch: 12.9024419785
+	 time_train_total: 452.286025047
+	 train_correct_rate: 0.756097555161
+	 train_cost: 0.717300593853
+	 train_total_step_norm: 0.202241912484
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 36
+	 iterations_done: 1404
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1404:
+	 test_correct_rate: 0.642148733139
+	 test_cost: 1.00783908367
+	 time_read_data_this_epoch: 0.812874317169
+	 time_read_data_total: 29.4771802425
+	 time_train_this_epoch: 12.8642423153
+	 time_train_total: 465.150267363
+	 train_correct_rate: 0.707317113876
+	 train_cost: 0.704262137413
+	 train_total_step_norm: 0.175813302398
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 37
+	 iterations_done: 1443
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1443:
+	 test_correct_rate: 0.400127470493
+	 test_cost: 1.47555398941
+	 time_read_data_this_epoch: 0.830725908279
+	 time_read_data_total: 30.3079061508
+	 time_train_this_epoch: 12.9133050442
+	 time_train_total: 478.063572407
+	 train_correct_rate: 0.68292683363
+	 train_cost: 0.949589014053
+	 train_total_step_norm: 0.438870370388
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 38
+	 iterations_done: 1482
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1482:
+	 test_correct_rate: 0.68164896965
+	 test_cost: 1.03956568241
+	 time_read_data_this_epoch: 0.819755554199
+	 time_read_data_total: 31.127661705
+	 time_train_this_epoch: 12.9194583893
+	 time_train_total: 490.983030796
+	 train_correct_rate: 0.87804877758
+	 train_cost: 0.519960403442
+	 train_total_step_norm: 0.191952347755
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 39
+	 iterations_done: 1521
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1521:
+	 test_correct_rate: 0.564888119698
+	 test_cost: 1.2637501955
+	 time_read_data_this_epoch: 0.793625831604
+	 time_read_data_total: 31.9212875366
+	 time_train_this_epoch: 12.9061980247
+	 time_train_total: 503.889228821
+	 train_correct_rate: 0.804878056049
+	 train_cost: 0.60297614336
+	 train_total_step_norm: 0.318698227406
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 40
+	 iterations_done: 1560
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1560:
+	 test_correct_rate: 0.651058316231
+	 test_cost: 1.02374076843
+	 time_read_data_this_epoch: 0.802699804306
+	 time_read_data_total: 32.7239873409
+	 time_train_this_epoch: 12.8586707115
+	 time_train_total: 516.747899532
+	 train_correct_rate: 0.646341443062
+	 train_cost: 0.80498445034
+	 train_total_step_norm: 0.305971473455
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 41
+	 iterations_done: 1599
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1599:
+	 test_correct_rate: 0.711159169674
+	 test_cost: 0.785665512085
+	 time_read_data_this_epoch: 0.816552639008
+	 time_read_data_total: 33.5405399799
+	 time_train_this_epoch: 12.8710072041
+	 time_train_total: 529.618906736
+	 train_correct_rate: 0.890243887901
+	 train_cost: 0.562463760376
+	 train_total_step_norm: 0.22933408618
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 42
+	 iterations_done: 1638
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1638:
+	 test_correct_rate: 0.679416060448
+	 test_cost: 0.962478935719
+	 time_read_data_this_epoch: 0.809641361237
+	 time_read_data_total: 34.3501813412
+	 time_train_this_epoch: 12.8551952839
+	 time_train_total: 542.47410202
+	 train_correct_rate: 0.987804889679
+	 train_cost: 0.350065529346
+	 train_total_step_norm: 0.137040689588
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 43
+	 iterations_done: 1677
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1677:
+	 test_correct_rate: 0.774357318878
+	 test_cost: 0.712082922459
+	 time_read_data_this_epoch: 0.80405330658
+	 time_read_data_total: 35.1542346478
+	 time_train_this_epoch: 12.8512427807
+	 time_train_total: 555.325344801
+	 train_correct_rate: 0.792682945728
+	 train_cost: 0.603990972042
+	 train_total_step_norm: 0.306597858667
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 44
+	 iterations_done: 1716
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1716:
+	 test_correct_rate: 0.642985403538
+	 test_cost: 0.918574571609
+	 time_read_data_this_epoch: 0.851357936859
+	 time_read_data_total: 36.0055925846
+	 time_train_this_epoch: 13.036677599
+	 time_train_total: 568.3620224
+	 train_correct_rate: 0.853658556938
+	 train_cost: 0.440875679255
+	 train_total_step_norm: 0.272115260363
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 45
+	 iterations_done: 1755
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1755:
+	 test_correct_rate: 0.412572056055
+	 test_cost: 2.95493531227
+	 time_read_data_this_epoch: 0.822321414948
+	 time_read_data_total: 36.8279139996
+	 time_train_this_epoch: 13.0630917549
+	 time_train_total: 581.425114155
+	 train_correct_rate: 0.634146332741
+	 train_cost: 0.886944711208
+	 train_total_step_norm: 0.531389415264
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 46
+	 iterations_done: 1794
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1794:
+	 test_correct_rate: 0.395905375481
+	 test_cost: 1.90012359619
+	 time_read_data_this_epoch: 0.886847257614
+	 time_read_data_total: 37.7147612572
+	 time_train_this_epoch: 13.0576312542
+	 time_train_total: 594.482745409
+	 train_correct_rate: 0.743902444839
+	 train_cost: 0.578198194504
+	 train_total_step_norm: 0.410739868879
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 47
+	 iterations_done: 1833
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1833:
+	 test_correct_rate: 0.545356869698
+	 test_cost: 1.22840261459
+	 time_read_data_this_epoch: 0.936640977859
+	 time_read_data_total: 38.651402235
+	 time_train_this_epoch: 13.2943146229
+	 time_train_total: 607.777060032
+	 train_correct_rate: 0.963414609432
+	 train_cost: 0.358204066753
+	 train_total_step_norm: 0.239094242454
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 48
+	 iterations_done: 1872
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1872:
+	 test_correct_rate: 0.523132801056
+	 test_cost: 1.32637882233
+	 time_read_data_this_epoch: 0.79165148735
+	 time_read_data_total: 39.4430537224
+	 time_train_this_epoch: 13.0789849758
+	 time_train_total: 620.856045008
+	 train_correct_rate: 0.81707316637
+	 train_cost: 0.453739255667
+	 train_total_step_norm: 0.316804885864
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 49
+	 iterations_done: 1911
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1911:
+	 test_correct_rate: 0.769608855247
+	 test_cost: 0.770002961159
+	 time_read_data_this_epoch: 0.816915035248
+	 time_read_data_total: 40.2599687576
+	 time_train_this_epoch: 13.0866396427
+	 time_train_total: 633.94268465
+	 train_correct_rate: 0.926829278469
+	 train_cost: 0.284635394812
+	 train_total_step_norm: 0.179374247789
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 50
+	 iterations_done: 1950
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1950:
+	 test_correct_rate: 0.687693953514
+	 test_cost: 0.686000645161
+	 time_read_data_this_epoch: 0.812515497208
+	 time_read_data_total: 41.0724842548
+	 time_train_this_epoch: 13.1141896248
+	 time_train_total: 647.056874275
+	 train_correct_rate: 0.951219499111
+	 train_cost: 0.306884616613
+	 train_total_step_norm: 0.232108563185
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 51
+	 iterations_done: 1989
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 1989:
+	 test_correct_rate: 0.661679983139
+	 test_cost: 0.800895810127
+	 time_read_data_this_epoch: 0.815302610397
+	 time_read_data_total: 41.8877868652
+	 time_train_this_epoch: 13.042150259
+	 time_train_total: 660.099024534
+	 train_correct_rate: 0.987804889679
+	 train_cost: 0.200536713004
+	 train_total_step_norm: 0.141438513994
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 52
+	 iterations_done: 2028
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2028:
+	 test_correct_rate: 0.569315195084
+	 test_cost: 0.963816940784
+	 time_read_data_this_epoch: 0.794533491135
+	 time_read_data_total: 42.6823203564
+	 time_train_this_epoch: 13.1036295891
+	 time_train_total: 673.202654123
+	 train_correct_rate: 0.829268336296
+	 train_cost: 0.519798755646
+	 train_total_step_norm: 0.351425349712
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 53
+	 iterations_done: 2067
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2067:
+	 test_correct_rate: 0.635810136795
+	 test_cost: 0.971659302711
+	 time_read_data_this_epoch: 0.797005176544
+	 time_read_data_total: 43.4793255329
+	 time_train_this_epoch: 13.0588669777
+	 time_train_total: 686.261521101
+	 train_correct_rate: 0.951219499111
+	 train_cost: 0.25532707572
+	 train_total_step_norm: 0.214400500059
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 54
+	 iterations_done: 2106
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2106:
+	 test_correct_rate: 0.594664275646
+	 test_cost: 0.970594406128
+	 time_read_data_this_epoch: 0.806015729904
+	 time_read_data_total: 44.2853412628
+	 time_train_this_epoch: 13.1132981777
+	 time_train_total: 699.374819279
+	 train_correct_rate: 0.975609779358
+	 train_cost: 0.276913017035
+	 train_total_step_norm: 0.226491197944
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 55
+	 iterations_done: 2145
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2145:
+	 test_correct_rate: 0.340951949358
+	 test_cost: 1.99400281906
+	 time_read_data_this_epoch: 0.811091423035
+	 time_read_data_total: 45.0964326859
+	 time_train_this_epoch: 13.0568082333
+	 time_train_total: 712.431627512
+	 train_correct_rate: 0.585365891457
+	 train_cost: 1.35092043877
+	 train_total_step_norm: 0.525534749031
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 56
+	 iterations_done: 2184
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2184:
+	 test_correct_rate: 0.600858867168
+	 test_cost: 0.996685862541
+	 time_read_data_this_epoch: 0.812691688538
+	 time_read_data_total: 45.9091243744
+	 time_train_this_epoch: 12.8896129131
+	 time_train_total: 725.321240425
+	 train_correct_rate: 0.963414609432
+	 train_cost: 0.2512768507
+	 train_total_step_norm: 0.271327465773
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 57
+	 iterations_done: 2223
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2223:
+	 test_correct_rate: 0.73115581274
+	 test_cost: 0.716892898083
+	 time_read_data_this_epoch: 1.00378155708
+	 time_read_data_total: 46.9129059315
+	 time_train_this_epoch: 12.265843153
+	 time_train_total: 737.587083578
+	 train_correct_rate: 1.0
+	 train_cost: 0.166177541018
+	 train_total_step_norm: 0.057614184916
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 58
+	 iterations_done: 2262
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2262:
+	 test_correct_rate: 0.306865036488
+	 test_cost: 2.63945484161
+	 time_read_data_this_epoch: 0.812739372253
+	 time_read_data_total: 47.7256453037
+	 time_train_this_epoch: 12.2636137009
+	 time_train_total: 749.850697279
+	 train_correct_rate: 0.68292683363
+	 train_cost: 0.983495533466
+	 train_total_step_norm: 0.696412026882
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 59
+	 iterations_done: 2301
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2301:
+	 test_correct_rate: 0.730374574661
+	 test_cost: 0.700319468975
+	 time_read_data_this_epoch: 0.792636394501
+	 time_read_data_total: 48.5182816982
+	 time_train_this_epoch: 12.2655656338
+	 time_train_total: 762.116262913
+	 train_correct_rate: 0.987804889679
+	 train_cost: 0.126914605498
+	 train_total_step_norm: 0.0590755157173
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 60
+	 iterations_done: 2340
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2340:
+	 test_correct_rate: 0.657685101032
+	 test_cost: 0.755499362946
+	 time_read_data_this_epoch: 0.794406652451
+	 time_read_data_total: 49.3126883507
+	 time_train_this_epoch: 12.2628993988
+	 time_train_total: 774.379162312
+	 train_correct_rate: 0.987804889679
+	 train_cost: 0.124229848385
+	 train_total_step_norm: 0.0858630388975
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 61
+	 iterations_done: 2379
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2379:
+	 test_correct_rate: 0.720273733139
+	 test_cost: 0.716995835304
+	 time_read_data_this_epoch: 0.839043855667
+	 time_read_data_total: 50.1517322063
+	 time_train_this_epoch: 12.2679681778
+	 time_train_total: 786.647130489
+	 train_correct_rate: 0.987804889679
+	 train_cost: 0.112426064909
+	 train_total_step_norm: 0.1231373474
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 62
+	 iterations_done: 2418
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2418:
+	 test_correct_rate: 0.720766842365
+	 test_cost: 0.702267706394
+	 time_read_data_this_epoch: 0.822982549667
+	 time_read_data_total: 50.974714756
+	 time_train_this_epoch: 12.2712805271
+	 time_train_total: 798.918411016
+	 train_correct_rate: 1.0
+	 train_cost: 0.10636485368
+	 train_total_step_norm: 0.0716059580445
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 63
+	 iterations_done: 2457
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2457:
+	 test_correct_rate: 0.778640329838
+	 test_cost: 0.678393959999
+	 time_read_data_this_epoch: 0.805037975311
+	 time_read_data_total: 51.7797527313
+	 time_train_this_epoch: 12.2677662373
+	 time_train_total: 811.186177254
+	 train_correct_rate: 0.963414609432
+	 train_cost: 0.149898543954
+	 train_total_step_norm: 0.0777498185635
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 64
+	 iterations_done: 2496
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2496:
+	 test_correct_rate: 0.686391890049
+	 test_cost: 0.660732269287
+	 time_read_data_this_epoch: 0.798875808716
+	 time_read_data_total: 52.57862854
+	 time_train_this_epoch: 12.2662210464
+	 time_train_total: 823.4523983
+	 train_correct_rate: 0.93902438879
+	 train_cost: 0.187251269817
+	 train_total_step_norm: 0.149210467935
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 65
+	 iterations_done: 2535
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2535:
+	 test_correct_rate: 0.73665779829
+	 test_cost: 0.682833850384
+	 time_read_data_this_epoch: 0.784446239471
+	 time_read_data_total: 53.3630747795
+	 time_train_this_epoch: 12.2665812969
+	 time_train_total: 835.718979597
+	 train_correct_rate: 0.975609779358
+	 train_cost: 0.141264915466
+	 train_total_step_norm: 0.161110416055
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 66
+	 iterations_done: 2574
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2574:
+	 test_correct_rate: 0.716367483139
+	 test_cost: 0.623441874981
+	 time_read_data_this_epoch: 0.78206372261
+	 time_read_data_total: 54.1451385021
+	 time_train_this_epoch: 12.2630295753
+	 time_train_total: 847.982009172
+	 train_correct_rate: 1.0
+	 train_cost: 0.101407386363
+	 train_total_step_norm: 0.092995621264
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 67
+	 iterations_done: 2613
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2613:
+	 test_correct_rate: 0.740791261196
+	 test_cost: 0.655543625355
+	 time_read_data_this_epoch: 0.827105283737
+	 time_read_data_total: 54.9722437859
+	 time_train_this_epoch: 12.264950037
+	 time_train_total: 860.246959209
+	 train_correct_rate: 1.0
+	 train_cost: 0.0671984180808
+	 train_total_step_norm: 0.0498771108687
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 68
+	 iterations_done: 2652
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2652:
+	 test_correct_rate: 0.746404051781
+	 test_cost: 0.65247297287
+	 time_read_data_this_epoch: 0.797150373459
+	 time_read_data_total: 55.7693941593
+	 time_train_this_epoch: 12.2601997852
+	 time_train_total: 872.507158995
+	 train_correct_rate: 1.0
+	 train_cost: 0.0735647454858
+	 train_total_step_norm: 0.0498742051423
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 69
+	 iterations_done: 2691
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2691:
+	 test_correct_rate: 0.757807016373
+	 test_cost: 0.623486638069
+	 time_read_data_this_epoch: 0.798802137375
+	 time_read_data_total: 56.5681962967
+	 time_train_this_epoch: 12.2610161304
+	 time_train_total: 884.768175125
+	 train_correct_rate: 1.0
+	 train_cost: 0.0736305564642
+	 train_total_step_norm: 0.0528453364968
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 70
+	 iterations_done: 2730
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2730:
+	 test_correct_rate: 0.727825820446
+	 test_cost: 0.695200026035
+	 time_read_data_this_epoch: 0.784625053406
+	 time_read_data_total: 57.3528213501
+	 time_train_this_epoch: 12.2592256069
+	 time_train_total: 897.027400732
+	 train_correct_rate: 1.0
+	 train_cost: 0.0656609982252
+	 train_total_step_norm: 0.0247370414436
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 71
+	 iterations_done: 2769
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2769:
+	 test_correct_rate: 0.696808516979
+	 test_cost: 0.642347812653
+	 time_read_data_this_epoch: 0.789044380188
+	 time_read_data_total: 58.1418657303
+	 time_train_this_epoch: 12.2654659748
+	 time_train_total: 909.292866707
+	 train_correct_rate: 0.987804889679
+	 train_cost: 0.0912671610713
+	 train_total_step_norm: 0.0498596914113
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 72
+	 iterations_done: 2808
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2808:
+	 test_correct_rate: 0.759657621384
+	 test_cost: 0.614638626575
+	 time_read_data_this_epoch: 0.786442518234
+	 time_read_data_total: 58.9283082485
+	 time_train_this_epoch: 12.2691030502
+	 time_train_total: 921.561969757
+	 train_correct_rate: 1.0
+	 train_cost: 0.0683718845248
+	 train_total_step_norm: 0.0350762829185
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 73
+	 iterations_done: 2847
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2847:
+	 test_correct_rate: 0.753839790821
+	 test_cost: 0.642355024815
+	 time_read_data_this_epoch: 0.794675350189
+	 time_read_data_total: 59.7229835987
+	 time_train_this_epoch: 12.2682404518
+	 time_train_total: 933.830210209
+	 train_correct_rate: 1.0
+	 train_cost: 0.064082056284
+	 train_total_step_norm: 0.0434300489724
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 74
+	 iterations_done: 2886
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2886:
+	 test_correct_rate: 0.717586517334
+	 test_cost: 0.658115565777
+	 time_read_data_this_epoch: 0.779902696609
+	 time_read_data_total: 60.5028862953
+	 time_train_this_epoch: 12.2676169872
+	 time_train_total: 946.097827196
+	 train_correct_rate: 0.987804889679
+	 train_cost: 0.0802855938673
+	 train_total_step_norm: 0.092011615634
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 75
+	 iterations_done: 2925
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2925:
+	 test_correct_rate: 0.72724956274
+	 test_cost: 0.679820120335
+	 time_read_data_this_epoch: 0.877741098404
+	 time_read_data_total: 61.3806273937
+	 time_train_this_epoch: 12.2734341621
+	 time_train_total: 958.371261358
+	 train_correct_rate: 0.987804889679
+	 train_cost: 0.0782209709287
+	 train_total_step_norm: 0.0800317525864
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 76
+	 iterations_done: 2964
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 2964:
+	 test_correct_rate: 0.742846906185
+	 test_cost: 0.669039607048
+	 time_read_data_this_epoch: 0.789718866348
+	 time_read_data_total: 62.1703462601
+	 time_train_this_epoch: 12.2712070942
+	 time_train_total: 970.642468452
+	 train_correct_rate: 0.987804889679
+	 train_cost: 0.0676954612136
+	 train_total_step_norm: 0.0563428662717
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 77
+	 iterations_done: 3003
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3003:
+	 test_correct_rate: 0.742348194122
+	 test_cost: 0.631555259228
+	 time_read_data_this_epoch: 0.787092447281
+	 time_read_data_total: 62.9574387074
+	 time_train_this_epoch: 12.269089222
+	 time_train_total: 982.911557674
+	 train_correct_rate: 1.0
+	 train_cost: 0.0478836447001
+	 train_total_step_norm: 0.0267611201853
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 78
+	 iterations_done: 3042
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3042:
+	 test_correct_rate: 0.732601940632
+	 test_cost: 0.655036091805
+	 time_read_data_this_epoch: 0.785116672516
+	 time_read_data_total: 63.7425553799
+	 time_train_this_epoch: 12.2712249756
+	 time_train_total: 995.18278265
+	 train_correct_rate: 1.0
+	 train_cost: 0.0629197061062
+	 train_total_step_norm: 0.0322483889759
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 79
+	 iterations_done: 3081
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3081:
+	 test_correct_rate: 0.738331139088
+	 test_cost: 0.639720082283
+	 time_read_data_this_epoch: 0.86874127388
+	 time_read_data_total: 64.6112966537
+	 time_train_this_epoch: 12.2755038738
+	 time_train_total: 1007.45828652
+	 train_correct_rate: 1.0
+	 train_cost: 0.0475326143205
+	 train_total_step_norm: 0.0235033519566
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 80
+	 iterations_done: 3120
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3120:
+	 test_correct_rate: 0.734136819839
+	 test_cost: 0.644984126091
+	 time_read_data_this_epoch: 0.79593873024
+	 time_read_data_total: 65.407235384
+	 time_train_this_epoch: 12.2674925327
+	 time_train_total: 1019.72577906
+	 train_correct_rate: 1.0
+	 train_cost: 0.040645878762
+	 train_total_step_norm: 0.0284101869911
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 81
+	 iterations_done: 3159
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3159:
+	 test_correct_rate: 0.303102850914
+	 test_cost: 3.00440049171
+	 time_read_data_this_epoch: 0.797796010971
+	 time_read_data_total: 66.205031395
+	 time_train_this_epoch: 12.4821574688
+	 time_train_total: 1032.20793653
+	 train_correct_rate: 0.0487805008888
+	 train_cost: 4.33188009262
+	 train_total_step_norm: 1.08916056156
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 82
+	 iterations_done: 3198
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3198:
+	 test_correct_rate: 0.693916201591
+	 test_cost: 0.616469681263
+	 time_read_data_this_epoch: 0.821792840958
+	 time_read_data_total: 67.0268242359
+	 time_train_this_epoch: 12.4234044552
+	 time_train_total: 1044.63134098
+	 train_correct_rate: 0.987804889679
+	 train_cost: 0.11363119632
+	 train_total_step_norm: 0.0690093785524
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 83
+	 iterations_done: 3237
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3237:
+	 test_correct_rate: 0.704881429672
+	 test_cost: 0.699946463108
+	 time_read_data_this_epoch: 0.811351537704
+	 time_read_data_total: 67.8381757736
+	 time_train_this_epoch: 12.4048342705
+	 time_train_total: 1057.03617525
+	 train_correct_rate: 1.0
+	 train_cost: 0.0607580766082
+	 train_total_step_norm: 0.0347001887858
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 84
+	 iterations_done: 3276
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3276:
+	 test_correct_rate: 0.730169594288
+	 test_cost: 0.644372165203
+	 time_read_data_this_epoch: 0.835390090942
+	 time_read_data_total: 68.6735658646
+	 time_train_this_epoch: 12.5875675678
+	 time_train_total: 1069.62374282
+	 train_correct_rate: 1.0
+	 train_cost: 0.0638182684779
+	 train_total_step_norm: 0.0459944494069
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 85
+	 iterations_done: 3315
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3315:
+	 test_correct_rate: 0.6999335289
+	 test_cost: 0.672801613808
+	 time_read_data_this_epoch: 0.798010110855
+	 time_read_data_total: 69.4715759754
+	 time_train_this_epoch: 12.5191020966
+	 time_train_total: 1082.14284492
+	 train_correct_rate: 1.0
+	 train_cost: 0.0638370513916
+	 train_total_step_norm: 0.0507756955922
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 86
+	 iterations_done: 3354
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3354:
+	 test_correct_rate: 0.760383427143
+	 test_cost: 0.615114092827
+	 time_read_data_this_epoch: 0.820677757263
+	 time_read_data_total: 70.2922537327
+	 time_train_this_epoch: 12.3825538158
+	 time_train_total: 1094.52539873
+	 train_correct_rate: 1.0
+	 train_cost: 0.0519587807357
+	 train_total_step_norm: 0.0511499606073
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 87
+	 iterations_done: 3393
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3393:
+	 test_correct_rate: 0.746465027332
+	 test_cost: 0.618347525597
+	 time_read_data_this_epoch: 0.796730279922
+	 time_read_data_total: 71.0889840126
+	 time_train_this_epoch: 12.2631807327
+	 time_train_total: 1106.78857946
+	 train_correct_rate: 1.0
+	 train_cost: 0.0412944331765
+	 train_total_step_norm: 0.0196542944759
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 88
+	 iterations_done: 3432
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3432:
+	 test_correct_rate: 0.764433801174
+	 test_cost: 0.605581104755
+	 time_read_data_this_epoch: 0.796769618988
+	 time_read_data_total: 71.8857536316
+	 time_train_this_epoch: 12.2648410797
+	 time_train_total: 1119.05342054
+	 train_correct_rate: 1.0
+	 train_cost: 0.0449940003455
+	 train_total_step_norm: 0.0242287628353
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 89
+	 iterations_done: 3471
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3471:
+	 test_correct_rate: 0.72724956274
+	 test_cost: 0.715301096439
+	 time_read_data_this_epoch: 0.803092479706
+	 time_read_data_total: 72.6888461113
+	 time_train_this_epoch: 12.2688009739
+	 time_train_total: 1131.32222152
+	 train_correct_rate: 1.0
+	 train_cost: 0.0439895950258
+	 train_total_step_norm: 0.0446950048208
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 90
+	 iterations_done: 3510
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3510:
+	 test_correct_rate: 0.731299877167
+	 test_cost: 0.637486517429
+	 time_read_data_this_epoch: 0.819979190826
+	 time_read_data_total: 73.5088253021
+	 time_train_this_epoch: 12.2675282955
+	 time_train_total: 1143.58974981
+	 train_correct_rate: 1.0
+	 train_cost: 0.0337326452136
+	 train_total_step_norm: 0.0154252778739
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 91
+	 iterations_done: 3549
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3549:
+	 test_correct_rate: 0.736480534077
+	 test_cost: 0.665814161301
+	 time_read_data_this_epoch: 0.786972761154
+	 time_read_data_total: 74.2957980633
+	 time_train_this_epoch: 12.2666780949
+	 time_train_total: 1155.85642791
+	 train_correct_rate: 1.0
+	 train_cost: 0.0443263612688
+	 train_total_step_norm: 0.0425212085247
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 92
+	 iterations_done: 3588
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3588:
+	 test_correct_rate: 0.727825820446
+	 test_cost: 0.632806420326
+	 time_read_data_this_epoch: 0.802800655365
+	 time_read_data_total: 75.0985987186
+	 time_train_this_epoch: 12.2582662106
+	 time_train_total: 1168.11469412
+	 train_correct_rate: 1.0
+	 train_cost: 0.0384485460818
+	 train_total_step_norm: 0.0310835875571
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 93
+	 iterations_done: 3627
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3627:
+	 test_correct_rate: 0.748576104641
+	 test_cost: 0.624175310135
+	 time_read_data_this_epoch: 0.797078371048
+	 time_read_data_total: 75.8956770897
+	 time_train_this_epoch: 12.2537858486
+	 time_train_total: 1180.36847997
+	 train_correct_rate: 1.0
+	 train_cost: 0.0420744866133
+	 train_total_step_norm: 0.0352567248046
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 94
+	 iterations_done: 3666
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3666:
+	 test_correct_rate: 0.752626419067
+	 test_cost: 0.624512553215
+	 time_read_data_this_epoch: 0.794829845428
+	 time_read_data_total: 76.6905069351
+	 time_train_this_epoch: 12.2600588799
+	 time_train_total: 1192.62853885
+	 train_correct_rate: 1.0
+	 train_cost: 0.0301069859415
+	 train_total_step_norm: 0.0114636598155
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 95
+	 iterations_done: 3705
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3705:
+	 test_correct_rate: 0.744060277939
+	 test_cost: 0.640561759472
+	 time_read_data_this_epoch: 0.780338764191
+	 time_read_data_total: 77.4708456993
+	 time_train_this_epoch: 12.2623717785
+	 time_train_total: 1204.89091063
+	 train_correct_rate: 1.0
+	 train_cost: 0.0305738262832
+	 train_total_step_norm: 0.031716901809
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 96
+	 iterations_done: 3744
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3744:
+	 test_correct_rate: 0.731903851032
+	 test_cost: 0.661562263966
+	 time_read_data_this_epoch: 0.78490281105
+	 time_read_data_total: 78.2557485104
+	 time_train_this_epoch: 12.2600252628
+	 time_train_total: 1217.15093589
+	 train_correct_rate: 1.0
+	 train_cost: 0.0276497937739
+	 train_total_step_norm: 0.0159341730177
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 97
+	 iterations_done: 3783
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3783:
+	 test_correct_rate: 0.740996301174
+	 test_cost: 0.648281097412
+	 time_read_data_this_epoch: 0.788552761078
+	 time_read_data_total: 79.0443012714
+	 time_train_this_epoch: 12.2608571053
+	 time_train_total: 1229.41179299
+	 train_correct_rate: 1.0
+	 train_cost: 0.044961001724
+	 train_total_step_norm: 0.0554074905813
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 98
+	 iterations_done: 3822
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3822:
+	 test_correct_rate: 0.74678081274
+	 test_cost: 0.62215077877
+	 time_read_data_this_epoch: 0.782259941101
+	 time_read_data_total: 79.8265612125
+	 time_train_this_epoch: 12.2547123432
+	 time_train_total: 1241.66650534
+	 train_correct_rate: 1.0
+	 train_cost: 0.0295963771641
+	 train_total_step_norm: 0.0274453833699
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 99
+	 iterations_done: 3861
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3861:
+	 test_correct_rate: 0.748171567917
+	 test_cost: 0.631747543812
+	 time_read_data_this_epoch: 0.788935422897
+	 time_read_data_total: 80.6154966354
+	 time_train_this_epoch: 12.3732926846
+	 time_train_total: 1254.03979802
+	 train_correct_rate: 1.0
+	 train_cost: 0.0318291857839
+	 train_total_step_norm: 0.0207424610853
+
+
+-------------------------------------------------------------------------------
+AFTER ANOTHER EPOCH
+-------------------------------------------------------------------------------
+Training status:
+	 batch_interrupt_received: False
+	 epoch_interrupt_received: False
+	 epoch_started: False
+	 epochs_done: 100
+	 iterations_done: 3900
+	 received_first_batch: True
+	 training_started: True
+Log records from the iteration 3900:
+	 test_correct_rate: 0.751523733139
+	 test_cost: 0.614161610603
+	 time_read_data_this_epoch: 0.815321922302
+	 time_read_data_total: 81.4308185577
+	 time_train_this_epoch: 12.6227476597
+	 time_train_total: 1266.66254568
+	 train_correct_rate: 1.0
+	 train_cost: 0.0283697638661
+	 train_total_step_norm: 0.0146288406104
+

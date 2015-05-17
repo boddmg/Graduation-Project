@@ -23,7 +23,7 @@ from blocks.extensions.plot import Plot
 from blocks.main_loop import MainLoop
 from blocks.extensions import FinishAfter, Printing, Timing
 from blocks.filter import VariableFilter
-from blocks.roles import INPUT
+from blocks.roles import INPUT, OUTPUT
 
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 
@@ -97,7 +97,7 @@ def main():
 
     cg = ComputationGraph(cost)
 
-    mlp_linear = VariableFilter(bricks=[Linear])(cg.variables)
+    mlp_linear = VariableFilter(roles=[OUTPUT], bricks=[Linear])(cg.variables)
     print mlp_linear
     cg_dropout = apply_dropout(cg, mlp_linear, 0.5)
 
@@ -124,7 +124,7 @@ def main():
 
     # Add a plot monitor.
     plot = Plot(document = 'new',
-                channels=[['test_correct_rate'], ['train_correct_rate']],
+                channels=[['test_correct_rate', 'train_correct_rate']],
                 start_server = True)
 
     print("Start training")

@@ -3,7 +3,7 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/'+'..'+'/'+".."))
 
-from blocks.bricks import Linear, Rectifier, Softmax, Sigmoid, Tanh, MLP, Maxout
+from blocks.bricks import Linear, Rectifier, Softmax, Sigmoid, Tanh, MLP, Maxout, LinearMaxout
 from blocks.bricks.conv import ConvolutionalLayer, ConvolutionalSequence, Flattener
 
 from theano import tensor
@@ -80,14 +80,17 @@ def main():
 
     features = Flattener().apply(convnet.apply(x))
     # features = x.flatten()
-    mlp = MLP(activations=[Sigmoid(), Sigmoid(), Softmax()],
-              dims=[320, 256, 100, 14], weights_init=IsotropicGaussian(),
+    mlp = MLP(activations=[Sigmoid()],
+              dims=[320, 300], weights_init=IsotropicGaussian(),
               biases_init=Constant(0.))
     mlp.initialize()
 
+    softmax_mlp = MLP(activations=[Softmax()],
+              dims=[60, 14], weights_init=IsotropicGaussian(),
+              biases_init=Constant(0.))
+    softmax_mlp.initialize()
 
-
-    probs = mlp.apply(features)
+    probs = softmax_mlp.apply(Maxout(5).apply(mlp.apply(features)))
 
 
     cost = CategoricalCrossEntropy().apply(y.flatten(), probs)
@@ -97,9 +100,7 @@ def main():
 
     cg = ComputationGraph(cost)
 
-    mlp_linear = VariableFilter(bricks=[Linear])(cg.variables)
-    print mlp_linear
-    cg_dropout = apply_dropout(cg, mlp_linear, 0.5)
+    # cg_dropout = apply_dropout(cg, VariableFilter(roles=[INPUT])(cg.variables), 0.5)
 
     ## Carve the data into lots of batches.
 
@@ -107,9 +108,8 @@ def main():
         cad60_train.num_examples, batch_size = BATCH_SIZE))
 
     ## Set the algorithm for the training.
-    algorithm = GradientDescent(cost = cost, params = cg_dropout.parameters,
-                                # step_rule = CompositeRule([VariableClipping(50), Scale(0.1)]) )
-                                step_rule = CompositeRule([Scale(0.1)]))
+    algorithm = GradientDescent(cost = cost, params = cg.parameters,
+                                step_rule =  CompositeRule([VariableClipping(50), Scale(0.1)]) )
 
     ## Add a monitor extension for the training.
     data_stream_test = DataStream(cad60_test, iteration_scheme = ShuffledScheme(
@@ -132,7 +132,7 @@ def main():
                          extensions=[Timing(),
                                      test_monitor,
                                      train_monitor,
-                                     FinishAfter(after_n_epochs = 150),
+                                     FinishAfter(after_n_epochs = 300),
                                      Printing(),
                                      plot
                                      ])

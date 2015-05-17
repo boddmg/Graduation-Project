@@ -3,7 +3,7 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/'+'..'+'/'+".."))
 
-from blocks.bricks import Linear, Rectifier, Softmax, Sigmoid, Tanh, MLP, Maxout
+from blocks.bricks import Linear, Rectifier, Softmax, Sigmoid, Tanh, MLP, Maxout, LinearMaxout, Sequence
 from blocks.bricks.conv import ConvolutionalLayer, ConvolutionalSequence, Flattener
 
 from theano import tensor
@@ -80,15 +80,25 @@ def main():
 
     features = Flattener().apply(convnet.apply(x))
     # features = x.flatten()
-    mlp = MLP(activations=[Sigmoid(), Sigmoid(), Softmax()],
-              dims=[320, 256, 100, 14], weights_init=IsotropicGaussian(),
-              biases_init=Constant(0.))
-    mlp.initialize()
+    # mlp = MLP(activations=[Sigmoid()],
+    #           dims=[320, 300], weights_init=IsotropicGaussian(),
+    #           biases_init=Constant(0.))
+    # mlp.initialize()
 
+    linear_maxout1 = LinearMaxout(320, 200, 5,
+                                  weights_init=IsotropicGaussian(),
+                                  biases_init=Constant(0.))
+    linear_maxout1.initialize()
 
+    linear_maxout2 = LinearMaxout(200, 100, 5,
+                                  weights_init=IsotropicGaussian(),
+                                  biases_init=Constant(0.))
 
-    probs = mlp.apply(features)
+    linear_maxout2.initialize()
 
+    linear_maxout1_out = Sigmoid().apply(linear_maxout1.apply(features))
+    linear_maxout2_out = linear_maxout2.apply(linear_maxout1_out)
+    probs = Softmax().apply(linear_maxout2_out)
 
     cost = CategoricalCrossEntropy().apply(y.flatten(), probs)
     correct_rate = 1 - MisclassificationRate().apply(y.flatten(), probs)
@@ -97,9 +107,7 @@ def main():
 
     cg = ComputationGraph(cost)
 
-    mlp_linear = VariableFilter(bricks=[Linear])(cg.variables)
-    print mlp_linear
-    cg_dropout = apply_dropout(cg, mlp_linear, 0.5)
+    cg_dropout = apply_dropout(cg, [linear_maxout1_out, linear_maxout2_out], 0.5)
 
     ## Carve the data into lots of batches.
 
@@ -108,8 +116,7 @@ def main():
 
     ## Set the algorithm for the training.
     algorithm = GradientDescent(cost = cost, params = cg_dropout.parameters,
-                                # step_rule = CompositeRule([VariableClipping(50), Scale(0.1)]) )
-                                step_rule = CompositeRule([Scale(0.1)]))
+                                step_rule =  CompositeRule([VariableClipping(50), Scale(0.1)]) )
 
     ## Add a monitor extension for the training.
     data_stream_test = DataStream(cad60_test, iteration_scheme = ShuffledScheme(
@@ -132,7 +139,7 @@ def main():
                          extensions=[Timing(),
                                      test_monitor,
                                      train_monitor,
-                                     FinishAfter(after_n_epochs = 150),
+                                     FinishAfter(after_n_epochs = 300),
                                      Printing(),
                                      plot
                                      ])
