@@ -13,3 +13,4 @@ stdout
 *.dat
 /program/program/cad60-cnn/.idea/*
 *.idea*
+~$model-compare.xlsx
