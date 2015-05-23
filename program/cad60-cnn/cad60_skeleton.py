@@ -31,6 +31,7 @@ class CAD60(object):
             self.root_path = root_path
         else:
             self.root_path = path.abspath(root_path)
+
         self.data_type = data_type
         self.batch_size = batch_size
         self.shape = [0, batch_size, 170]
@@ -54,8 +55,8 @@ class CAD60(object):
                 index = map(lambda x:x.split(",")[:2],open(current_file, "r").readlines() )[:-1]
                 for i in index:
                     file_path = path.join(current_dir, i[0]+".txt")
-                    if i[1]=="random":
-                        continue
+ #                   if i[1]=="random":
+ #                       continue
                     yield file_path, i, person_index
             person_index += 1
 

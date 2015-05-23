@@ -93,11 +93,17 @@ def main():
                                   weights_init=IsotropicGaussian(),
                                   biases_init=Constant(0.))
 
+    linear_maxout3 = LinearMaxout(100, 14, 5,
+                                  weights_init=IsotropicGaussian(),
+                                  biases_init=Constant(0.))
+
     maxout_net = Sequence(
         [
             linear_maxout1.apply,
             Sigmoid().apply,
             linear_maxout2.apply,
+            Sigmoid().apply,
+            linear_maxout3.apply,
             Softmax().apply
         ]
     )

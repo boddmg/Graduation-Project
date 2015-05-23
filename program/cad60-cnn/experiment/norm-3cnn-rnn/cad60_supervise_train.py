@@ -3,8 +3,10 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/'+'..'+'/'+".."))
 
-from blocks.bricks import Linear, Rectifier, Softmax, Sigmoid, Tanh, MLP, Maxout
+from blocks.bricks import Linear, Rectifier, Softmax, Sigmoid, Tanh, MLP, Maxout, Sequence, Identity
+from blocks.bricks.recurrent import SimpleRecurrent
 from blocks.bricks.conv import ConvolutionalLayer, ConvolutionalSequence, Flattener
+from blocks import initialization
 
 from theano import tensor
 import theano
@@ -80,15 +82,39 @@ def main():
 
     features = Flattener().apply(convnet.apply(x))
     # features = x.flatten()
-    mlp = MLP(activations=[Sigmoid(), Sigmoid(), Softmax()],
-              dims=[320, 256, 100, 14], weights_init=IsotropicGaussian(),
+    linear1 = Linear(320, 200 , weights_init=IsotropicGaussian(),
+                                  biases_init=Constant(0.))
+    linear1.initialize()
+
+    linear2 = Linear(200, 100, weights_init=IsotropicGaussian(),
+                                  biases_init=Constant(0.))
+    linear2.initialize()
+
+    linear3 = Linear(100, 14,  weights_init=IsotropicGaussian(),
+                                  biases_init=Constant(0.))
+    linear3.initialize()
+
+    rnn = SimpleRecurrent(dim=2, activation=Identity(), weights_init=initialization.Identity())
+    rnn.initialize()
+
+    rnn_linear1 = MLP(activations=[Sigmoid()],
+              dims=[320, 256], weights_init=IsotropicGaussian(),
               biases_init=Constant(0.))
-    mlp.initialize()
+    rnn_linear1.initialize()
 
+    rnn_linear2 = MLP(activations=[Sigmoid()],
+              dims=[256, 100], weights_init=IsotropicGaussian(),
+              biases_init=Constant(0.))
+    rnn_linear2.initialize()
 
+    rnn_linear3 = MLP(activations=[Softmax()],
+              dims=[100, 14], weights_init=IsotropicGaussian(),
+              biases_init=Constant(0.))
+    rnn_linear3.initialize()
 
-    probs = mlp.apply(features)
-
+    probs = rnn.apply(rnn_linear1.apply(features))
+    probs = rnn_linear2.apply(probs)
+    probs = rnn_linear3.apply(probs)
 
     cost = CategoricalCrossEntropy().apply(y.flatten(), probs)
     correct_rate = 1 - MisclassificationRate().apply(y.flatten(), probs)
@@ -97,17 +123,13 @@ def main():
 
     cg = ComputationGraph(cost)
 
-    mlp_linear = VariableFilter(roles=[OUTPUT], bricks=[Linear])(cg.variables)
-    print mlp_linear
-    cg_dropout = apply_dropout(cg, mlp_linear, 0.5)
-
     ## Carve the data into lots of batches.
 
     data_stream_train = DataStream(cad60_train, iteration_scheme = ShuffledScheme(
         cad60_train.num_examples, batch_size = BATCH_SIZE))
 
     ## Set the algorithm for the training.
-    algorithm = GradientDescent(cost = cost, params = cg_dropout.parameters,
+    algorithm = GradientDescent(cost = cost, params = cg.parameters,
                                 # step_rule = CompositeRule([VariableClipping(50), Scale(0.1)]) )
                                 step_rule = CompositeRule([Scale(0.1)]))
 
