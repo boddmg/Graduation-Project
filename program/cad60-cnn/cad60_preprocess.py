@@ -23,19 +23,10 @@ class CAD60Loader(Preprocessor):
 def main():
     for i in ["train", "test"]:
         src_data, src_labels = PreprocessorList([
-            DataLoad("cad60_%s.hkl" % i),
-            SplitIntoBatches(60, 5),
+            CAD60Loader(i),
             Monitor(),
-            Flatter(),
-            Monitor(),
-            Encoder(get_layer_trainer_sgd_autoencoder,
-                    get_denoising_autoencoder([60 * 170,80]), 3,
-                    "autoencoder1.pkl",
-                    "autoencoder1.pkl" if i == "test" else None),
-            Monitor(),
-            Shuffle(),
-            Monitor(),
-            DataDump("cad60_%s_feature.hkl" % i)]).run()
+            DataDump("cad60_%s.hkl" % i)
+        ]).run()
 
     print src_data.shape, src_labels.shape
 
