@@ -1,0 +1,37 @@
+digraph G {
+	compound = true;
+    rankdir=LR;
+    splines=line;
+    nodesep=.05;
+    
+    node [label=""];
+    ordering=out;
+ 
+	subgraph cluster_0 {
+		rank=same;
+		color=white;
+                node [style=solid, shape=circle];
+		x1 x2 x3 x4 x5;
+		label = "layer m-1";
+	}
+
+	subgraph cluster_1 {
+		rank=same;
+		color=white;
+                node [style=solid, shape=circle];
+		y1 y2 y3;
+		label = "layer m";
+	}
+
+	x1 -> y1 [color=blue];
+	x2 -> y2 [color=blue];
+	x3 -> y3 [color=blue];
+
+	x2 -> y1 [color=red];
+	x3 -> y2 [color=red];
+	x4 -> y3 [color=red];
+
+	x3 -> y1 [color=green];
+	x4 -> y2 [color=green];
+	x5 -> y3 [color=green];
+}

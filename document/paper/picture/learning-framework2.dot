@@ -1,0 +1,14 @@
+digraph G {
+    rankdir=LR;
+    node [shape=box];
+	input->feature;
+	feature->input [label="无监督学习"];
+	
+	feature->classifier [label="特征"]; 
+	classifier->output [label="分类"];
+
+	input [label="原始数据"];
+	feature [label="特征提取"];
+	classifier [label="分类器"];
+	output [label="分类结果"];
+}

@@ -1,0 +1,13 @@
+digraph G {
+    rankdir=LR;
+    node [shape=box];
+	input->feature; 
+	
+	feature->classifier [label="特征"];
+	classifier->output [label="分类"];
+
+	input [label="原始数据"];
+	feature [label="人工特征提取"];
+	classifier [label="分类器"];
+	output [label="分类结果"];
+}

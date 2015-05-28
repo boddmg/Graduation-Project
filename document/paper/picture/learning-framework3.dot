@@ -1,0 +1,17 @@
+digraph G {
+    rankdir=LR;
+    node [shape=box];
+
+	input->feature;
+	feature->classifier [label="特征"];
+	classifier->output [label="分类"];
+
+	feature->input [label="有监督学习"];
+	classifier->feature [label="后向传播（BP）算法"];
+	output->classifier [label="分类误差"];
+
+	input [label="原始数据"];
+	feature [label="特征提取"];
+	classifier [label="分类器"];
+	output [label="分类结果"];
+}
