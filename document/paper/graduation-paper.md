@@ -6,7 +6,7 @@
 
 #HUMAN ACTION RECOGNITION BASE ON COMPUTER VISION  
 ##Abstract  
-We propose in the paper a computer vision model base on deep learning, which can recognise the human action only base on the data source in the skeletons of the human from Kinect. Using the skeletons from Kinect is because it is easy to get, to store and to transfer, and it has the less order of the data. This model only use the human skeletons data from the CAD-60 dataset to recognise the human antion without using any prior knowledge. It can reduce the works from the human on the stage of preprocessing and hand the feature extraction to the computer, which can reduce the error from the human-engineer. It can also improve generalization performance and robustness of the model, And give the a understanding of the human action. In the paper, we do the experiment on with convolutional neural networks, autoencoder, denoise autoencoder, Restricted Boltzmann Machines and the some of their mixture, and it also do some experiments for the tricks which can improve the nerual network, such as some regularization methods or other activation functions. In the end, we choose the convolutional neural networks for the feature extraction. And use the multilayer perceptron as the follow classifier.  
+We propose in the paper a computer vision model base on deep learning, which can recognize the human action only base on the data source in the skeletons of the human from Kinect. Using the skeletons from Kinect is because it is easy to get, to store and to transfer, and it has the less order of the data. This model only use the human skeletons data from the CAD-60 dataset to recognize the human action without using any prior knowledge. It can reduce the works from the human on the stage of preprocessing and hand the feature extraction to the computer, which can reduce the error from the human-engineer. It can also improve generalization performance and robustness of the model, And give the a understanding of the human action. In the paper, we do the experiment on with convolutional neural networks, autoencoder, denoising autoencoder, Restricted Boltzmann Machines and the some of their mixture, and it also do some experiments for the tricks which can improve the nerual network, such as some regularization methods or other activation functions. In the end, we choose the convolutional neural networks for the feature extraction. And use the multilayer perceptron as the follow classifier.  
 
 keywords: Human action recognition, CAD-60 dataset, deep models, convolutional neural networks, autoencoder, Restricted Boltzmann Machines, Kinect  
 
@@ -22,7 +22,7 @@ keywords: Human action recognition, CAD-60 dataset, deep models, convolutional n
 ####人体运动数据源的获得  
 首先，对于人体运动识别的数据的来源存在着几种不同的种类[[@Chen2013]]。例如由 RGB 摄像机、距离传感器或其他遥感的方式。使用深度传感器来进行人体运动识别的发展始于 80 年代初。过去的研究主要集中在学习和认识到从视频序列(可见光相机）所采集的数据中。可见光视频的主要问题是从单目视频传感器捕捉得到的人体运动存在相当大的损失。由于视频天生的对的人体行为识别的限制，尽管已经有了过去几十年的努力，但通过视频来识别人体运动，仍然是非常具有挑战性的。
 而得益于近期发布的成本低廉的深度传感器，我们看到了和 3D 数据相关的研究越来越多了。从过去的 20 年里，我们获得 3D 数据的方法，一共分为三类。一种方法是通过使用基于标记的动作捕捉系统，如 MoCap。 第二种方式是通过立体视觉： 从多个角度捕获 2D 图像序列，通过从多个视图来重建三维信息。第三种方式是使用距离传感器（使用类似 TOF 原理的传感器）。深度相机在过去几年里取得迅速的发展。最近出现的深度照相机可以在相对低廉的成本和较小的尺寸里给我们提供较高的帧率和分辨率，这导致出现了许多新的研究中的动作识别都是采用的三维数据。  
-  
+
 ####人体动作识别的主要问题  
 基于视觉的人体动作识别里有四个主要的问题。第一个问题的挑战性比较小 [[@Weinland2010]]  [[@RefWorks:doc:55619de1e4b0e03d6aff9d14]]：闭塞、 杂乱的背景、 阴影和不同光照条件会让运动难以分割或者被错误地识别。这是从 RGB 视频行为识别的一大难点。引入 3D 数据可以在很大程度上通过提供现场的结构信息，从而缓解这个问题。第二个是视角的变换[[@Weinland2010]] [[@RefWorks:doc:55619df3e4b030e10feadeb2]] [[@RefWorks:doc:55619e03e4b030e10feadeb3]] 和 [[@RefWorks:doc:55619e12e4b030e10feadeb4]]。相同的操作可以从不同的角度产生不同的"外观"。传统的 RGB 相机解决这一问题的方法主要是引入多个同步的摄像机，同时获得多个视角的图像，但对于某些应用程序，这不是件容易的事。不过对于三维运动捕捉系统，这不是一个严重的问题。而如果通过深度图像来进行识别的话，这个问题也会有部分被缓解，因为从轻微旋转的视角的外观可以推断深度的信息。这一点并不完全解决问题，因为摄像机始终还只是在对象的一侧上，这个距离图像只提供了部分的信息，还是没有人知道这个对象的另一面是什么样子的。如果可以运用单一深度相机来精确地推断出人的骨架模型，则可以通过骨架模型的信息来构造一种视图不变识别的算法。第三个问题是放缩上的差异，因为人离相机的距离的不同会影响主体的大小从而影响运动的识别。而在 RGB 视频中，这可以通过在多个尺度下的[[@RefWorks:doc:55619e70e4b030e10feadeb5]] 特征提取解决了。而在深度视频中，这可以很容易调整，因为真正的主体的 3D 尺寸直接是已知的。第四个问题是同一种类内的变异性和不同种类之间的相似性问题[[@Poppe2010]]。人可以通过不同的身体部位在不同的方向上做动作，但不同的方向和两个动作仅只有只由非常细微的细节来区分。而这个不管对于使用哪种数据的来源的算法来说都仍然是一个非常困难的问题。  
 前三个问题基本上都可以通过使用三维空间上的图像或者类似骨架之类的模型来解决，所以本文使用的数据来源是由传感器采集计算直接得到的骨架数据。  
@@ -47,7 +47,7 @@ keywords: Human action recognition, CAD-60 dataset, deep models, convolutional n
 ![learning-framework1]  
 图1.人工特征提取  
 
-  
+
 ####无监督学习特征提取  
 这个类型主要是使用无监督学习的方法如限制玻耳兹曼机 RBM，自编码器，或者一些类似主要成分分析 PCA 的算法，在不需要数据集带有标签的前提下能够对数据的特征进行提取，发现特征内在的信息，从而减少数据的冗余，减少数据的维度。而这类型的模式如下图所示  
 ![learning-framework2]  
@@ -57,13 +57,13 @@ keywords: Human action recognition, CAD-60 dataset, deep models, convolutional n
 这个类型是使用有监督学习的方法，在特征提取里面把标签的信息也考虑进去，从而使特征提取的结果更有针对性，对后面的分类更有利，这类型里的算法有 CNN 卷积神经网络，过程则如下图所示  
 ![learning-framework3]  
 图3.有监督特征提取  
-  
-###特征提取相关模型  
+
+###特征提取模型  
 ####主要成分分析 PCA  
 主要成分分析[[@Wold1987]][[@Pearson1901]] 里的假设是，在数据里变化最大的那些因素就是最有价值的因素，因此，只要把输入的数据的空间找到一个变换，这个变换可以把数据里变化最大的因素提取出来，其他变化不那么大（利用价值比较小）的舍弃不看，就可以降低数据的维度，从而减少后面的计算的难度了。  
 首先要做的是数据的预处理，也就是数据的均值中心化和方差归一化：  
 1.数据的均值中心化，也就是把数值变化范围的中心移至 0 处:  
-$$ x^{(i)} = x^{(i)} - \mu = x^{(i)} - \frac{1}{m} \sum_{i=1}^m {x^{(i)}}$$ 
+$$ x^{(i)} = x^{(i)} - \mu = x^{(i)} - \frac{1}{m} \sum_{i=1}^m {x^{(i)}}$$
 2.数据的方差归一化:  
 $$ x_j^{(i)} = x_j^{(i)} / \sigma_j = x_j^{(i)} / \sqrt{\frac{1}{m} \sum_{i=1}^m {(x_{j}^{(i)})^2}} $$  
 
@@ -72,7 +72,7 @@ $$ x_j^{(i)} = x_j^{(i)} / \sigma_j = x_j^{(i)} / \sqrt{\frac{1}{m} \sum_{i=1}^m
 $$\sum = \frac{1}{m} \sum_{i=1}^{m}(x^{(i)})(x^{(i)})^T$$
 2.求得协方差矩阵的特征向量$U$并按特征值$\lambda_n$从大到小依次排列得到：  
 $$U=[u_1 u_2 .... u_n]$$
-3.按照一定的方法取 $k$ ，比如一个常见的经验法则是选择 $k$ 以保留99%的方差： 
+3.按照一定的方法取 $k$ ，比如一个常见的经验法则是选择 $k$ 以保留99%的方差：
 $$\frac{\sum^{k}_{j=1}\lambda_j}{\sum^{n}_{j=1}\lambda_j} >= 0.99$$  
 4.取前 $k$ 个特征值对应的特征向量，组成新的特征向量矩阵$U'$。并与 $x$ 相乘，得到新的降维后的数据 $x'$：  
 $$U' = [u_1 u_2 .... u_k]$$
@@ -90,7 +90,7 @@ $$L(xz) = ||x-z||^2$$
 ####卷积神经网络  
 卷积神经网络 CNNs [[@LeCun1998]][[@RefWorks:doc:55619fabe4b030e10feadeb9]]是一个专门为二维数据(例如图片和视频）设计的多层神经网络的系列。 CNNs 是第一种真正意义上成功的深度学习方法，它能够成功地用一种鲁棒的方式训练出多层的神经网络。相比起普通的多层神经网络，卷积神经网络有很多独有的特点。  
 
-#####稀疏连接    
+#####稀疏连接
 卷积神经网络利用了空间的局部相关性，相邻两层之间只进行了局部的连接，而不是像多层感知机 MLP 一样使用全连接的方式。换句话说，隐层 m 的单元的输入来自于层 m-1 在空间上连续的感受野的单位的一个子集。具体的如下图所示：  
 ![sparse-connectivity]  
 图4.稀疏连接  
@@ -115,10 +115,111 @@ $$L(xz) = ||x-z||^2$$
  位置上的 4 个新的特征图。然后会通过一个新的卷积层然后得到新的 6 个特征图 S2。这些将再一次池化得到 C2。最终这些像素的值进行光栅化、摊平成一个向量，这个向量就是这个网络里提取得到的特征。这些特征之后就可以输入到一个常规的分类器里，比如神经网络（多层感知机 MLP）里，最终由这个分类器进行分类结果的计算和输出。  
 而这些卷积核的权值和偏置，还有其他用到的权值则使用后向传播算法来进行计算出梯度，然后通过梯度下降法之类的算法进行优化，从而训练出来一个有效的特征提取的卷积神经网络。  
 
-###多层感知机（MLP）  
-特征提取完了之后，需要把特征交到后面的分类器进行分类，而由于有监督的特征提取网络需要得到分类错误后的传递过来的误差，所以需要需要使用可以进行后向传播的分类器，这里面比较经典的分类器就是多层感知机（MLP）也就是普通的神经网络。  
+##多层感知机（MLP）  
+特征提取完了之后，需要把特征交到后面的分类器进行分类，而由于有监督的特征提取网络需要得到分类错误后的传递过来的误差，所以需要需要使用可以进行后向传播的分类器，这里面比较经典的分类器就是多层感知机（MLP）也就是普通的神经网络[[@Kriesel2007]]。  
 
-####  
+神经网路由神经元组成：  
+![single-neuron]  
+图7.典型神经网络中的神经元  
+上图中的神经元实际上是一个以 $x_1, x_2, x_3$ 及截距 $+1$ 为输入值的运算单元，其输出为 $h_{W,b}(x) = f(W^Tx) = f(\sum_{i=1}^3 W_{i}x_i +b)$ ，其中函数 $f$ 被称为“激活函数”。激活函数的作用主要是为神经网络引入非线性环节，使其对非线性的函数具有更好的拟合能力。一般我们会选用 sigmoid 函数作为激活函数：  
+$$f(z) = \frac{1}{1+\exp(-z)}$$  
+
+典型的神经网络如图所示：  
+![MLP]  
+图8.典型多层神经网网络  
+如上图所示，把多个神经元按上图的形式以多层的形式串联起来，就可以得到可以一个神经网络用来对数据进行学习、拟合或者分类。  
+
+###前向传播  
+输入的值经过一层一层的神经元的计算、激活，一直到达最后一层，并得到值称之为前向传播，对于图 8 中的模型，前向传播的计算步骤如下所示：  
+$$ a_1^{(2)} = f(W_{11}^{(1)}x_1 + W_{12}^{(1)} x_2 + W_{13}^{(1)} x_3 + b_1^{(1)})$$
+$$ a_2^{(2)} = f(W_{21}^{(1)}x_1 + W_{22}^{(1)} x_2 + W_{23}^{(1)} x_3 + b_2^{(1)})$$
+$$ a_3^{(2)} = f(W_{31}^{(1)}x_1 + W_{32}^{(1)} x_2 + W_{33}^{(1)} x_3 + b_3^{(1)})$$
+$$ h_{W,b}(x) = a_1^{(3)} =  f(W_{11}^{(2)}a_1^{(2)} + W_{12}^{(2)} a_2^{(2)} + W_{13}^{(2)} a_3^{(2)} + b_1^{(2)}$$   
+如果把权值 W 表示为矩阵，且将激活函数 $f()$ 扩展为使用向量则上列等式可以更加简洁地表示为：  
+$$z^{(2)} = W^{(1)}x + b^{(1)}$$
+$$a^{(2)} = f(z^{(2)})$$
+$$z^{(3)} = W^{(2)} a^{(2)} + b^{(2)}$$
+$$h_{W,b}(x) = a^{(3)} = f(z^{(3)})$$  
+
+###后向传播  
+上述的前向传递是根据输入，通过网络逐层计算出来合适的结果，但是网络的里的权值、偏置需要确定，所以可以通过梯度下降法来进行对这些参数，也就是对神经网络进行求解。而对于单个输入的测试样例 $(x,y)$，其代价函数为：
+$$J(W,b; x,y) = \frac{1}{2} || h_{W,b}(x) - y ||^2$$  
+只要得到每一个参数的关于代价函数的偏导数，我们就可以使用梯度下降法来进行优化。  
+而求解每一个参数的偏导数就需要使用反向传播算法了。  
+反向传播算法的思路如下：给定一个样例 $(x,y)$，我们首先进行“前向传播”运算，计算出网络中所有的激活值，包括 $h_{W,b}(x)$ 的输出值。之后，针对第 $l$ 层的每一个节点 $i$，我们计算出其“残差” $\delta^{(l)}_i$ ，该残差表明了该节点对最终输出值的残差产生了多少影响。对于最终的输出节点，我们可以直接算出网络产生的激活值与实际值之间的差距，我们将这个差距定义为 $\delta^{(n_l)}_i$ （第 $n_l$ 层表示输出层）。对于隐藏单元我们将基于节点（第 $l+1$ 层节点）残差的加权平均值计算 $\delta^{(l)}_i$ ，这些节点以 $a^{(l)}_i$ 作为输入。  
+后向传播算法可以具体表示为以下步骤：  
+1.进行前馈传导计算，利用前向传导公式，得到 $L_2, L_3, \ldots$ 直到输出层 $L_{n_l}$ 的激活值。  
+2.对输出层（第 $n_l$ 层），计算：
+$$\delta^{(n_l)} = - (y - a^{(n_l)}) \bullet f'(z^{(n_l)})$$
+3.对于 $l=n_l-1, n_l-2, n_l-3, \ldots, 2$ 的各层，计算：
+$$\delta^{(l)} = \left((W^{(l)})^T \delta^{(l+1)}\right) \bullet f'(z^{(l)})$$
+4.计算最终需要的偏导数值：
+$$\nabla_{W^{(l)}} J(W,b;x,y) = \delta^{(l+1)}(a^{(l)})^T,$$
+$$\nabla_{b^{(l)}} J(W,b;x,y) = \delta^{(l+1)}.$$  
+
+##实验  
+本章中，首先会介绍一些我们在实验过程中使用的一些能够增强模型效果、速度、泛化能力的技巧，然后会结合编程实践给出一些编程框架的对比，以及不同算法下的准确率的比较。  
+
+###神经网络使用技巧  
+####数据、网络预处理[[@LeCun2012]]  
+#####对输入数据进行标准化  
+由于学习率对于每一个参数都是一样的，所以为了加快收敛，可以让所有参数都以相同的标准进行线性变换，映射到一个一致的范围里对输入的。具体的变换要求如下：  
+A、训练集的每个输入变量的均值要接近于0；  
+B、对输入变量进行缩放，使他们的方差具有相同的值；  
+C、输入变量最好是不相关的。  
+如图所示：  
+![normalizing-the-inputs]  
+图9.输入标准化  
+
+#####参数的初始化  
+参数的初始值对训练过程有着重大的影响。我们对参数初始化的原则是：参数应该随机初始化在能让 sigmoid 函数在线性区域激活的值。如果参数全部都很大，那sigmoid一开始就饱和了，这样就会得到一个非常小的梯度值，那参数更新就会很慢，训练也会很慢。使 sigmoid 函数工作在线性区域激活除了需要输入数据标准化到其标准差为 1，还需要参数初始值，也就是连接神经元的权值的初始值的标准差也能为 1。最简单的做法就是，给参数初始化的时候使用正态分布采样得到，那么参数就会均值为零，且方差近似1。    
+
+#####打乱样本的学习顺序  
+在使用后向传播算法进行学习的时候，有一个原则是使用意料之外的样本来学习，收敛得会更快。一般来说，训练用的数据都会是规整的，按顺序排列的，比如我们使用的数据集里，人体的运动都是按照时间顺序在一个大的视频里分别进行切片的，所以相邻的训练数据有很大可能是来自于同一个类型甚至是同一个视频的。而这一节的这个技巧就是在粗糙地选择来自不同类的样本，也就是说，尽量让每一次的训练采用的样本都来自不一样的类型，最简单的做法就是把样本的顺序打乱。因为同一个类的训练样本很大可能携带的是相似的信息，而相似的信息很有可能让网络落入一个局部的最优解处。所以为了提高模型的泛化性能，每次使用来进行训练的样本最好是随机地而不是按照顺序地进行选择。  
+
+###网络设计技巧  
+####加入正规化环节防止过拟合  
+在模型中加入正规化（Regularization）环节可以避免模型拟合出来的分类面高度非线性，从而避免过拟合现象。过拟合（Overfitting）是指模型对训练数据集中的样本拟合的非常好，但是面对训练集中没有的数据样本的分辨效果很差。正规化的主要实现方式是用某些方法尽量地使参与优化的参数尽可能的小。之所以要让参数尽可能的小，是因为正如下图所示，模型越复杂，就会像右边的图上所示，能拟合任何函数，但是显然已经过拟合了，有可能对新的数据产生分类错误。因此只要参数变小，就可以抑制模型的复杂程度，从而使得模型的泛化能力更强。  
+![overfit]  
+图10.过拟合  
+
+#####加入范数惩罚  
+而常用的正规化的方法是直接将所有参数 $θ$ 按某种形式加到最小化目标函数中加以惩罚，以免参数过大导致过拟合现象的产生，比如计算出来参数的 L1、L2范数然后直接把这一项加入到需要被优化的目标函数里去：
+$$w = arg min_m\sum L(y_i,f(x_i;w))+\lambda \Omega(w)$$  
+一般来说，监督学习可以看作是最小化上面的目标函数，而里面的 $L(y_i,f(x_i;w))$ 是样本的预测的误差，后面的 $\Omega(w)$ 就是我们加入的可以用来使模型更简单的正规化函数，比如L1范数正规化的话，有：
+$$\Omega(w) = ||w||_1 = \sum|w_i|$$  
+使用 L1 范数的正规化的话，还可以实现特征的稀疏表达。  
+这个方法里的 $\lambda$ 需要通过人工设定，可以通过实验来进行选择。  
+
+#####Max-norm  
+除了上述的，通过在优化的目标函数里加入权值的范数来进行整个权值空间的惩罚以外，一种有效的正规化方法是 Max-norm。这种算法是在每个单个的隐藏单元里设置这个单元的传入的权值的 L2 范数的上限，如果权值的更新违反了这个约束，我们就可以通过让这些权值除以这个范数来达到让这个权值重新正规化的目的。使用这个约束而不是使用惩罚的方法可以在无论每次权值更新得有多大的情况下防止权值变得非常大。而且，比起惩罚方法，使用约束的时候也可以使一开始的学习率可以取得很大，使得对权值空间的搜索可以更快，更彻底。当然，在这个算法里也有需要人工设置的参数，就是所使用的 L2 范数的上限。  
+
+#####Dropout  
+正规化的方法中，也有上述方法的变形。比如在网络的训练过程中使用的 Dropout[[@Hinton2014]][[@Hinton2012]]算法。可以有效地加强模型的泛化能力，抑制神经网络出现过拟合的现象。  
+Dropout 是指在模型训练时随机让网络某些隐含层节点的权值不工作，不工作的那些节点可以暂时认为不是网络结构的一部分，但是它的权值得保留下来（只是暂时这一轮里面它的值不更新而已），下次样本输入时它可能又会恢复工作了。但是这种方法是只适合于训练样本较少的条件下的用来增强模型的泛化能力的。  
+![dropout]  
+图11.左：标准神经网络；右：使用了 Dropout 算法之后  
+而这个算法里需要人工调整的是让某些节点权值不工作的概率，一般会直接选择 50%。  
+
+####Maxout  
+Maxout [[@Goodfellow2013]] 模型是类似多层感知机、卷积神经网络这种简单的前馈的架构使用的新型的激活函数。对于给定的输入 $x ∈ \Re$（x 可能是输入层的 $v$ 或者是某一个隐含层的状态），通过一个 Maxout 自己的隐含层 $z$，线性映射到输出的一个节点 $h(x)$，连接的权值是 $W,b$。使用 Maxout 函数来作为激活函数可以加强模型对非线性函数的拟合能力，因为 Maxout 的拟合能力是非常强的，它可以拟合任意的的凸函数。最直观的解释就是任意的凸函数都可以由分段线性函数以任意精度拟合，而 Maxout 又是取k个自己的隐含层节点 $z$ 的最大值，这些隐含层 $z$ 节点也是线性的，所以在不同的取值范围下，最大值也可以看做是分段线性的（分段的个数与k值有关）。  
+下图的例子表示 Maxout 可以拟合任意凸函数，当然也包括了ReLU(Rectifier 函数)：   
+![maxout]  
+图12.Maxout可以拟合任意凸函数  
+而 Maxout 拓扑关系如下图所示：  
+![maxout-implement]  
+图13.Maxout网络拓扑关系  
+它的数学表达如下：  
+$$h(x) = {max}\limits_{i∈[1,k]}z_{i}$$
+$$z = x^TW + b$$
+关于 Maxout 对凸函数的表达能力的证明，可以见[[@Wang2004]]。  
+
+###实验平台  
+本文中描述的算法，需要使用梯度下降的算法进行模型的优化。而建立出来的模型比如多层的神经网络，需要使用后向传播的算法，通过链式求导来得到各层链接的参数的导数。这里面有两个比较难以解决的问题：  
+1.模型变得庞大之后，需要进行优化的参数的数量也会变得很大，计算耗费的时间非常多。  
+2.导数计算的复杂程度会随网络层数的增加，还有网路里使用的算法的变化而变得越来越复杂；  
+第一点可以用深度学习里的相关内容，比如自编码器里的逐层训练，还有
+
 
 
 ####引用文献  
@@ -130,3 +231,10 @@ $$L(xz) = ||x-z||^2$$
 [sparse-connectivity]:picture/sparse-connectivity.png  
 [shared-weights]:picture/shared-weights.png
 [lenet]:picture/lenet.png
+[single-neuron]:picture/single-neuron.png
+[MLP]:picture/MLP.png
+[normalizing-the-inputs]:picture/normalizing-the-inputs.png
+[overfit]:picture/overfit.jpg
+[dropout]:picture/dropout.png
+[maxout]:picture/maxout.png
+[maxout-implement]:picture/maxout-implement.png

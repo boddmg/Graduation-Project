@@ -1,0 +1,5 @@
+{
+  "cmd": "sh",
+  "args": [ "build-docx.sh", "{FILE_ACTIVE}"],
+  "sh": true
+}
