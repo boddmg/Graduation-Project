@@ -1,0 +1,19 @@
+digraph G {
+	compound = true;
+    rankdir=TB;
+    splines=line;
+    nodesep=.05;
+ 
+	node[style=solid, shape=box];
+	input->c1->s1->c2->s2->c3->s3->mlp->result;
+	input[label="输入数据，大小：144*48"];
+	c1[label="卷积层1(卷积核大小：3*3，特征图数：16)"];
+	s1[label="池化层1(Maxpool)"];
+	c2[label="卷积层2(卷积核大小：3*3，特征图数：32)"];
+	s2[label="池化层2(Maxpool)"];
+	c3[label="卷积层3(卷积核大小：3*3，特征图数：64)"];
+	s3[label="池化层3(Maxpool)"];
+	mlp[label="多层感知机(网络结构：320-256-100-14)"];
+	result[label="分类结果"];
+
+}

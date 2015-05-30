@@ -1,6 +1,10 @@
+#!/usr/bin/python
 import sys
 import os
 import re
+
+import webbrowser
+import clipboard
 
 chart_template = '''
 $(function () {
@@ -10,7 +14,7 @@ $(function () {
             x: -20 //center
         },
         subtitle: {
-            text: 'Boddmg',
+            text: '',
             x: -20
         },
         xAxis: {
@@ -47,11 +51,13 @@ $(function () {
     });
 });
 '''
-# chart website: http://www.hcharts.cn/test/index.php
+chart_website="http://www.hcharts.cn/test/index.php"
 
 if __name__ == "__main__":
     if len(sys.argv) == 2:
         src_string = open(sys.argv[1]).read()
         test = map(lambda x:float(x)*100,re.findall("test_correct_rate: (.*)\n",src_string))
         train = [test[0]] + map(lambda x:float(x)*100,re.findall("train_correct_rate: (.*)\n",src_string))
-        print chart_template.replace('##test##',str(test)).replace('##train##',str(train))
+        chart_text = chart_template.replace('##test##',str(test)).replace('##train##',str(train))
+        clipboard.copy(chart_text)
+        webbrowser.open(chart_website)
