@@ -1,28 +1,29 @@
-基于机器视觉的人体运动类型识别  
+%基于机器视觉的人体运动类型识别  
 
 摘要  
 
-本文提出用基于深度训练的机器视觉模型，在只使用由 Kinect 采集回来的人体骨架的运动数据的条件下进行人体运动类型的识别。使用由 Kinect 采集回来骨架模型是因为它具有数据容易获取，数据维度少的特点，可以方便存储、传输。而文章中的这个识别模型在训练时除了 CAD-60 数据集提供的人体骨架数据，没有使用任何的先验知识来进行人体运动类型的识别。这样子可以减少在数据的预处理阶段中人工的干预，只由机器自己来进行特征的提取，这样子可以减少人工提取特征时出现的错误。这也能使最终的模型的泛化性更优秀，鲁棒性更好。从而让模型对人体运动类型有更好的理解与识别。模型上，本文测试了卷积神经网络、自编码器、降噪自编码器、限制玻耳兹曼机以及混合的多种结构，并实验了多种网络训练上的用来加强效果的算法，比如一些正规化的方法和其他新的激活函数，最后选择了卷积神经网络作为自动特征提取的模型，并在其后面配合上多层感知机来进行分类。  
-关键字：人体运动类型识别，CAD-60 数据集，深度训练，卷积神经网络，自编码器，限制玻耳兹曼机，Kinect  
+本文提出用基于深度学习的机器视觉模型，在只使用由 Kinect 采集回来的人体骨架的运动数据的条件下进行人体运动类型的识别。使用由 Kinect 采集回来骨架模型是因为它具有数据容易获取，数据维度少的特点，可以方便存储、传输。而文章中的这个识别模型在训练时除了 CAD-60 数据集提供的人体骨架数据，没有使用任何的先验知识来进行人体运动类型的识别。这样子可以减少在数据的预处理阶段中人工的干预，只由机器自己来进行特征的提取，从而减少人工提取特征时出现的错误，使最终的模型的泛化性更优秀，鲁棒性更好。从而让模型对人体运动类型有更好的理解与识别。模型上，本文测试了卷积神经网络、自编码器、降噪自编码器以及混合的多种结构，并实验了多种网络训练上的用来加强效果的算法，比如一些正规化的方法和其他新的激活函数，最后选择了卷积神经网络作为自动特征提取的模型，并在其后面配合上多层感知机来进行分类。  
+关键字：人体运动类型识别，CAD-60 数据集，深度学习，卷积神经网络，自编码器，Kinect  
 
 HUMAN ACTION RECOGNITION BASE ON COMPUTER VISION  
 
 Abstract  
 
-We propose in the paper a computer vision model base on deep learning, which can recognize the human action only base on the data source in the skeletons of the human from Kinect. Using the skeletons from Kinect is because it is easy to get, to store and to transfer, and it has the less order of the data. This model only use the human skeletons data from the CAD-60 dataset to recognize the human action without using any prior knowledge. It can reduce the works from the human on the stage of preprocessing and hand the feature extraction to the computer, which can reduce the error from the human-engineer. It can also improve generalization performance and robustness of the model, And give the a understanding of the human action. In the paper, we do the experiment on with convolutional neural networks, autoencoder, denoising autoencoder, Restricted Boltzmann Machines and the some of their mixture, and it also do some experiments for the tricks which can improve the nerual network, such as some regularization methods or other activation functions. In the end, we choose the convolutional neural networks for the feature extraction. And use the multilayer perceptron as the follow classifier.  
-keywords: Human action recognition, CAD-60 dataset, deep models, convolutional neural networks, autoencoder, Restricted Boltzmann Machines, Kinect  
+We propose in the paper a computer vision model base on deep learning, which can recognize the human action only base on the data source in the skeletons of the human from Kinect. Using the skeletons from Kinect is because it is easy to get, to store and to transfer, and it has the less order of the data. This model only use the human skeletons data from the CAD-60 dataset to recognize the human action without using any prior knowledge. It can reduce the works from the human on the stage of preprocessing and hand the feature extraction to the computer, which can reduce the error from the human-engineer. It can also improve generalization performance and robustness of the model, And give the a understanding of the human action. In the paper, we do the experiment on with convolutional neural networks, autoencoder, denoising autoencoder and the some of their mixture, and it also do some experiments for the tricks which can improve the nerual network, such as some regularization methods or other activation functions. In the end, we choose the convolutional neural networks for the feature extraction. And use the multilayer perceptron as the follow classifier.  
+keywords: Human action recognition, CAD-60 dataset, deep models, convolutional neural networks, autoencoder, Kinect  
 
 #绪论  
 ##引言  
-计算机自动去理解人类的行为、动作还有跟环境之间的交流互动，在近年来逐渐地成为了一个热门的领域，因为这个技术在很多领域都有可以使用的地方。比如现代社会快速的生活节奏和巨大的工作压力，严重影响着个人的身体健康。科学的运动可以提高身体素质增强运动能力，进而降低患病的风险(尤其是一些慢性疾病），例如糖尿病、血脂异常、高血压等。而进行科学运动的前提是实现人体运动类型的准确识别。  
+在模式识别和机器学习(Pattern Recognition and Machine Learning, PRML)领域中，人体动作识别(Human Action Recognition, HAR)一直是比较重要的一个领域。
+计算机自动去理解人类的行为、动作还有跟环境之间的交流互动，在近年来逐渐地成为了一个热门的领域，因为这个技术在很多领域都有可以使用的地方。比如现代社会快速的生活节奏和巨大的工作压力，严重影响着个人的身体健康。科学的运动可以提高身体素质增强运动能力，进而降低患病的风险(尤其是一些慢性疾病），例如糖尿病、血脂异常、高血压等。而进行科学运动的前提是实现人体运动类型的准确识别，对人的运动、健康状况进行理解、评估，这样才能对这些东西进行有用的指导和建议。  
 
-在信息安全领域，通过智能监控的方式利用计算机自动对视频中人体的运动类型进行识别从而为监控或者案件侦破提供依据也具有着重要的意义和广泛的用途。  
+在信息安全领域，可以通过监控视频识别到人物的动作，甚至是识别到身份，用这种方式利用计算机自动对视频中人体的运动类型进行识别从而为监控或者案件侦破提供依据，也具有着重要的意义和广泛的用途。  
 
-在人机交互领域可以通过手势、身体姿态等信息对除了辅助交互输入设备以及自然语言分析进行补充，提高计算机和人进行交互的能力，使之更有趣。  
+在人机交互领域，可以通过手势、身体姿态等信息来进行输入，这样除了辅助交互输入设备和自然语言分析，其他的空白也能得到补充。这样就可以提高计算机和人进行交互的能力，使过程更有趣、更高效。  
 
-在大型的图像数据库或者互联网上的信息中还可以利用人体运动类型的识别，对部分信息进行标注和理解，进而提供搜索和训练的能力。  
+在大型的图像数据库或者互联网上的信息中，还可以通过对人体运动类型的识别，从而标注并理解其中的信息，让搜索的方位更广、提供的信息更多。  
 
-本课题的任务是通过使用深度训练的相关理论，尝试构造用基于深度训练的机器视觉模型，应用于人体运动类型的识别，从而让模型对人体运动类型有更好的理解与识别。  
+而本课题的任务是通过使用深度学习的相关理论，对里面的卷积神经网络、自编码器等模型进行试验，并应用类似 Dropout、 Max-norm 等算法对这些已有的模型进行改良，提高它们的效果，并用它们构造分类模型，应用于人体运动类型的识别，从而对人体运动类型有更好的理解与识别。  
 
 ##人体运动类型识别的相关研究现状  
 ###人体运动数据源的获得  
@@ -36,18 +37,24 @@ keywords: Human action recognition, CAD-60 dataset, deep models, convolutional n
 前三个问题基本上都可以通过使用三维空间上的图像或者类似骨架之类的模型来解决，所以本文使用的数据来源是由传感器采集计算直接得到的骨架数据。  
 
 ###人体动作识别的相关研究成果  
-从各种论文来看，相关研究的重点都是集中在寻找合适的特征，如时空趣点特征STIP[[@Zhu2014]]、骨架模型[[@Zhu2014]][[@Piyathilaka2013]][[@Gaglio2014]]、方向梯度直方图(HOG:Histogram of oriented gradients)[[@Rybok]][[@Dalal2005]] 、 光流场方向直方图(HOF:Histograms of Optical Flow)[[@Rybok]][[@Ni2013]][[@Chaudhry2009]]、EigenJoints[[@Yang2014]]等特征或者是它们的一些拓展和变形，如方向HOF[[@Lertniphonphan2011]]，以及根据这些特征进行进一步的组合来产生更高级的特征。  
+从各种论文来看，相关研究的重点都是集中在寻找合适的特征，然后通过一些经典的或者是修改过的分类器进行分类。  
 
-然后把这些特征通过分类器如贝叶斯模型[[@Yang2014]][[@Faria2014]]、k近邻kNN[[@Shan2014]]、支持向量机 SVM[[@Rybok]][[@Shan2014]][[@Hu2014]][[@Ni2013]][[@Zhang]][[@Sung2012]]、隐马尔可夫模型 HMM[[@Shan2014]][[@Gaglio2014]]来进行有监督的训练得到分类。分类器之间也可以通过串联[[@Yang2014]]或者并联（票决、加权）来加强分类的效果。
+如 Yu Zhu等人[[@Zhu2014]]提出来的使用通过在 RGB 图像或者深度图像中提取时空特征点STIP，然后把它与骨架模型等其他特征联合起来。把特征组合起来后放入 SVMs 分类器进行学习，最后得到一个可以使用的分类模型。  
 
-###使用深度训练进行有效的特征提取  
+而 Lukas Rybok 等人[[@Rybok]] 则是提出了使用方向梯度直方图(Histogram of oriented gradients, HOG)和光流场方向直方图(Histograms of Optical Flow，HOF)来作为提取特征的模型，然后再配合 proto-object 来描述上下文的特征，最后也是通过 SVM 分类器的学习，得到一个有效的分类模型。   
+
+除此之外，被用到的特征还有骨架模型[[@Zhu2014]][[@Piyathilaka2013]][[@Gaglio2014]]、[[@Rybok]][[@Dalal2005]] 、 [[@Rybok]][[@Ni2013]][[@Chaudhry2009]]、EigenJoints[[@Yang2014]]等或者是它们的一些拓展和变形，如方向HOF[[@Lertniphonphan2011]]，以及根据这些特征进行进一步的组合来产生更高级的特征。  
+
+而出了特征以外，一个有效的分类器也非常有必要。而在其他人的工作中，用到的分类器里有贝叶斯模型[[@Yang2014]][[@Faria2014]]、k近邻kNN[[@Shan2014]]、支持向量机 SVM[[@Rybok]][[@Shan2014]][[@Hu2014]][[@Ni2013]][[@Zhang]][[@Sung2012]]、隐马尔可夫模型 HMM[[@Shan2014]][[@Gaglio2014]]来进行有监督的训练得到分类。分类器之间也可以通过串联[[@Yang2014]]或者并联（票决、加权）来加强分类的效果。  
+
+###使用深度学习进行有效的特征提取  
 上一节所说到的特征的选取或者是计算一般是通过人工方式得到的。而这种人工方式得到的特征对应用的领域有较强的依赖性，也就是说，换一个研究的问题之后可能同样的特征就不能再适用了。  
 
-而深度训练[[@Arel2010]]的提出，某种程度上解决了这些关于特征提取的这些问题。  
+而深度学习[[@Arel2010]]的提出，某种程度上解决了这些关于特征提取的这些问题。  
 
 模仿出人脑表征信息的高效和鲁棒性一直是近几十年来人工智能研究中的一个核心。而人类不仅每时每刻都暴露在由感官接收的无数的数据中，而且还能够通过某些方法捕捉到这些数据关键的部分来让自己能够以简单的方式在未来使用。早在五十年前，提出了动态规划理论以及开创了最优化控制领域的 Richard Bellman 就曾断言，数据的高维度是在人工智能科学和工程应用中的根本障碍。其中主要的困难，尤其是在模式分类的应用中，就是数据训练的难度会随着数据维度的线性增长，发生指数级的增长[[@Bellman1957]]。而克服这个问题的主流方法就是以一定的方式(比如分类器、SIFT 算法）对数据进行预处理来减少数据的维度，这样数据就可以被有效地处理。这种减少维度的做法一般被称为特征提取。因此，可以认为，在很多模式识别系统的背后的智能其实被转移到了人工的特征提取处理上去了，而这种人工的做法有时会很困难而且会高度依赖于具体的应用场景[[@Duda2000]]。此外，如果不完整或者错误的特征被提取出来了，那么分类处理的性能就会从根本上受到限制。  
 
-最近，神经科学在哺乳类动物大脑上的新发现告诉我，我可以通过一个复杂的深层网络结构来对数据自动地进行预处理。这就是深度训练的基本来源。  
+最近，神经科学在哺乳类动物大脑上的新发现告诉我，我可以通过一个复杂的深层网络结构来对数据自动地进行预处理。这就是深度学习的基本来源。  
 
 #模型原理  
 ##特征提取  
@@ -109,7 +116,7 @@ $$L(xz) = ||x-z||^2$$
 这里面的 $y$ 是输入的数据的空间中的主要因子的一个表达。这个跟主要成分分析中的捕捉输入数据空间的主要因子非常类似。而事实上，如果中间的隐含层（编码）是一个线性变换而且是使用均方误差来训练网络的话，有 $k$ 个隐含单元就意味着其实是在找出原数据的前 $k$ 主要成分。但是如果隐含层是非线性的话，自编码器就跟 PCA 很不一样了，因为它还具备了捕捉输入数据里多模态的部分。  
 
 ####卷积神经网络  
-卷积神经网络 CNNs [[@LeCun1998]][[@RefWorks:doc:55619fabe4b030e10feadeb9]]是一个专门为二维数据(例如图片和视频）设计的多层神经网络的系列。 CNNs 是第一种真正意义上成功的深度训练方法，它能够成功地用一种鲁棒的方式训练出多层的神经网络。相比起普通的多层神经网络，卷积神经网络有很多独有的特点。  
+卷积神经网络 CNNs [[@LeCun1998]][[@RefWorks:doc:55619fabe4b030e10feadeb9]]是一个专门为二维数据(例如图片和视频）设计的多层神经网络的系列。 CNNs 是第一种真正意义上成功的深度学习方法，它能够成功地用一种鲁棒的方式训练出多层的神经网络。相比起普通的多层神经网络，卷积神经网络有很多独有的特点。  
 
 #####稀疏连接
 卷积神经网络利用了空间的局部相关性，相邻两层之间只进行了局部的连接，而不是像多层感知机 MLP 一样使用全连接的方式。换句话说，隐层 m 的单元的输入来自于层 m-1 在空间上连续的感受野的单位的一个子集。具体的如下图所示：  
@@ -265,7 +272,7 @@ $$z = x^TW + b$$
 1.模型变得庞大之后，需要进行优化的参数的数量也会变得很大，计算耗费的时间非常多。  
 2.导数计算的复杂程度会随网络层数的增加，还有网路里使用的算法的变化而变得越来越复杂；  
 
-第一点可以用深度训练里的相关内容，比如自编码器里的逐层训练，还有有减少训练参数的特性的卷积神经网络来减缓。但是也不能解决这个问题，所以，需要有一个能够支持高性能的计算的平台来减少做计算实验的时间，加快模型的迭代和设计。目前的高性能的计算平台主要依靠分布式的计算机集群还有 GPU 进行计算。而目前对于我而言，最容易获得的高性能计算平台是基于高性能显卡的 GPU 计算平台。而要在编程的时候使用到 GPU 来进行算法的加速，就需要花精力训练相关的编程架构的知识，比如 NVIDIA 的 CUDA 框架。  
+第一点可以用深度学习里的相关内容，比如自编码器里的逐层训练，还有有减少训练参数的特性的卷积神经网络来减缓。但是也不能解决这个问题，所以，需要有一个能够支持高性能的计算的平台来减少做计算实验的时间，加快模型的迭代和设计。目前的高性能的计算平台主要依靠分布式的计算机集群还有 GPU 进行计算。而目前对于我而言，最容易获得的高性能计算平台是基于高性能显卡的 GPU 计算平台。而要在编程的时候使用到 GPU 来进行算法的加速，就需要花精力训练相关的编程架构的知识，比如 NVIDIA 的 CUDA 框架。  
 
 而第二点则可以通过编程来实现一些自动进行函数的求导之类的功能来辅助进行网络的设计，从而把研究者的精力从细节里解放出来，投入到模型的设计上去。但是如果让程序要能够设计复杂的计算过程，就需要有类似惰性求值的机制来把具体的计算推迟，让程序能够在不用计算出来具体的值，而是在开始计算之前的过程就能得到计算过程的式子的信息来进行其他的操作，比如通过知道代价函数的构造对权值求导。  
 
@@ -390,7 +397,7 @@ Precision: $$P=\frac{TP}{TP+FP}$$
 Recall: $$R=\frac{TP}{TP+FN}$$
 Accuracy: $$A=\frac{TP+TN}{TP+FP+FN+TN}$$
 
-#总结与展望  
+#总结  
 ##总结  
 本文先是总结了现有的人体运动类型识别的算法的普遍框架：人工提取特征然后再使用分类器进行分类。提出了使用深度学习理论进行自动的特征提取，并且使用深度学习里面的自编码器和卷积神经网络进行自动的特征提取。并且给出了相应的实验结果，最终得到了一个有着不错效果的，人体运动类型识别的模型——卷积神经网络＋多层感知机。  
 
@@ -405,8 +412,6 @@ Accuracy: $$A=\frac{TP+TN}{TP+FP+FN+TN}$$
 感谢莫凌飞老师还有邵思羽学姐在论文撰写期间提供的帮助和指导。感谢我看的论文的作者们，你们的努力工作和聪明才智还有发表论文时的不厌其烦都极大地启发了我的思路。感谢空空如也的钱包，让我在论文的写作期间完全没有别的杂念。感谢在我通宵工作时没有因为我敲键盘声音太大而弄死我的室友。感谢陈琦同学提供的帮助，如果没有他的帮助，我可以提前一个月完成这篇论文。  
 
 #引用文献  
-
-
 [learning-framework1]:picture/learning-framework1.png  
 [learning-framework2]:picture/learning-framework2.png  
 [learning-framework3]:picture/learning-framework3.png  
