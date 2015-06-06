@@ -83,8 +83,11 @@ def main():
     iter_of_epochs = example_stream.iterate_epochs()
     data_of_epoch = iter_of_epochs.next()
     data_point = data_of_epoch.next()
+    suit_shape_of_x = lambda x:x.reshape(1,1,IMAGE_SIZE[0],IMAGE_SIZE[1])
     print data_point
-    print probs.(data_point[0])
+    result = probs.eval({x:suit_shape_of_x(data_point[0])})[0]
+    result = list(result)
+    print result.index(max(result))
 
 
 if __name__ == "__main__":
