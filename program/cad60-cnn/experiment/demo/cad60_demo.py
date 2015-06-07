@@ -8,6 +8,10 @@ from blocks.bricks.conv import ConvolutionalLayer, ConvolutionalSequence, Flatte
 
 from theano import tensor
 from blocks.initialization import IsotropicGaussian, Constant
+from Preprocessor.dataset_utils import PackerForFuel
+from Preprocessor.Base_utils import *
+from utilities import *
+import numpy as np
 
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 
@@ -17,10 +21,6 @@ FRAME_SIZE = 144
 IMAGE_SIZE = [FRAME_NUM, FRAME_SIZE]
 
 def prepare_data():
-    from Preprocessor.dataset_utils import PackerForFuel
-    from Preprocessor.Base_utils import *
-    from utilities import *
-
     # Prepare the data.
     print("Prepare the data.")
     data, label = PreprocessorList([
@@ -36,13 +36,13 @@ def prepare_data():
     cad60_train = PackerForFuel(data, label)
     return
 
-class detector():
+class Detector():
     def __init__(self):
         # Build the network.
         print("Build the network")
-        x = tensor.tensor3('features')
+        self.x = tensor.tensor3('features')
 
-        x = x.reshape((x.shape[0], 1, IMAGE_SIZE[0], IMAGE_SIZE[1]))
+        self.x = self.x.reshape((self.x.shape[0], 1, IMAGE_SIZE[0], IMAGE_SIZE[1]))
         # x = x.reshape((x.shape[0], 1, 1, x.shape[2]))
 
         y = tensor.lmatrix('targets')
@@ -72,7 +72,7 @@ class detector():
 
         # Fully connected layers
 
-        features = Flattener().apply(convnet.apply(x))
+        features = Flattener().apply(convnet.apply(self.x))
         mlp = MLP(activations=[Sigmoid(), Sigmoid(), Softmax()],
                   dims=[320, 256, 100, 14], weights_init=IsotropicGaussian(),
                   biases_init=Constant(0.))
@@ -84,31 +84,50 @@ class detector():
 
     def detect(self, data):
         suit_shape_of_x = lambda x:x.reshape(1,1,IMAGE_SIZE[0],IMAGE_SIZE[1])
-        result = self.model.eval({x:suit_shape_of_x(data)})[0]
+        result = self.model.eval({self.x:suit_shape_of_x(data)})[0]
         result = list(result)
         print result
         return result.index(max(result))
 
+norm_param = {}
+CONFIDENCE_INDEX = [9, 13, 23, 27, 37, 41, 51, 55, 65, 69, 79, 83, 93, 97, 107, 111, 121, 125, 135, 139,
+                  149, 153, 157, 161, 165, 169]
+POSE_INDEX = list(set(range(170)) - set(CONFIDENCE_INDEX))
+POSE_INDEX.sort()
+
+
+def norm(data):
+    if norm_param == {}:
+        PreprocessorList([
+            DataLoad("../../cad60_train.hkl"),
+            Index(POSE_INDEX),
+            Normalization(norm_param, False),
+        ]).run()
+    d,l = Normalization(norm_param, True).run(data, None)
+    return d
+
 
 
 def test():
+    import random
+    d = Detector()
+    d.detect(norm(np.array([[random.random()]*144]*48, dtype=np.float32)))
     import zmq
-    import uuid
-    client = {}
+    history = []
     context = zmq.Context()
     socket = context.socket(zmq.REP)
-    socket.bind("tcp://*:5555")
+    socket.bind("tcp://*:23333")
     print("begin to receive!")
     while True:
-        new_data = socket.recv_pyobj()
-        for i in new_data:
-            try:
-                client[i] += [new_data[i]]
-            except:
-                client[i] = [] + [new_data[i]]
-            if len(client[i]) >=48 :
-                print len(client)
+        new_data = socket.recv()
         socket.send("ok!")
+        new_data = map(float,new_data.split(","))
+        history += [new_data]
+        if len(history)>48:
+            history.pop(0)
+            history_np = np.array(history, dtype=np.float32)
+            history_np = norm(history_np)
+            print d.detect(history_np)
 
 
 

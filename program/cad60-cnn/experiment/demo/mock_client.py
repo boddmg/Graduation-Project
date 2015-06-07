@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 _author__ = 'boddmg'
 
 def main():
