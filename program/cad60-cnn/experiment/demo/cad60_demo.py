@@ -86,7 +86,6 @@ class Detector():
         suit_shape_of_x = lambda x:x.reshape(1,1,IMAGE_SIZE[0],IMAGE_SIZE[1])
         result = self.model.eval({self.x:suit_shape_of_x(data)})[0]
         result = list(result)
-        print result
         return result.index(max(result))
 
 norm_param = {}
@@ -108,7 +107,7 @@ def norm(data):
 
 
 
-def test():
+def main():
     import random
     d = Detector()
     d.detect(norm(np.array([[random.random()]*144]*48, dtype=np.float32)))
@@ -120,16 +119,27 @@ def test():
     print("begin to receive!")
     while True:
         new_data = socket.recv()
-        socket.send("ok!")
         new_data = map(float,new_data.split(","))
         history += [new_data]
         if len(history)>48:
             history.pop(0)
             history_np = np.array(history, dtype=np.float32)
             history_np = norm(history_np)
-            print d.detect(history_np)
+            result = str(d.detect(history_np))
+            socket.send(result)
+        else:
+            socket.send("-1")
 
-
+def test():
+    import zmq
+    context = zmq.Context()
+    socket = context.socket(zmq.REP)
+    socket.bind("tcp://*:23333")
+    print("begin to receive!")
+    while True:
+        new_data = socket.recv()
+        print new_data
+        socket.send("-1")
 
 
 if __name__ == "__main__":
