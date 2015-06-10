@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
 import os
+
 sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/'+'..'+'/'+".."))
 
 from blocks.bricks import Softmax, Sigmoid, MLP
@@ -8,6 +9,7 @@ from blocks.bricks.conv import ConvolutionalLayer, ConvolutionalSequence, Flatte
 
 from theano import tensor
 from blocks.initialization import IsotropicGaussian, Constant
+import Preprocessor
 from Preprocessor.dataset_utils import PackerForFuel
 from Preprocessor.Base_utils import *
 from utilities import *
@@ -136,6 +138,22 @@ def main():
         else:
             push_result_socket.send("-1")
 
+def test_dataset():
+    import random
+    d = Detector()
+    print d.detect(norm(np.array([[random.random()]*144]*48, dtype=np.float32)))
+    history_np = norm(history_np)
+    train, test = prepare_data()
+    example_stream = train.get_example_stream()
+    iter_of_epochs = example_stream.iterate_epochs()
+    data_of_epoch = iter_of_epochs.next()
+    data_point = data_of_epoch.next()
+    suit_shape_of_x = lambda x:x.reshape(1,1,IMAGE_SIZE[0],IMAGE_SIZE[1])
+    print data_point
+    result = probs.eval({x:suit_shape_of_x(data_point[0])})[0]
+    result = list(result)
+    print d.detect(history_np)
+
 def test():
     import zmq
     context = zmq.Context()
@@ -153,5 +171,5 @@ def test():
 
 
 if __name__ == "__main__":
-    main()
+    test_dataset()
 
