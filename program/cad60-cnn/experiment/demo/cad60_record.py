@@ -92,6 +92,7 @@ def main():
         new_data = map(float, new_data.split(","))
         history += [new_data]
         frames_counter += 1
+        print frames_counter
         push_result_socket.send(str(frames_counter))
 
 if __name__ == "__main__":
