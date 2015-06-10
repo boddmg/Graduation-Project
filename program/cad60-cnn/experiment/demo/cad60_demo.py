@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import sys
 import os
 
@@ -85,7 +86,7 @@ class Detector():
         self.model = probs
 
     def detect(self, data):
-        suit_shape_of_x = lambda x:x.reshape(1,1,IMAGE_SIZE[0],IMAGE_SIZE[1])
+        suit_shape_of_x = lambda x: x.reshape(1, 1, IMAGE_SIZE[0], IMAGE_SIZE[1])
         result = self.model.eval({self.x:suit_shape_of_x(data)})[0]
         result = list(result)
         return result.index(max(result))
@@ -100,14 +101,26 @@ POSE_INDEX.sort()
 def norm(data):
     if norm_param == {}:
         PreprocessorList([
-            DataLoad("../../cad60_train.hkl"),
-            Index(POSE_INDEX),
+            DataLoad("../../handmake_train.hkl"),
             Normalization(norm_param, False),
         ]).run()
     d,l = Normalization(norm_param, True).run(data, None)
     return d
 
-
+MOTION_TABLE = {
+    0: '吃零食',
+    1: '敲鼓',
+    2: "刷牙",
+    3: "喝水",
+    4: "搅拌",
+    }
+# MOTION_TABLE = {
+#     0: "eating",
+#     1: "knock",
+#     2: "brush teeth",
+#     3: "drink",
+#     4: "mixing up",
+#     }
 
 def main():
     import random
@@ -136,7 +149,7 @@ def main():
             result = str(d.detect(history_np))
             push_result_socket.send(result)
         else:
-            push_result_socket.send("-1")
+            push_result_socket.send("0")
 
 def test_dataset():
     import random
@@ -171,5 +184,5 @@ def test():
 
 
 if __name__ == "__main__":
-    test_dataset()
+    main()
 

@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import sys
 import os
+import signal
+
 sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/'+'..'+'/'+".."))
 
 from blocks.bricks import Linear, Rectifier, Softmax, Sigmoid, Tanh, MLP, Maxout
@@ -31,7 +33,7 @@ sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 
 def main():
     ## Init the params.
-    BATCH_SIZE = 256
+    BATCH_SIZE = 32
     FRAME_NUM = 48
     FRAME_SIZE = 144
     IMAGE_SIZE = [FRAME_NUM, FRAME_SIZE]
@@ -39,13 +41,13 @@ def main():
     # Prepare the data.
     print("Prepare the data.")
     data, label = PreprocessorList([
-            DataLoad("cad60_test_feature.hkl"),
+            DataLoad("test_feature.hkl"),
             SplitIntoBatches(FRAME_NUM,5),
             Monitor()]).run()
     cad60_test = PackerForFuel(data, label)
 
     data, label = PreprocessorList([
-            DataLoad("cad60_train_feature.hkl"),
+            DataLoad("train_feature.hkl"),
             SplitIntoBatches(FRAME_NUM,5),
             Monitor()]).run()
     cad60_train = PackerForFuel(data, label)
@@ -93,7 +95,7 @@ def main():
     mlp.initialize()
 
     probs = mlp.apply(features)
-    #load_params(probs, "params-after-train.plk")
+    # load_params(probs, "params-after-train.pkl")
 
     cost = CategoricalCrossEntropy().apply(y.flatten(), probs)
     correct_rate = 1 - MisclassificationRate().apply(y.flatten(), probs)
@@ -112,6 +114,7 @@ def main():
     ## Set the algorithm for the training.
     algorithm = GradientDescent(cost = cost, params = cg.parameters,
                                 step_rule =  CompositeRule([VariableClipping(50), Scale(0.1)]) )
+                                #step_rule =  CompositeRule([Scale(0.1)]) )
 
     ## Add a monitor extension for the training.
     data_stream_test = DataStream(cad60_test, iteration_scheme = ShuffledScheme(
@@ -129,18 +132,19 @@ def main():
                 channels=[['test_correct_rate'], ['train_correct_rate']],
                 start_server = True)
 
-    dump_params(probs, "params-before-train.plk")
+    dump_params(probs, "params-before-train.pkl")
+    # signal.signal(signal.SIGINT, lambda signal, frame: dump_params(probs, "params-after-train.pkl") )
     print("Start training")
     main_loop = MainLoop(algorithm=algorithm, data_stream=data_stream_train,
                          extensions=[Timing(),
                                      test_monitor,
                                      train_monitor,
-                                     FinishAfter(after_n_epochs = 300),
+                                     FinishAfter(after_n_epochs = 160),
                                      Printing(),
                                      plot
                                      ])
     main_loop.run()
-    dump_params(probs, "params-after-train.plk")
+    dump_params(probs, "params-after-train.pkl")
 
 if __name__ == "__main__":
     main()

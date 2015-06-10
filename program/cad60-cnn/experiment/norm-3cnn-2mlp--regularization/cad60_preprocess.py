@@ -41,12 +41,10 @@ def main():
     norm_param = {}
     for i in ["train", "test"]:
         src_data, src_labels = PreprocessorList([
-            DataLoad("../../cad60_%s.hkl" % i),
-            Index(CAD_60_POSE_INDEX),
-            # LambdaPreprocessor(labels_remaper),
+            DataLoad("../../handmake_%s.hkl" % i),
             Normalization(norm_param, i == "test"),
             Monitor(),
-            DataDump("cad60_%s_feature.hkl" % i)]).run()
+            DataDump("%s_feature.hkl" % i)]).run()
 
     print src_data.shape, src_labels.shape
 
