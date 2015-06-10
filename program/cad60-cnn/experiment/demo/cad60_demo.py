@@ -34,7 +34,7 @@ def prepare_data():
             SplitIntoBatches(FRAME_NUM,5),
             Monitor()]).run()
     cad60_train = PackerForFuel(data, label)
-    return
+    return cad60_train, cad60_test
 
 class Detector():
     def __init__(self):
@@ -111,37 +111,47 @@ def main():
     import random
     d = Detector()
     d.detect(norm(np.array([[random.random()]*144]*48, dtype=np.float32)))
-    import zmq
+
     history = []
+
+    import zmq
     context = zmq.Context()
-    socket = context.socket(zmq.REP)
-    socket.bind("tcp://*:23333")
+    pull_data_socket = context.socket(zmq.PULL)
+    pull_data_socket.bind("tcp://*:23333")
+
+    push_result_socket = context.socket(zmq.PUSH)
+    push_result_socket.bind("tcp://*:23334")
     print("begin to receive!")
     while True:
-        new_data = socket.recv()
+        new_data = pull_data_socket.recv()
         new_data = map(float,new_data.split(","))
         history += [new_data]
+        print(len(history))
         if len(history)>48:
             history.pop(0)
             history_np = np.array(history, dtype=np.float32)
             history_np = norm(history_np)
             result = str(d.detect(history_np))
-            socket.send(result)
+            push_result_socket.send(result)
         else:
-            socket.send("-1")
+            push_result_socket.send("-1")
 
 def test():
     import zmq
     context = zmq.Context()
-    socket = context.socket(zmq.REP)
-    socket.bind("tcp://*:23333")
+    pull_data_socket = context.socket(zmq.PULL)
+    pull_data_socket.bind("tcp://*:23333")
+
+    push_result_socket = context.socket(zmq.PUSH)
+    push_result_socket.bind("tcp://*:23334")
     print("begin to receive!")
+    cnt = 0
     while True:
-        new_data = socket.recv()
-        print new_data
-        socket.send("-1")
+        cnt+=1
+        new_data = pull_data_socket.recv()
+        push_result_socket.send(str(cnt))
 
 
 if __name__ == "__main__":
-    test()
+    main()
 

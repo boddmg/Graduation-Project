@@ -22,8 +22,7 @@ from blocks.extensions.plot import Plot
 from blocks.main_loop import MainLoop
 from blocks.extensions import FinishAfter, Printing, Timing
 
-
-
+from utilities import *
 
 def main():
     ## Init the params.
@@ -66,6 +65,7 @@ def main():
 
     probs = mlp.apply(features)
 
+    dump_params(probs, "params_before_train.pkl")
 
     cost = CategoricalCrossEntropy().apply(y.flatten(), probs)
     correct_rate =  1 - MisclassificationRate().apply(y.flatten(), probs)

@@ -93,6 +93,7 @@ def main():
     mlp.initialize()
 
     probs = mlp.apply(features)
+    #load_params(probs, "params-after-train.plk")
 
     cost = CategoricalCrossEntropy().apply(y.flatten(), probs)
     correct_rate = 1 - MisclassificationRate().apply(y.flatten(), probs)
@@ -134,7 +135,7 @@ def main():
                          extensions=[Timing(),
                                      test_monitor,
                                      train_monitor,
-                                     FinishAfter(after_n_epochs = 110),
+                                     FinishAfter(after_n_epochs = 300),
                                      Printing(),
                                      plot
                                      ])
