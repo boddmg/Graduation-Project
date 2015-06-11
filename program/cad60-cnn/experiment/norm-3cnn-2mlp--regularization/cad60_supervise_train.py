@@ -24,6 +24,7 @@ from blocks.main_loop import MainLoop
 from blocks.extensions import FinishAfter, Printing, Timing
 from blocks.filter import VariableFilter
 from blocks.roles import INPUT
+from utilities import *
 
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 
@@ -68,7 +69,13 @@ def main():
 
     input_dims = list(IMAGE_SIZE)
     for filter_size, num_filters_, pooling_size in zip(filter_sizes, num_filters, pooling_sizes):
-        conv_layers.append(ConvolutionalLayer(activation, filter_size, num_filters_, pooling_size))
+        try:
+            layer_count = layer_count+1
+        except:
+            layer_count = 0
+        new_conv_layer = ConvolutionalLayer(activation, filter_size, num_filters_, pooling_size)
+        new_conv_layer.name += str(layer_count)
+        conv_layers.append(new_conv_layer)
 
     convnet = ConvolutionalSequence(conv_layers, num_channels=1,
                                     image_size=tuple(IMAGE_SIZE),
@@ -86,7 +93,7 @@ def main():
     mlp.initialize()
 
     probs = mlp.apply(features)
-
+    #load_params(probs, "params-after-train.plk")
 
     cost = CategoricalCrossEntropy().apply(y.flatten(), probs)
     correct_rate = 1 - MisclassificationRate().apply(y.flatten(), probs)
@@ -122,6 +129,7 @@ def main():
                 channels=[['test_correct_rate'], ['train_correct_rate']],
                 start_server = True)
 
+    dump_params(probs, "params-before-train.plk")
     print("Start training")
     main_loop = MainLoop(algorithm=algorithm, data_stream=data_stream_train,
                          extensions=[Timing(),
@@ -132,6 +140,7 @@ def main():
                                      plot
                                      ])
     main_loop.run()
+    dump_params(probs, "params-after-train.plk")
 
 if __name__ == "__main__":
     main()

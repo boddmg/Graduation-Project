@@ -21,6 +21,8 @@ from blocks.extensions.monitoring import TrainingDataMonitoring
 from blocks.extensions.plot import Plot
 from blocks.main_loop import MainLoop
 from blocks.extensions import FinishAfter, Printing, Timing
+from blocks.model import Model
+import pickle
 
 
 
@@ -113,6 +115,8 @@ def main():
                 start_server = True)
 
     print("Start training")
+    pickle.dump(Model(probs).get_param_values(),open("model-before-train","w"))
+
     main_loop = MainLoop(algorithm=algorithm, data_stream=data_stream_train,
                          extensions=[Timing(),
                                      test_monitor,
@@ -122,6 +126,7 @@ def main():
                                      plot
                                      ])
     main_loop.run()
+    pickle.dump(Model(probs).get_param_values(),open("model-after-train","w"))
 
 if __name__ == "__main__":
     main()

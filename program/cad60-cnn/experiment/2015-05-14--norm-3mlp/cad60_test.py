@@ -21,8 +21,11 @@ from blocks.extensions.monitoring import TrainingDataMonitoring
 from blocks.extensions.plot import Plot
 from blocks.main_loop import MainLoop
 from blocks.extensions import FinishAfter, Printing, Timing
+from blocks.model import Model
+import pickle
 
-from utilities import *
+
+
 
 def main():
     ## Init the params.
@@ -58,14 +61,13 @@ def main():
 
     features = Flattener().apply(x)
     # features = x.flatten()
-    mlp = MLP(activations=[Sigmoid(), Sigmoid(), Softmax()],
-              dims=[48 * 72, 3000, 1000, 14], weights_init=IsotropicGaussian(),
+    mlp = MLP(activations=[Sigmoid(), Sigmoid(),  Sigmoid(), Softmax()],
+              dims=[48 * 144, 5000, 1000, 300, 14], weights_init=IsotropicGaussian(),
               biases_init=Constant(0.))
     mlp.initialize()
 
     probs = mlp.apply(features)
-
-    dump_params(probs, "params_before_train.pkl")
+    Model(probs).set_param_values(pickle.load(open("model-after-train")))
 
     cost = CategoricalCrossEntropy().apply(y.flatten(), probs)
     correct_rate =  1 - MisclassificationRate().apply(y.flatten(), probs)
@@ -113,11 +115,12 @@ def main():
                 start_server = True)
 
     print("Start training")
+
     main_loop = MainLoop(algorithm=algorithm, data_stream=data_stream_train,
                          extensions=[Timing(),
                                      test_monitor,
                                      train_monitor,
-                                     FinishAfter(after_n_epochs = 1000),
+                                     FinishAfter(after_n_epochs = 1),
                                      Printing(),
                                      plot
                                      ])

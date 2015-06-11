@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 import sys
 import os
 import re
@@ -14,7 +14,7 @@ $(function () {
             x: -20 //center
         },
         subtitle: {
-            text: '',
+            text: 'Boddmg',
             x: -20
         },
         xAxis: {
