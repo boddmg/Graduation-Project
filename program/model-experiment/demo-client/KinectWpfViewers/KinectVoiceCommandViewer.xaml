@@ -1,0 +1,24 @@
+﻿<kv:KinectViewer x:Class="Microsoft.Samples.Kinect.WpfViewers.KinectVoiceCommandViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:kv="clr-namespace:Microsoft.Samples.Kinect.WpfViewers"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="800">
+  <Grid MinHeight="30" MinWidth="300" Background="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140*" />
+            <ColumnDefinition Width="500*" />
+            <ColumnDefinition Width="160*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" HorizontalAlignment="Left" FontSize="14" Foreground="White" Name="textBlockModeFeedback" Text="Say Kinect to activate..." Margin="6,4" VerticalAlignment="Top"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" FontSize="14" Foreground="White" Name="textBlockCommandFeedback" Text="" Margin="6,4" VerticalAlignment="Top" />
+        <TextBlock Grid.Column="2" HorizontalAlignment="Left" FontSize="14" Foreground="White" Name="textBlockActionFeedback" Text="" Margin="6,4" VerticalAlignment="Top" />
+        <kv:KinectSpeechCommander x:Name="kinectSpeechCommander" 
+                                  ActiveListeningTimeout="5" 
+                                  DefaultConfidenceThreshold="0.50" 
+                                  DefaultListeningGrammarUri="pack://application:,,,/Microsoft.Samples.Kinect.WpfViewers;component/SpeechGrammars/SpeechGrammar.xml" DefaultListeningGrammarRule="defaultListen"
+                                  ActiveListeningGrammarUri="pack://application:,,,/Microsoft.Samples.Kinect.WpfViewers;component/SpeechGrammars/SpeechGrammar.xml" ActiveListeningGrammarRule="activeListen"/>
+    </Grid>
+</kv:KinectViewer>

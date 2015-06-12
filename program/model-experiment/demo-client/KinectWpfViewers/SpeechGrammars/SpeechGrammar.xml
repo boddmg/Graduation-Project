@@ -1,0 +1,61 @@
+﻿<grammar version="1.0" xml:lang="en-US" tag-format="semantics/1.0-literals" xmlns="http://www.w3.org/2001/06/grammar">
+  <rule id="defaultListen" scope="public">
+    <one-of>
+      <item>
+        <tag>KEYWORD</tag>
+        Kinect
+      </item>
+      <item>
+        Kinect <ruleref uri="#commands"/>
+      </item>
+    </one-of>
+  </rule>
+  <rule id="activeListen" scope="public">
+    <one-of>
+      <item>
+        <ruleref uri="#commands"/>
+      </item>
+    </one-of>
+  </rule>
+  <rule id="commands">
+    <one-of>
+      <item>
+        <tag>IRMODE_NEAR</tag>
+        <one-of>
+          <item> near mode </item>
+          <item> near range </item>
+          <item> close range </item>
+          <item> near depth </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>IRMODE_DEFAULT</tag>
+        <one-of>
+          <item> default mode </item>
+          <item> default range </item>
+          <item> normal range </item>
+          <item> far range </item>
+          <item> default depth </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>STMODE_SEATED</tag>
+        <one-of>
+          <item> seated mode </item>
+          <item> upper body </item>
+          <item> upper skeleton </item>
+          <item> seated skeleton </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>STMODE_DEFAULT</tag>
+        <one-of>
+          <item> standing mode </item>
+          <item> full body </item>
+          <item> full skeleton </item>
+          <item> standing skeleton </item>
+        </one-of>
+      </item>
+    </one-of>
+  </rule>
+</grammar>
