@@ -1,0 +1,17 @@
+/resource/data/tutorial/data.zip
+/resource/data/human-activities/data1.zip
+/program/tutorial/stanford_dl_ex/common/minFunc_2012/minFunc/compiled/*.mexw32
+/program/tutorial/stanford_dl_ex/common/t10k-images-idx3-ubyte
+/program/tutorial/stanford_dl_ex/common/t10k-labels-idx1-ubyte
+/program/tutorial/stanford_dl_ex/common/train-images-idx3-ubyte
+/program/tutorial/stanford_dl_ex/common/train-labels-idx1-ubyte
+/program/tutorial/stanford_dl_ex/ex1/*.asv
+*.pyc
+*.pkl
+*.hkl
+stdout
+*.dat
+/program/program/cad60-cnn/.idea/*
+*.idea*
+~$model-compare.xlsx
+/.project

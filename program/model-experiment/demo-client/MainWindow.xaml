@@ -1,0 +1,120 @@
+﻿<Window x:Class="Microsoft.Samples.Kinect.KinectExplorer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:l="clr-namespace:Microsoft.Samples.Kinect.KinectExplorer"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib" Title="Kinect Explorer - Console"
+        Top="0" Left="0"
+        Width="600" Height="400"
+        MinWidth="600"
+        Loaded="WindowLoaded" Closed="WindowClosed" >
+    <Window.Resources>
+        <SolidColorBrush x:Key="NormalBrandBrush" Color="#52318F"/>
+        <SolidColorBrush x:Key="HoverBrandBrush" Color="#322350"/>
+        <SolidColorBrush x:Key="SecondaryBrandBrush" Color="#00BCF2"/>
+
+        <SolidColorBrush x:Key="LightNeutralBrush" Color="#D2D2D2"/>
+        <SolidColorBrush x:Key="MediumNeutralBrush" Color="#969696"/>
+        <SolidColorBrush x:Key="DarkNeutralBrush">#505050</SolidColorBrush>
+        <FontFamily x:Key="KinectFont">Segoe UI</FontFamily>
+
+        <Style TargetType="{x:Type Image}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+        </Style>
+
+        <sys:Double x:Key="HeaderFontSize">24.0</sys:Double>        
+        <sys:Double x:Key="LabelFontSize">18.0</sys:Double>
+        <sys:Double x:Key="ItemFontSize">12.0</sys:Double>
+
+        <DataTemplate DataType="{x:Type l:KinectSensorItem}">
+            <Button MouseDoubleClick="Sensor_MouseDoubleClick" Background="Transparent" Margin="0 10 0 10">
+                <Button.Template>
+                    <ControlTemplate>
+                        <DockPanel Background="{TemplateBinding Background}">
+                            <Image DockPanel.Dock="Right" Source="Images\KinectSensor.png" Width="100" />
+                            <StackPanel>
+                                <TextBlock FontFamily="{StaticResource KinectFont}" 
+                                           FontSize="{StaticResource LabelFontSize}"
+                                           Foreground="{StaticResource DarkNeutralBrush}"
+                                           Text="{Binding Status}" />
+                                <TextBlock FontFamily="{StaticResource KinectFont}" 
+                                           FontSize="{StaticResource ItemFontSize}"
+                                           Foreground="{StaticResource DarkNeutralBrush}"
+                                           Text="{Binding Id}" />
+                            </StackPanel>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type l:KinectStatusItem}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                           FontFamily="{StaticResource KinectFont}" 
+                           FontSize="{StaticResource ItemFontSize}"
+                           Foreground="{StaticResource DarkNeutralBrush}"
+                           Text="{Binding Id}" />
+                <TextBlock Grid.Column="1"
+                           FontFamily="{StaticResource KinectFont}" 
+                           FontSize="{StaticResource ItemFontSize}"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource DarkNeutralBrush}"
+                           Text="{Binding Status}" />
+                <TextBlock Grid.Column="2"
+                           FontFamily="{StaticResource KinectFont}" 
+                           FontSize="{StaticResource ItemFontSize}"
+                           Foreground="{StaticResource DarkNeutralBrush}"
+                           Text="{Binding Path=DateTime, StringFormat={}{0:t}}" />
+            </Grid>
+        </DataTemplate>        
+        <l:VisibilityConverter x:Key="VisibilityConverter" />
+    </Window.Resources>
+    <Grid>
+        <Grid Background="Transparent" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Row="0" Grid.ColumnSpan="2" Margin="0 0 0 10">
+                <Image DockPanel.Dock="Left" Source="Images\Logo.png" Stretch="Fill" Height="32" Width="81" HorizontalAlignment="Left" Margin="0 10 0 0"/>
+                <TextBlock DockPanel.Dock="Right" 
+                       HorizontalAlignment="Right" 
+                       VerticalAlignment="Bottom" 
+                       Margin="0 0 -1 0"
+                       Foreground="{StaticResource DarkNeutralBrush}" FontSize="{StaticResource LabelFontSize}">Explorer Connected Devices</TextBlock>
+            </DockPanel>            
+            <ItemsControl Background="White" Name="kinectSensors" Grid.Row="1"/>            
+            <Line Grid.Row="2" Margin="0 5 0 5" X1="0" X2="1" Stroke="{StaticResource DarkNeutralBrush}" Stretch="Fill" SnapsToDevicePixels="True" />
+            <TextBlock  Grid.Row="3" Foreground="{StaticResource DarkNeutralBrush}" FontSize="{StaticResource LabelFontSize}" FontFamily="{StaticResource KinectFont}" >Status</TextBlock>
+            <ScrollViewer Grid.Row="4" VerticalScrollBarVisibility="Auto">
+                <ItemsControl Name="kinectStatus" />
+            </ScrollViewer>
+            <StackPanel 
+            Grid.Row="1" Grid.RowSpan="4"
+            Background="White"
+            Visibility="{Binding ElementName=kinectSensors,Path=Items.Count, Converter={StaticResource VisibilityConverter}}">
+                <!-- IMPORTANT: KinectSensorChooserUI component in Microsoft.Kinect.Toolkit is better to use or copy from
+                 than KinectExplorers user experience for device and discovery. -->
+                <TextBlock Foreground="{StaticResource DarkNeutralBrush}" FontSize="{StaticResource LabelFontSize}" FontFamily="{StaticResource KinectFont}" Margin="-1 0 0 0">Kinect Sensor Required</TextBlock>
+                <TextBlock Foreground="{StaticResource DarkNeutralBrush}" FontSize="{StaticResource ItemFontSize}"  FontFamily="{StaticResource KinectFont}" TextWrapping="Wrap">
+                    <LineBreak/>
+                    There are current no Kinect Sensors connected.  Please plug in a sensor to begin using this application
+                    <LineBreak/>
+                    <LineBreak/>
+                    <!-- Describes Kinect for Windows Sensor Setup -->
+                    <Hyperlink NavigateUri="http://go.microsoft.com/fwlink/?LinkID=239809"
+                               RequestNavigate="ShowMoreInfo"
+                               Foreground="{StaticResource SecondaryBrandBrush}">More info.</Hyperlink>
+                </TextBlock>
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Window>
