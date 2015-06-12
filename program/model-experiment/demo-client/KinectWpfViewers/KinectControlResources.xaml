@@ -1,0 +1,304 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:kt="clr-namespace:Microsoft.Samples.Kinect.WpfViewers;assembly=Microsoft.Samples.Kinect.WpfViewers"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <kt:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    <kt:DoubleScalerConverter x:Key="DoubleScalerConverter" />
+    <kt:BoolToInverseBoolConverter x:Key="BoolToInverseBoolConverter"/>
+    <kt:BoolToToggleStateConverter x:Key="BoolToToggleStateConverter"/>
+
+    <Color x:Key="NormalBrandColor">#52318F</Color>
+    <Color x:Key="HoverBrandColor">#322350</Color>
+    <Color x:Key="SecondaryBrandColor">#00BCF2</Color>
+    
+    <Color x:Key="LightNeutralColor">#D2D2D2</Color>
+    <Color x:Key="MediumNeutralColor">#969696</Color>
+    <Color x:Key="DarkNeutralColor">#505050</Color>
+        
+    <Color x:Key="HeaderForeground">White</Color>
+    <Color x:Key="LabelForeground">White</Color>
+
+    <Color x:Key="TitleForeground">#6e6e6e</Color>
+    <sys:Double x:Key="TitleFontSize">18.0</sys:Double>
+
+    <SolidColorBrush x:Key="NormalBrandBrush" Color="#52318F"/>
+    <SolidColorBrush x:Key="HoverBrandBrush" Color="#322350"/>
+    <SolidColorBrush x:Key="SecondaryBrandBrush" Color="#00BCF2"/>
+    
+    <SolidColorBrush x:Key="LightNeutralBrush" Color="#D2D2D2"/>
+    <SolidColorBrush x:Key="MediumNeutralBrush" Color="#969696"/>
+    <SolidColorBrush x:Key="DarkNeutralBrush" Color="#505050"/>
+    
+    <SolidColorBrush x:Key="HeaderForegroundBrush" Color="White"/>
+    <SolidColorBrush x:Key="LabelForegroundBrush" Color="White"/>
+    <SolidColorBrush x:Key="TitleForegroundBrush" Color="#6e6e6e"/>
+    
+    <FontFamily x:Key="KinectFont">Segoe UI</FontFamily>
+
+    <sys:Double x:Key="HeaderFontSize">24.0</sys:Double>
+    <sys:Double x:Key="FPSFontSize">14.0</sys:Double>
+    <sys:Double x:Key="LabelFontSize">18.0</sys:Double>
+    <sys:Double x:Key="ItemFontSize">12.0</sys:Double>
+
+    <Style TargetType="{x:Type Image}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+    </Style>
+
+    <Style TargetType="{x:Type Label}" x:Key="KinectLabel">
+        <Style.Setters>
+            <Setter Property="Margin" Value="0 10 0 0"/>
+            <Setter Property="Padding" Value="0 3 0 3"/>
+            <Setter Property="Foreground" Value="{StaticResource LabelForegroundBrush}"/>
+            <Setter Property="FontFamily" Value="{StaticResource KinectFont}"/>
+            <Setter Property="FontSize" Value="{StaticResource LabelFontSize}"/>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{StaticResource MediumNeutralBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="KinectTextBlock">
+        <Style.Setters>
+            <Setter Property="Padding" Value="0 3 0 3"/>
+            <Setter Property="Foreground" Value="{StaticResource LabelForegroundBrush}"/>
+            <Setter Property="FontFamily" Value="{StaticResource KinectFont}"/>
+            <Setter Property="FontSize" Value="{StaticResource ItemFontSize}"/>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{StaticResource MediumNeutralBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="KinectButton">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="MinHeight" Value="23" />
+        <Setter Property="MinWidth" Value="75" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Name="Root" BorderBrush="{StaticResource LabelForegroundBrush}" BorderThickness="2">
+                        <Border.Background>
+                            <SolidColorBrush x:Name="RootBackground" Color="{StaticResource NormalBrandColor}"/>
+                        </Border.Background>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="RootBackground" Duration="0:0:0.1"
+                                                        Storyboard.TargetProperty="Color" 
+                                                        To="{StaticResource NormalBrandColor}" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="RootBackground" Duration="0:0:0.1"
+                                                        Storyboard.TargetProperty="Color" 
+                                                        To="{StaticResource HoverBrandColor}" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <ContentPresenter Margin="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            RecognizesAccessKey="True"
+                            TextBlock.Foreground="{StaticResource LabelForegroundBrush}"
+                            TextBlock.FontFamily="{StaticResource KinectFont}"
+                            TextBlock.FontSize="{StaticResource ItemFontSize}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type RadioButton}" x:Key="KinectSettingsPanel">
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Border Name="Root">
+                        <Border.Background>
+                            <SolidColorBrush x:Name="RootBackground" Color="{StaticResource DarkNeutralColor}"/>
+                        </Border.Background>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver" />
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="RootBackground"
+                                                    Storyboard.TargetProperty="(SolidColorBrush.Color)"
+                                                    To="{StaticResource NormalBrandColor}"
+                                                    Duration="0:0:0.2"/>
+                                        <DoubleAnimation
+                                                        FillBehavior="HoldEnd"
+                                                        Storyboard.TargetName="ContentPresenterScaleTransform"
+                                                        Storyboard.TargetProperty="ScaleY"                                                        
+                                                        To="1"
+                                                        Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="RootBackground"
+                                                    Storyboard.TargetProperty="(SolidColorBrush.Color)"
+                                                    To="{StaticResource DarkNeutralColor}"
+                                                    Duration="0:0:0.2"/>
+                                        <DoubleAnimation
+                                                        FillBehavior="HoldEnd"
+                                                        Storyboard.TargetName="ContentPresenterScaleTransform"
+                                                        Storyboard.TargetProperty="ScaleY"
+                                                        To="0" 
+                                                        Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Indeterminate"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <StackPanel Orientation="Vertical">
+                            <ToggleButton 
+                                Name="ToggleButton"
+                                OverridesDefaultStyle="True"
+                                Content="{TemplateBinding Tag}"  
+                                IsChecked="{Binding Path=IsChecked, Mode=TwoWay, RelativeSource={x:Static RelativeSource.TemplatedParent}}">
+                                <ToggleButton.Template>
+                                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                        <Border Padding="10 1 10 1">
+                                            <Border.Style>
+                                                <Style>
+                                                    <Style.Setters>
+                                                        <Setter Property="Border.Background" Value="Transparent"/>
+                                                    </Style.Setters>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, Path=IsMouseOver}" Value="True">
+                                                            <Setter Property="Border.Background" Value="{StaticResource HoverBrandBrush}"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <ContentPresenter 
+                                                        RecognizesAccessKey="True"
+                                                        Content="{TemplateBinding Content}"
+                                                        TextBlock.Foreground="{DynamicResource LabelForegroundBrush}" 
+                                                        TextBlock.FontSize="{DynamicResource LabelFontSize}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                            </ToggleButton>
+                            <Grid>
+                                <Border
+                                    Width="{Binding ElementName=ContentPresenter, Path=ActualWidth}"
+                                    Height="{Binding ElementName=ContentPresenter, Path=ActualHeight}">
+                                    <Border.LayoutTransform>
+                                        <ScaleTransform x:Name="ContentPresenterScaleTransform" ScaleY="0"/>
+                                    </Border.LayoutTransform>
+                                </Border>
+                                <Canvas ClipToBounds="True">
+                                    <Border Padding="10 0 10 2" Name="ContentPresenter" Canvas.Bottom="0">
+                                        <ContentPresenter ContentSource="Content"/>
+                                    </Border>
+                                </Canvas>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type CheckBox}" x:Key="KinectCheckBox">
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <ControlTemplate.Resources>
+                        <Style TargetType="{x:Type Rectangle}">
+                            <Style.Setters>
+                                <Setter Property="Fill" Value="{StaticResource LabelForegroundBrush}"/>
+                                <Setter Property="Stroke" Value="{StaticResource LabelForegroundBrush}"/>
+                            </Style.Setters>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, Path=IsEnabled}" Value="False">
+                                    <Setter Property="Fill" Value="{StaticResource MediumNeutralBrush}"/>
+                                    <Setter Property="Stroke" Value="{StaticResource MediumNeutralBrush}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ControlTemplate.Resources>
+                    <BulletDecorator Background="Transparent">
+                        <BulletDecorator.Bullet>
+                            <Canvas Width="15" Height="15">
+                                <Rectangle Width="14" Height="14" Canvas.Left="1" Canvas.Top="1" StrokeThickness="1" Fill="{x:Null}"/>
+                                <Rectangle Width="8" Height="8" Canvas.Left="4" Canvas.Top="4" Stroke="{x:Null}" Visibility="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, Path=IsChecked, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                            </Canvas>
+                        </BulletDecorator.Bullet>
+                        <Label Name="BulletLabel" Style="{StaticResource KinectLabel}" Margin="2 0 0 0" FontSize="{StaticResource ItemFontSize}" Content="{TemplateBinding Content}"/>
+                    </BulletDecorator>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ListBox" x:Key="KinectRadioList">
+        <Style.Setters>
+            <Setter Property="ItemContainerStyle">
+                <Setter.Value>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Style.Setters>
+                            <Setter Property="OverridesDefaultStyle" Value="True"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                        <ControlTemplate.Resources>
+                                            <Style TargetType="{x:Type Ellipse}">
+                                                <Style.Setters>
+                                                    <Setter Property="Fill" Value="{StaticResource LabelForegroundBrush}"/>
+                                                    <Setter Property="Stroke" Value="{StaticResource LabelForegroundBrush}"/>
+                                                </Style.Setters>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, Path=IsEnabled}" Value="False">
+                                                        <Setter Property="Fill" Value="{StaticResource MediumNeutralBrush}"/>
+                                                        <Setter Property="Stroke" Value="{StaticResource MediumNeutralBrush}"/>                                                        
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ControlTemplate.Resources>
+                                        <BulletDecorator Background="Transparent">
+                                            <BulletDecorator.Bullet>
+                                                <Canvas Width="15" Height="15">
+                                                    <Ellipse Width="14" Height="14" Canvas.Left="1" Canvas.Top="1" StrokeThickness="1" Fill="{x:Null}"/>
+                                                    <Ellipse Width="8" Height="8" Canvas.Left="4" Canvas.Top="4" Stroke="{x:Null}" Visibility="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, Path=IsSelected, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                </Canvas>
+                                            </BulletDecorator.Bullet>
+                                            <Label Name="BulletLabel" Style="{StaticResource KinectLabel}" Margin="2 0 0 0" FontSize="{StaticResource ItemFontSize}" Content="{Binding}"/>
+                                        </BulletDecorator>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style.Setters>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBox}">
+                        <Border Background="Transparent">
+                            <ScrollViewer Margin="0" Focusable="False">
+                                <StackPanel Margin="2" IsItemsHost="True"/>
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+</ResourceDictionary>

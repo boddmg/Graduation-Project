@@ -11,54 +11,60 @@ digraph G {
 		rank=same;
 		color=white;
                 node [style=solid, shape=circle];
-		x1 x2 x3 x4 x_ x5 x6 x7 x8;
+		x1 x2 x3 x4 x_;
 		label = "输入层(神经元数量：144*48)";
-		fontsize=20.0;
+		fontname="SimSun";
+		fontsize=30.0;
 	}
 
 	subgraph cluster_1 {
 		rank=same;
 		color=white;
                 node [style=solid, shape=circle];
-		h11 h12 h13 h14 h1_ h15 h16 h17 h18;
-		label = "隐含层1(神经元数量：5000)";
-		fontsize=20.0;
+		h11 h12 h13 h14 h1_;
+		label = "隐含层1(5000个)";
+		fontsize=30.0;
+		fontname="SimSun";
 	}
 
 	subgraph cluster_2 {
 		rank=same;
 		color=white;
                 node [style=solid, shape=circle];
-		h21 h22 h23 h2_ h24 h25 h26;
-		label = "隐含层2(神经元数量：1000)";
-		fontsize=20.0;
+		h21 h22 h23 h2_;
+		label = "隐含层2(1000个)";
+		fontsize=30.0;
+		fontname="SimSun";
 	}
 
 	subgraph cluster_3 {
 		rank=same;
 		color=white;
                 node [style=solid, shape=circle];
-		h31 h32 h3_ h33 h34;
-		label = "隐含层3(神经元数量：300)";
-		fontsize=20.0;
+		h31 h32 h3_;
+		label = "隐含层3(300个)";
+		fontsize=30.0;
+		fontname="SimSun";
 	}
 
 	subgraph cluster_4 {
 		rank=same;
 		color=white;
                 node [style=solid, shape=circle];
-		s1 s_ s2;
-		label = "Softmax 层输出(神经元数量：14)";
-		fontsize=20.0;
+		s1 s_;
+		label = "Softmax 层输出(14个)";
+		fontsize=30.0;
+		fontname="SimSun";
 	}
 
 	x_[label="....", style="", shape="none"];
 	h1_[label="....", style="", shape="none"];
 	h2_[label="....", style="", shape="none"];
+	h3_[label="....", style="", shape="none"];
 	s_[label="....", style="", shape="none"];
-	{x1 x2 x3 x4 x5 x6 x7 x8} -> {h11 h12 h13 h14 h15 h16 h17 h18};
-	{h11 h12 h13 h14 h15 h16 h17 h18} -> {h21 h22 h23 h24 h25 h26};
-	{h21 h22 h23 h24 h25 h26} -> {h31 h32 h33 h34};
-	{h31 h32 h33 h34} -> {s1 s2};
+	{x1 x2 x3 x4} -> {h11 h12 h13 h14};
+	{h11 h12 h13 h14} -> {h21 h22 h23};
+	{h21 h22 h23} -> {h31 h32};
+	{h31 h32} -> {s1};
 
 }

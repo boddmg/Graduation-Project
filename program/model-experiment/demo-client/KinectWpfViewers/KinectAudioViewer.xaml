@@ -1,0 +1,129 @@
+﻿<kv:KinectViewer x:Class="Microsoft.Samples.Kinect.WpfViewers.KinectAudioViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"                  
+             xmlns:kv="clr-namespace:Microsoft.Samples.Kinect.WpfViewers"             
+             mc:Ignorable="d"              
+             d:DesignHeight="20" d:DesignWidth="100">
+    <kv:KinectViewer.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Microsoft.Samples.Kinect.WpfViewers;component/KinectControlResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </kv:KinectViewer.Resources>
+    <Border Background="{StaticResource DarkNeutralBrush}" Padding="10">
+        <Grid MinHeight="20" MinWidth="100" Name="ViewModelRoot" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="10" />
+                
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="10" />
+
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="10" />
+                
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="10" />
+
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="10" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="35"/>
+                <ColumnDefinition Width="95"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Title -->
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource KinectLabel}" Content="Audio Angle" FontSize="{StaticResource HeaderFontSize}"/>
+            
+            <!-- Left/Right -->
+            <Label Grid.Row="2" Grid.Column="0" Content="Left" Style="{StaticResource KinectLabel}" FontSize="{StaticResource ItemFontSize}"/>
+            <Border Grid.Row="2" Grid.Column="1" BorderBrush="{StaticResource LabelForegroundBrush}" BorderThickness="1 0 1 0" SnapsToDevicePixels="True">
+                <Border BorderBrush="{StaticResource LabelForegroundBrush}" BorderThickness="0 1 0 0" VerticalAlignment="Center" SnapsToDevicePixels="True"/>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5 0 5 0" Background="{StaticResource DarkNeutralBrush}">
+                <Image Source="Images/AudioKinectIcon.png" Stretch="Uniform" Height="20"/>
+            </Border>
+            <Label Grid.Row="2" Grid.Column="2" Content="Right" Style="{StaticResource KinectLabel}" FontSize="{StaticResource ItemFontSize}" HorizontalAlignment="Right"/>
+            
+            <!-- Beam Angle -->
+            <Label Grid.Row="4" Grid.Column="0" Content="-55°" Style="{StaticResource KinectLabel}" FontSize="{StaticResource ItemFontSize}"/>
+            <Border Grid.Row="4" Grid.Column="1" BorderBrush="{StaticResource LabelForegroundBrush}" BorderThickness="1 0 1 0" SnapsToDevicePixels="True">
+                <Border BorderBrush="{StaticResource LabelForegroundBrush}" BorderThickness="0 1 0 0" VerticalAlignment="Center" SnapsToDevicePixels="True"/>
+            </Border>
+            <Border Grid.Row="4" Grid.Column="1" Padding="10 0 10 0" Margin="1 5">                
+                <Canvas Name="BeamAngleSizer">
+                    <Canvas.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="0.0090909"/>
+                            <ScaleTransform ScaleX="{Binding ElementName=BeamAngleSizer, Path=ActualWidth}"/>
+                        </TransformGroup>
+                    </Canvas.RenderTransform>
+                    <Line Canvas.Left="55" X1="{Binding BeamAngle}" X2="{Binding BeamAngle}" Y1="0" Y2="{Binding ElementName=SourceAngleSizer, Path=ActualHeight}" Stroke="{StaticResource SecondaryBrandBrush}" StrokeThickness="10"/>
+                </Canvas>
+            </Border>            
+            <Label Grid.Row="4" Grid.Column="2" Content="+55°" Style="{StaticResource KinectLabel}" FontSize="{StaticResource ItemFontSize}" HorizontalAlignment="Right"/>
+            <Label Grid.Row="4" Grid.Column="3" Style="{StaticResource KinectLabel}" FontSize="{StaticResource ItemFontSize}" Content="Beam Angle |" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="4" Grid.Column="4" Style="{StaticResource KinectTextBlock}" Text="{Binding Path=BeamAngle, StringFormat={}{0:F2}°}" FontSize="{StaticResource ItemFontSize}" HorizontalAlignment="Right" Margin="0 10 0 0"/>
+            
+            <!-- Source Angle -->
+            <Label Grid.Row="6" Grid.Column="0" Content="-55°" Style="{StaticResource KinectLabel}" FontSize="{StaticResource ItemFontSize}"/>
+            <Border Grid.Row="6" Grid.Column="1" BorderBrush="{StaticResource LabelForegroundBrush}" BorderThickness="1 0 1 0" SnapsToDevicePixels="True">
+                <Border BorderBrush="{StaticResource LabelForegroundBrush}" BorderThickness="0 1 0 0" VerticalAlignment="Center" SnapsToDevicePixels="True"/>
+            </Border>
+            <Border Grid.Row="6" Grid.Column="1" Padding="10 0 10 0" Margin="1 5">
+                <Canvas Name="SourceAngleSizer">
+                    <Canvas.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="0.0090909"/>
+                            <ScaleTransform ScaleX="{Binding ElementName=SourceAngleSizer, Path=ActualWidth}"/>
+                        </TransformGroup>
+                    </Canvas.RenderTransform>
+                    <Line Canvas.Left="55" X1="{Binding SourceAngle}" X2="{Binding SourceAngle}" Y1="0" Y2="{Binding ElementName=SourceAngleSizer, Path=ActualHeight}" Stroke="{StaticResource SecondaryBrandBrush}" StrokeThickness="10"/>
+                </Canvas>
+            </Border>            
+            <Label Grid.Row="6" Grid.Column="2" Content="+55°" Style="{StaticResource KinectLabel}" FontSize="{StaticResource ItemFontSize}" HorizontalAlignment="Right"/>
+            <Label Grid.Row="6" Grid.Column="3" Style="{StaticResource KinectLabel}" FontSize="{StaticResource ItemFontSize}" Content="Source Angle |" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="6" Grid.Column="4" Style="{StaticResource KinectTextBlock}" Text="{Binding Path=SourceAngle, StringFormat={}{0:F2}°}" FontSize="{StaticResource ItemFontSize}" HorizontalAlignment="Right" Margin="0 10 0 0"/>
+
+            <!-- Confidence -->
+            <Label Grid.Row="8" Grid.Column="0" Content="0%" Style="{StaticResource KinectLabel}" FontSize="{StaticResource ItemFontSize}"/>
+            <Border Grid.Row="8" Grid.Column="1" BorderBrush="{StaticResource LabelForegroundBrush}" BorderThickness="1 0 1 0" SnapsToDevicePixels="True">
+                <Border BorderBrush="{StaticResource LabelForegroundBrush}" BorderThickness="0 1 0 0" VerticalAlignment="Center" SnapsToDevicePixels="True"/>
+            </Border>
+            <Grid Grid.Row="8" Grid.Column="1" Name="ConfidenceGrid" Margin="1 3">
+                <Grid.Clip>
+                    <RectangleGeometry Rect="0,0,1,1">
+                        <RectangleGeometry.Transform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="{Binding ElementName=ConfidenceGrid, Path=ActualWidth}" 
+                                            ScaleY="{Binding ElementName=ConfidenceGrid, Path=ActualHeight}"/>
+                                <ScaleTransform ScaleX="{Binding ConfidenceLevel}"/>
+                                <ScaleTransform ScaleX="0.01"/>
+                            </TransformGroup>
+                        </RectangleGeometry.Transform>
+                    </RectangleGeometry>
+                </Grid.Clip>
+                <Rectangle>
+                    <Rectangle.Fill>
+                        <LinearGradientBrush MappingMode="Absolute" StartPoint="0,0" EndPoint="2,0" SpreadMethod="Repeat">
+                            <GradientStop Offset="0" Color="{StaticResource SecondaryBrandColor}"/>
+                            <GradientStop Offset="0.5" Color="{StaticResource SecondaryBrandColor}"/>
+                            <GradientStop Offset="0.5" Color="Transparent"/>
+                            <GradientStop Offset="1" Color="Transparent"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+            <Label Grid.Row="8" Grid.Column="2" Content="100%" Style="{StaticResource KinectLabel}" FontSize="{StaticResource ItemFontSize}" HorizontalAlignment="Right"/>
+            <Label Grid.Row="8" Grid.Column="3" Style="{StaticResource KinectLabel}" FontSize="{StaticResource ItemFontSize}" Content="Confidence |" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="8" Grid.Column="4" Style="{StaticResource KinectTextBlock}" Text="{Binding Path=ConfidenceLevel, StringFormat={}{0}%}" FontSize="{StaticResource ItemFontSize}" HorizontalAlignment="Right" Margin="0 10 0 0"/>
+        </Grid>
+    </Border>        
+</kv:KinectViewer>
