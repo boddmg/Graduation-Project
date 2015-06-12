@@ -1,0 +1,132 @@
+digraph G {
+	compound = true;
+    rankdir=LR;
+    splines=line;
+    nodesep=.05;
+    
+    node [label=""];
+    ordering=out;
+ 
+	subgraph cluster_0 {
+		rank=same;
+		color=white;
+                node [style=solid,color=blue4, shape=circle];
+		x1 x2 x3 x4 x5 x6;
+		label = "input layer (144 x 100 nodes)";
+	}
+
+	subgraph cluster_c1 {
+		rank=source;
+		color=white;
+		node [style=solid,color=red2, shape=circle];
+		c11 c12 c13 c14;
+		label = "convolution layer 1 (16 x 3x3)";
+	}
+
+	subgraph cluster_s1 {
+		rank=source;
+		color=white;
+		node [style=solid,color=seagreen2, shape=circle];
+		s11 s12 s13 s14;
+		label = "resample layer 1 (Max pool) (3x3)";
+	}
+
+	subgraph cluster_c2 {
+		color=white;
+		node [style=solid,color=red2, shape=circle];
+		c21 c22 c23 c24;
+		label="convolution layer 2 (32 x 3x3)";
+	}
+
+	subgraph cluster_s2 {
+		color=white;
+		node [style=solid,color=seagreen2, shape=circle];
+		s21 s22 s23 s24;
+		label="resample layer 2(Max pool) (64 x 3x3) ";
+	}
+
+	subgraph cluster_c3 {
+		color=white;
+		node [style=solid,color=red2, shape=circle];
+		c31 c32 c33 c34;
+		label="convolution layer 3 (3 x 3)";
+	}
+
+	subgraph cluster_s3 {
+		color=white;
+		node [style=solid,color=seagreen2, shape=circle];
+		s31 s32 s33 s34;
+		label="resample layer 3(Max pool)";
+	}
+
+	subgraph cluster_5 {
+		color=white;
+		node [style=solid,color=red2, shape=circle];
+		a11 a12 a13 a14 a15 a16;
+		label="flatten into vector";
+	}
+
+	subgraph cluster_6 {
+		color=white;
+		node [style=solid,color=red2, shape=circle];
+		a21 a22 a23 a24 a25;
+		label="all connect layer 1";
+	}
+
+	subgraph cluster_7 {
+		color=white;
+		node [style=solid,color=red2, shape=circle];
+		a31 a32 a33 a34;
+		label="all connect layer 2";
+	}
+
+	subgraph cluster_8 {
+		color=white;
+		node [style=solid,color=red2, shape=circle];
+		o1 o2 o3;
+		label="output layer";
+	}
+	
+	{x1 x2 x3} -> c11;
+	{x2 x3 x4} -> c12;
+	{x3 x4 x5} -> c13;
+	{x4 x5 x6} -> c14;
+
+	c11 -> s11;
+	c12 -> s12;
+	c13 -> s13;
+	c14 -> s14;
+	
+	{s11 s12} -> c21;
+	{s12 s14} -> c22;
+	{s11 s13} -> c23;
+	{s11 s14} -> c24;
+
+	c21 -> s21;
+	c22 -> s22;
+	c23 -> s23;
+	c24 -> s24;
+
+	{s21 s22} -> c31;
+	{s22 s24} -> c32;
+	{s21 s23} -> c33;
+	{s21 s24} -> c34;
+
+	c31 -> s31;
+	c32 -> s32;
+	c33 -> s33;
+	c34 -> s34;
+
+	{s31 s32 s33 s34}->
+	{a11 a12 a13 a14 a15 a16};
+	
+	{a11 a12 a13 a14 a15 a16} -> 
+	{a21 a22 a23 a24 a25};
+	
+	{a21 a22 a23 a24 a25}->
+	{a31 a32 a33 a34};
+
+	{a31 a32 a33 a34}->
+	{o1 o2 o3}
+
+}
