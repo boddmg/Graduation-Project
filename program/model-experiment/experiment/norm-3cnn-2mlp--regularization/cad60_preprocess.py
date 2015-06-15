@@ -5,7 +5,6 @@ import os
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/'+'..'+'/'+".."))
 
-from cad60_skeleton import CAD60
 from Preprocessor.Base_utils import *
 from Preprocessor.dataset_utils import *
 from Preprocessor.encoder import *
