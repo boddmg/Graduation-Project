@@ -2,7 +2,6 @@
 import sys
 from os import path, listdir
 import struct
-import fuel
 from collections import OrderedDict
 import numpy
 
@@ -27,6 +26,7 @@ class CAD60(object):
     def __init__(self, root_path = None, batch_size = 10, data_type = "train"):
         print(data_type)
         if not root_path:
+            import fuel
             root_path = path.abspath(path.join(fuel.config.data_path,"cad60") )
             self.root_path = root_path
         else:
